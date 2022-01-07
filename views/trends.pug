@@ -1,0 +1,194 @@
+doctype html
+html(lang='en')
+    head
+      title PharmaSearch || Trends
+      meta(name='Description', content='Error reporting form for users if they spot anything wrong about the search results.')
+      include includes/head.pug
+    body
+      include includes/header.pug
+      main
+        .row
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;")
+            script(type='text/javascript').
+              var bannersnack_embed = {"hash":"b7hnejnub","width":300,"height":1050,"t":1592480941,"userId":41627626,"responsive":true,"type":"html5"};
+            script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
+          .col.s12.m4.l8(style="margin-top: 2rem;")
+            form.row(action='#')
+              .input-field.col.s10.l6.offset-s1
+                select(multiple='')#years
+                  option(value='' disabled='') Choose your option
+                  option(value='' disabled='' selected='') European Journal of Hospital Pharmacists - Abstract Book
+                label(style="font-weight: bolder; color: royalblue; font-size: small;") Choose Journal
+              .input-field.col.s10.l6.offset-s1
+                select(multiple='')#method
+                  option(value='' disabled='') Choose your option
+                  option(value='Category Search' selected='') Category Search
+                  option(value='Specific Search')#specific Specific Search
+                label(style="font-weight: bolder; color: royalblue; font-size: small;") Choose Trends Method
+            form.row(action='#')
+              .input-field.col.s10.l6.offset-s1
+                select(multiple='')#primere
+                  option(value='' disabled='') Choose your option
+                  option(value='Active Substance') Active Substance
+                  option(value='Stated Therapeutic Indication') Stated Therapeutic Indication
+                  option(value='Department') Department
+                  option(value='Tools / Criterias / Methods') Tools / Criterias / Methods
+                  option(value='Design of The Study') Design of The Study
+                  option(value='Stated Drug Classification') Country
+                  option(value='Journal') Journal
+                label(style="font-weight: bolder; color: royalblue; font-size: small;") Select Category
+              .input-field.col.s10.l6.offset-s1#cat-group
+                select(multiple='')#years
+                  option(value='' disabled='') Choose your option
+                  option(value='2023') 2021
+                  option(value='2022') 2020
+                  option(value='2021') 2019
+                label(style="font-weight: bolder; color: royalblue; font-size: small;") Choose Period
+              .input-field.col.s10.l6.offset-s1#spec-group(style='display:none; margin-top: -0.9rem')
+                label(style="font-weight: bolder; color: royalblue; font-size: small;") Select Item
+                #specificChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+            canvas#myChart(style="display: default;")
+            script(src='https://cdn.jsdelivr.net/npm/chart.js')
+            script.
+              var ctx = document.getElementById('myChart');
+              var myChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+              labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+              datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+              }]
+              },
+              options: {
+              scales: {
+              y: {
+              beginAtZero: true
+              }
+              }
+              }
+              });
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;")
+            script(type='text/javascript').
+              var bannersnack_embed = {"hash":"bxhm4i3nd","width":300,"height":1050,"t":1592485287,"userId":41627626,"responsive":true,"type":"html5"};
+            script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
+      include includes/footer.pug
+    // Compiled and minified JavaScript
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js', integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=', crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/typed.js@2.0.11')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+    // MY SCRIPTS START
+    script.
+      // MATERIALIZE STUFF
+
+      $(document).ready(function(){
+        $('.parallax').parallax();
+        $('select').formSelect();
+      });
+
+      document.addEventListener('DOMContentLoaded', function(){
+        var options = {
+          strings: ['PharmaSear^500.ch'],
+          typeSpeed: 100
+        };
+        var typed = new Typed('#logoType', options); 
+      });
+      $('#switch').hide();
+      // COOKIE ENGINE START
+      function createCookie(name,value,days) {
+      if (days) {
+      var date = new Date();
+      date.setTime(date.getTime()+(days*24*60*60*1000));
+      var expires = "; expires="+date.toGMTString();
+      }
+      else var expires = "";
+      document.cookie = name+"="+value+expires+"; path=/";
+      }
+      function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+      }
+      function eraseCookie(name) {
+      createCookie(name,"",-1);
+      }
+      // COOKIE ENGINE END
+
+      // READ COOKIE FOR NIGHT MODE
+      let checkNight = readCookie('nightMode');
+      if (checkNight == null) {
+      } else {
+        $("main").css("background-color", "darkgray");
+        $("header").css("background-color", "darkgray");
+        $("footer").css("background-color", "gray");
+        $("#sendReport").css("background-color", "darkslateblue");
+        $(".nav-wrapper").css("background", "");
+        $(".nav-wrapper").css("background-color", "darkslateblue");
+      }
+      
+      // GET JSON DATA
+      var dataReq = new XMLHttpRequest();
+      var url = "protected/data/data.json";
+      dataReq.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      console.log('Data loaded with success!');
+      }
+      };
+      dataReq.open("GET", url, true);
+      dataReq.send();
+      // FOOTER SLIDING DATA
+      $( "body" ).one('mouseover', function() {
+        setTimeout(function() { 
+        let slideData = JSON.parse(dataReq.responseText);
+        document.getElementById("slider").innerHTML = `${slideData.length} studies in our database are ready for you to perform your search now!`;
+        }, 500);
+      });
+
+      // OPTIMIZE THE MULTI-SELECT STRUCTURE WITH MONO-SELECT
+      // This code did not work properly so added a TIMEOUT FUNCTION
+      setTimeout(function() {
+        $(".input-field span").click(function() {
+          let foundID = $(this).parent().parent().parent();
+          foundID = foundID[0].lastChild.id;
+          if (foundID === "primere" || foundID === "method") {
+          let selecty = $(this).parent().siblings(".selected");
+          selecty.trigger( "click" );
+          }
+          if ($(this).parent()[0].innerText === "Specific Search") {
+            $("#cat-group").css("display","none");
+            $("#spec-group").css("display","inline"); 
+          } else if ($(this).parent()[0].innerText === "Category Search") {
+            $("#spec-group").css("display","none");
+            $("#cat-group").css("display","inline");
+          }
+        });
+      }, 1000);
+
+      $('#specificChips').chips({
+        data: [{
+          tag: 'Apple',
+        }],
+        limit: 1
+      });

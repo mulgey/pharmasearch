@@ -1,0 +1,137 @@
+doctype html
+html(lang='en')
+    head
+      title PharmaSearch || Report an Error
+      meta(name='Description', content='Error reporting form for users if they spot anything wrong about the search results.')
+      include includes/head.pug
+    body
+      include includes/header.pug
+      main
+        .row
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;")
+            script(type='text/javascript').
+              var bannersnack_embed = {"hash":"b7hnejnub","width":300,"height":1050,"t":1592480941,"userId":41627626,"responsive":true,"type":"html5"};
+            script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
+          .col.s12.m4.l8(style="margin-top: 2rem;")
+            form.col.s12(action='/report', method='post')
+              .row
+                .input-field.col.s12
+                  textarea#studyName.materialize-textarea(name='studyName', readonly='')
+                  label(for='studyName') Selected Item
+                .input-field.col.s12
+                  textarea#name.materialize-textarea(name='name')
+                  label(for='name') Your Name (optional)
+                .input-field.col.s12
+                  input#email.validate(type='email', name='email')
+                  label(for='email') Your E-Mail (optional)
+                  span.helper-text(data-error='Please check your mail again', data-success='')
+                .input-field.col.s12
+                    select(name='problem')
+                        option(value='', disabled='', selected='') Please Select
+                        option(value='Incorrect Link / Study Does Not Exist') Incorrect Link / Study Does Not Exist
+                        option(value='Misspelling') Misspelling
+                        option(value='Misinformation') Misinformation
+                        option(value='Incorrect Classification') Incorrect Classification
+                        option(value='Technical Issues') Technical Issues
+                        option(value='Others') Others
+                    label Classification of the Problem
+                .input-field.col.s12
+                  textarea#details.materialize-textarea(name='details', autocomplete='off')
+                  label(for='details') Details (optional)
+              .row  
+                button#sendReport.col.s2.waves-effect.waves-light.btn.offset-s4(style='border-radius: 12px; width: 25%; background-color: royalblue;', type='submit' name="sendReport")
+                    | Report Now
+                    i.material-icons.right email
+              .row.center-align
+                p#report.col.s12(style="font-weight: bold; color: darkslateblue;")= Report
+                #spinner.col.s5.offset-s5(style="display: none;")
+                  .spinner-dual
+                    .spinner-dual
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;")
+            script(type='text/javascript').
+              var bannersnack_embed = {"hash":"bxhm4i3nd","width":300,"height":1050,"t":1592485287,"userId":41627626,"responsive":true,"type":"html5"};
+            script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
+      include includes/footer.pug
+    // Compiled and minified JavaScript
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js', integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=', crossorigin='anonymous')
+    script(src='js/jquery.paginate.js')
+    script(src='https://cdn.jsdelivr.net/npm/typed.js@2.0.11')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+    // MY SCRIPTS START
+    script.
+      // MATERIALIZE STUFF
+      M.AutoInit();
+      document.addEventListener('DOMContentLoaded', function(){
+        var options = {
+          strings: ['PharmaSear^500.ch'],
+          typeSpeed: 100
+        };
+        var typed = new Typed('#logoType', options); 
+      });
+      $('#switch').hide();
+      // COOKIE ENGINE START
+      function createCookie(name,value,days) {
+      if (days) {
+      var date = new Date();
+      date.setTime(date.getTime()+(days*24*60*60*1000));
+      var expires = "; expires="+date.toGMTString();
+      }
+      else var expires = "";
+      document.cookie = name+"="+value+expires+"; path=/";
+      }
+      function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+      }
+      function eraseCookie(name) {
+      createCookie(name,"",-1);
+      }
+      // COOKIE ENGINE END
+
+      // READ COOKIE FOR NIGHT MODE
+      let checkNight = readCookie('nightMode');
+      if (checkNight == null) {
+      } else {
+        $("main").css("background-color", "darkgray");
+        $("header").css("background-color", "darkgray");
+        $("footer").css("background-color", "gray");
+        $("#sendReport").css("background-color", "darkslateblue");
+        $(".nav-wrapper").css("background", "");
+        $(".nav-wrapper").css("background-color", "darkslateblue");
+      }
+
+      // GET COOKIE DATA AND WRITE TO THE PAGE
+      let reportName = readCookie('reportName');
+      document.getElementById('studyName').value = reportName;
+      // GET JSON DATA
+      var dataReq = new XMLHttpRequest();
+      var url = "protected/data/data.json";
+      dataReq.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      console.log('Data loaded with success!');
+      }
+      };
+      dataReq.open("GET", url, true);
+      dataReq.send();
+      // FOOTER SLIDING DATA
+      $( "body" ).one('mouseover', function() {
+        setTimeout(function() { 
+        let slideData = JSON.parse(dataReq.responseText);
+        document.getElementById("slider").innerHTML = `${slideData.length} studies in our database are ready for you to perform your search now!`;
+        }, 500);
+      });
+      // SPINNER TRIGGER
+      $("#sendReport").click(function () {
+        $('#spinner').css("display", "block");
+        setTimeout(function() {
+          $('#report').text('Process of your request is taking longer than usual and it will be completed shortly. Thank you for your patience...');
+          $('#spinner').css("margin-top", "2rem");
+        }, 5000);
+      });
+

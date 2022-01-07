@@ -1,0 +1,194 @@
+html {
+    scroll-behavior: smooth;
+  }
+
+.multiple-select-dropdown {
+    max-height: 65vh;
+}
+/* LOGO STUFF */
+#logoType {
+    font-family: 'Russo One', sans-serif;
+}
+
+.typed-cursor{
+    font-size: x-large;
+}
+
+/* INDEX PAGE CHIP SECTIONS SHOULD BE CLOSER */
+.dropdown-content {
+    min-width: 90%;
+}
+
+#logoType {
+    margin-left: 2rem;     
+}
+/* LOGO STUFF ENDS */
+
+main, header, footer, .collapsible-header, #sortSelect {
+    background-color: aliceblue;
+}
+
+#resultList li {
+    line-height: 150%;
+    margin-left: 1rem;
+}
+
+#chips > ul {
+    width: 500px;
+}
+
+.chips .input {
+    width: max-content !important;
+}
+
+#resultList a {
+    color: midnightblue;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+nav {
+    background-color: dodgerblue;
+}
+
+.collapsible.expandable {
+    border-color: darkgrey;
+}
+
+.collapsible-body {
+    padding: 1rem;
+}
+
+#search {
+    background-color: royalblue;
+}
+
+#selectForm {
+    margin-left: 1.4rem;
+}
+
+.input-field.col label, .dropdown-content li > span {
+    color: darkslategray;
+}
+
+#resultText {
+    font-size: large;
+    color: darkslategray;
+    font-weight: bold;
+}
+
+.page-footer {
+    background-color: royalblue;
+    margin-top: 3rem;
+    padding-top: 10px;
+}
+
+/* sticky footer */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+/* sticky footer ends*/
+
+
+/* spinner starts */
+.spinner-dual {
+    width: 70px;
+    height: 70px;
+    border: 8px solid transparent;
+    border-top-color: royalblue;
+    border-bottom-color: royalblue;
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;  
+}
+
+.spinner-dual>div{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    animation: spin .8s reverse linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* spinner ends */
+
+.switch label {
+    margin-top: 2rem;
+    line-height: 2;
+}
+
+form.row {
+    margin: 0rem;
+}
+
+.pagination li.active {
+    background-color: steelblue;
+}
+
+div.input-field {
+    margin-bottom: 1.5rem;
+}
+
+.row.switch {
+    text-align: left;
+    margin: 0rem;
+}
+
+#advSearch {
+    margin-left: 25%;
+}
+
+#hrHead {
+    text-align: left;
+    color: white;
+    padding-left: 0.5rem;
+    background: rgb(70,130,180);
+    background: linear-gradient(90deg, rgba(70,130,180,1) 0%, rgba(0,169,204,1) 60%, rgba(252,252,252,1) 100%);
+    margin-top: 2rem;
+}
+
+.chip {
+    height: auto;
+}
+
+@media only screen and (min-width: 500px) {
+    #advSearch {
+        margin-left: 35%;
+    }
+
+    #logoType {
+        margin-left: 5.5rem;     
+    }
+
+}
+
+@media only screen and (min-width: 993px) {
+    a.brand-logo {
+        margin-left: 2rem;
+    }
+
+    #lefty {
+        text-align: left;
+    }
+
+    #leverOne {
+        margin-left: 0rem;
+    }
+
+    #leverThree {
+        margin-left: 1rem;
+    }
+
+    form.row {
+        margin: 1.5rem;
+    }
+}

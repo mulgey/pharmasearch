@@ -1,0 +1,110 @@
+doctype html
+html(lang='en')
+    head
+      title PharmaSearch || About
+      meta(name='Description', content='Error reporting form for users if they spot anything wrong about the search results.')
+      include includes/head.pug
+    body
+      include includes/header.pug
+      main
+        .row
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;")
+            script(type='text/javascript').
+              var bannersnack_embed = {"hash":"b7hnejnub","width":300,"height":1050,"t":1592480941,"userId":41627626,"responsive":true,"type":"html5"};
+            script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
+          .col.s12.m4.l8(style="margin-top: 2rem;")
+            div.parallax-container(style="margin-top: 5rem;")
+              .parallax(style="z-index: 1;")
+                img(src='img/poster_area_02.jpg')
+            div.section(style="background-color: whitesmoke;")
+              div(style="padding: 4rem; width: 100%;")
+                h2.header(style="color: darkslateblue;") Dear pharmacists and healthcare professionals,
+                p(style="margin-top: 3rem; font-size: medium; text-align: justify; line-height: 2;")
+                  | Our main purpose when creating this search platform is to provide the digital environment that will help our colleagues to overcome some of the difficulties we experienced especially in the early years of the profession; and at the same time, to provide the necessary data for those who are currently performing professional practice to help them keeping up to date.
+                p(style="margin-top: 2rem; font-size: medium; text-align: justify; line-height: 2;")
+                  | As can be understood from the overview, rather than providing a service to scientists for the publications they prepare; the platform aims to make the posters, reports and studies prepared to solve the daily problems related to the profession and to improve the service provided, systemically accessible in a practical way for pharmacists working in hospitals and pharmacies or scientists from the university who collaborates with these pharmacists who are in the field.
+                p(style="margin-top: 2rem; font-size: medium; text-align: justify; line-height: 2;")  
+                  | The "handmade" database has both advantages and disadvantages. Making a classification at a depth that any artificial intelligence or scanning tools cannot yet detect is the most important advantage for the pharmacists in a relatively narrow group, we want to work with. Small roughnesses that may be caused by being handmade can be improved with a collective approach. The prudent feedback of colleagues in the field, as well as the working groups that can be formed, can be beneficial to ensure that the platform may provide a high quality service.
+                p(style="margin-top: 2rem; font-size: medium; text-align: justify; line-height: 2;")
+                  | All in all, we would like to state that the platform is an environment open to every feedback and cooperation. And with the hopes that it will be a useful tool to improve the practice of our profession, we gladly present it to our colleagues.
+            div.parallax-container(style="margin-bottom: 5rem;")
+              .parallax(style="z-index: 1;")
+                img(src='img/group_work_02.jpg')
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;")
+            script(type='text/javascript').
+              var bannersnack_embed = {"hash":"bxhm4i3nd","width":300,"height":1050,"t":1592485287,"userId":41627626,"responsive":true,"type":"html5"};
+            script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
+      include includes/footer.pug
+    // Compiled and minified JavaScript
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js', integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=', crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/typed.js@2.0.11')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+    // MY SCRIPTS START
+    script.
+      // MATERIALIZE STUFF
+      $(document).ready(function(){
+        $('.parallax').parallax();
+      });
+      document.addEventListener('DOMContentLoaded', function(){
+        var options = {
+          strings: ['PharmaSear^500.ch'],
+          typeSpeed: 100
+        };
+        var typed = new Typed('#logoType', options); 
+      });
+      $('#switch').hide();
+      // COOKIE ENGINE START
+      function createCookie(name,value,days) {
+      if (days) {
+      var date = new Date();
+      date.setTime(date.getTime()+(days*24*60*60*1000));
+      var expires = "; expires="+date.toGMTString();
+      }
+      else var expires = "";
+      document.cookie = name+"="+value+expires+"; path=/";
+      }
+      function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+      }
+      function eraseCookie(name) {
+      createCookie(name,"",-1);
+      }
+      // COOKIE ENGINE END
+
+      // READ COOKIE FOR NIGHT MODE
+      let checkNight = readCookie('nightMode');
+      if (checkNight == null) {
+      } else {
+        $("main").css("background-color", "darkgray");
+        $("header").css("background-color", "darkgray");
+        $("footer").css("background-color", "gray");
+        $("#sendReport").css("background-color", "darkslateblue");
+        $(".nav-wrapper").css("background", "");
+        $(".nav-wrapper").css("background-color", "darkslateblue");
+      }
+
+      // GET JSON DATA
+      var dataReq = new XMLHttpRequest();
+      var url = "protected/data/data.json";
+      dataReq.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      console.log('Data loaded with success!');
+      }
+      };
+      dataReq.open("GET", url, true);
+      dataReq.send();
+      // FOOTER SLIDING DATA
+      $( "body" ).one('mouseover', function() {
+        setTimeout(function() { 
+        let slideData = JSON.parse(dataReq.responseText);
+        document.getElementById("slider").innerHTML = `${slideData.length} studies in our database are ready for you to perform your search now!`;
+        }, 500);
+      });
+

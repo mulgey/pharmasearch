@@ -1,0 +1,69 @@
+Improvements postponed after complation of the 2021 book
+1) Protect the data (hopeless issue)
+2) Interactive stats about the database (Trends - ChartJS)
+4) Featured result at the top
+5) Live search .. two countries.. needs a blank (not critical)
+6) Empty requests possible for submitting study?
+7) Random "next study" offers?
+8) Chat..!
+9) "advancedSearch" parameters groups may be 2 colors in order (maybe not necessary)
+
+66) Don't forget to remove the pause
+67) 2019 and 2020 National Poster Winners were not included
+68) Remove only (1) results. Especially in criteriaMethod
+69) Acetaminophen (Paracetamol) ?
+70) All "compliance" are "policiesAudits" ?
+71) All "history" are "patientIntervention" ?
+72) Fix back, all Biologicals are NOT biosimilars. Point is where the focus is.
+73) Check back "meta analysis", for "network meta analysis"
+74) Add back "Hepatic Impairment"
+75) There is "Survival Analysis" but is it related to PFS and OS?
+76) Should remove "clinicalTrials" if it was "Literature Search"ed?
+77) Should add "department" to the "Paediatrics"
+78) 2021 journal did not include "Compounding" section with "0" results. Please chech that again later.
+79) wards --> "intensive care" --> there are many to be united
+80) "Beta lactam inh." and "Beta lactamase inh." are the same. Unite!
+81) Hover on result and see the parameters as a list
+82) Should "policiesAudits" checked and removed the ones includes about medical "guidelines" ? "Evaluation of prescription adequacy to the antibiotherapy protocol in intra-abdominal infection in a regional hospital" and before
+83) "Data were obtained from the electronic medical records" is a reason for "ePrescribing" key?
+84) Sort arrays by name and check for the duplicates
+
+For search demonstration
+1) "Cost effectiveness analysis of meropenem dose optimisation in critical patients -- "administrative"
+2) "Use of oseltamivir in the treatment of influenza A" -- "instutional" 2 hospitals - 251 patients
+3) "Switching to equivalent alternatives: antiretroviral optimisation strategy" - "costAnalysis" - says: optimisation but not "cost"
+4) "Changing from cobicistat to a ritonavir boosted regimen in HIV positive patients" -- "outpatient" switch is being made for outpatients, not in the wards
+5) Test: Retrospective studies for the end-of-life patients
+6) "Evaluation of a pharmaceutical care programme for patients being treated with omalizumab" -- "selfmedication" under the stated Phar.Programme
+7) Artificial intelligence fails: "Pharmaceutical interventions in drugs provided to the outpatient hospital pharmacy" -- text contains "oncology" but can't be listed in Oncology
+8) In doubt: "Analysis of antibiotic consumption in a nursing home" .. "antimicrobial stewardship programmes are necessary" it says so should I add the "stewardship" key?
+9) "Preliminary design of hospital telepharmacy" -- there is no "telepharmacy"
+10) "Nutritional risk evaluation in institutionalised elderly patients in a public nursing home" -- there's "intervention" but not stated in the title
+11) "Prevalence of nutritional complications according to the requested hospitalisation service of total parenteral nutrition" -- oncology ward but it's about "nutrition"
+12) "Evaluation of the introduction of a medical device for mechanical induction of labour in women with unfavourable cervix" --- "costAnalysis
+
+For examples demonstration
+1) "habits" for "AIDS"
+2) "biosimilars" for "Rituximab" maybe plus "costAnalysis"
+3) "medicalDevices" "safetyProfile" sounds cool (maybe + "multidisciplinary")
+4) "errors" in "geriatrics"
+5) "riskSafety" for "compounding"
+6) "nextStep" for "shortages"
+7) "costAnalysis" for "oncology"
+8) "education" for "youngPharma"
+9) "offLabel" for ? (actSubs)
+10) "costAnalysis" for "clinicalTrials" (?)
+11) "education" for "youngPharma"
+12) "costAnalysis" for "resistance"
+13) "policiesAudits" for "biosimilars" plus "biosimilars"
+14) "compounding" with "shortages"
+15) "nextStep" for "shortages"
+16) "administrative" "policiesAudits"
+17) "Clopidogrel" "pharmacogenetics" studies
+
+"advantages demonstration" for in-promotion
+1) A pharmacist started in Medical Devices Department and don't know what to do. "selection" or "costAnalysis"
+
+Personal Notes
+1) "The effect of geriatric stewardship on drug-related problems after discharge" -- Turkish pharmacist in Netherlands
+2) "Pharmacologic intervention by hospital pharmacist for leucopenia due to tazobactam/piperacillin in the postpartum period: a case report" can we?

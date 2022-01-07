@@ -1,0 +1,5106 @@
+doctype html
+html(lang='en')
+  head
+    title PharmaSearch || Your Search Hub
+    meta(name='Description', content='Plan your next pharma study with us. Search the studies across the pharma world among more than 50 criteries and with high precision, reach the studies suits best to your interest.')
+    include includes/head.pug
+  body
+    include includes/header.pug
+    main
+      .row
+        #modal1.modal
+          .modal-content(style="background-color: lightsteelblue;")
+            h4(style="color: midnightblue;") Dear Visitors
+            p(style="color: midnightblue;") This website is intended for healthcare professionals. We DON'T own the property of the scientific materials in our database.
+            p(style="color: midnightblue;") The system presents the links that will direct you to the web addresses of the studies, which were listed according to the parameters you have chosen for your specific search.
+          .modal-footer(style="background-color: whitesmoke;")
+            a#modalAgree.modal-close.waves-effect.waves-green.btn-flat(href='#!') Agree / Don't show me this message for 7 days
+      .row(style="margin-top: 2rem;")
+        .col.s12.m4.l2(style="padding: 3rem;")
+          script(type='text/javascript').
+            var bannersnack_embed = {"hash":"b7hnejnub","width":300,"height":1050,"t":1592480941,"userId":41627626,"responsive":true,"type":"html5"};
+          script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
+        .col.s12.m4.l8(style="margin-top: 1rem;")
+          form.row.toggleForm(style='display: none; margin-top: 0rem; margin-bottom: 0rem;')
+            .input-field.col.s10.l12.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") All-Parameters Search
+              #totalLine.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+          form.row.toggleForm(style='margin-top: 0rem; margin-bottom: 0rem;')
+            .input-field.col.s10.l6.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") Active Substance
+              #actChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+            .input-field.col.s10.l6.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") Stated Therapeutic Indication
+              #indiChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+          form.row.toggleForm(style='margin-top: 0rem; margin-bottom: 0rem;')
+            .input-field.col.s10.l6.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") Stated Drug Classification
+              #classifyChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+            .input-field.col.s10.l6.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") Type of Medical Device / Equipment
+              #medicalChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+          form.row.toggleForm(style='margin-top: 0rem; margin-bottom: 0rem;')
+            .input-field.col.s10.l6.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") Department
+              #departmentChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+            .input-field.col.s10.l6.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") Tools / Criterias / Methods
+              #toolsChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+          form.row.toggleForm(style='margin-top: 0rem; margin-bottom: 0rem;')
+            .input-field.col.s10.l6.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") Design of The Study
+              #designChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+            .input-field.col.s10.l6.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") Setting
+              #settingChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+          form.row.toggleForm(style='margin-top: 0rem; margin-bottom: 0rem;')
+            .input-field.col.s10.l6.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") Number of Patients / Participants
+              #patientsChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+            .input-field.col.s10.l6.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") Number of Prescriptions
+              #prescriptionsChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+          form.row.toggleForm(style='margin-top: 0rem; margin-bottom: 0rem;')
+            .input-field.col.s10.l6.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") Duration of Practice
+              #durationChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+            .input-field.col.s10.l6.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") Country
+              #countryChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+          form.row.toggleForm(style='margin-top: 0rem; margin-bottom: 0rem;')
+            .input-field.col.s10.l6.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") Year of Publication
+              #yearChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+          form.row.toggleForm(style='margin-top: 0rem; margin-bottom: 0rem;')
+            #advancedInput.input-field.col.s10.l12.offset-s1
+              label(style="font-weight: bolder; color: royalblue; font-size: small;") Advanced Details
+              #advancedChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+          .row(style='margin-top: 1rem;')
+            ul(class="collapsible expandable")
+              li
+                .collapsible-header
+                  i.material-icons(id='advSearch') format_line_spacing
+                  span(style="color: royalblue; font-weight: bolder;") Advanced Search
+                .collapsible-body
+                  .container.center-align(style="width: 100%;")
+                    p#hrHead(style='margin-top: 0rem;') Areas
+                    hr
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Pediatrics
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Geriatrics
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Neonatology
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Oncology
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Pharmacogenetics
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Pharmacoeconomics
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Radiopharmaceuticals
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Compounding / Production
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Medical Devices / Equipments
+                    p#hrHead Type of Treatment / Medicine
+                    hr
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Personalized Medicine / Individual Therapy
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Enteral / Parenteral Nutrition
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Orphan Drugs
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan High Risk (High Alert) Medicines
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Hospice / Nursing Home Treatment
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Self-Medication
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Peri / Post - Operative Medication
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Outpatient Treatment
+                    p#hrHead Treatment Related Practice
+                    hr
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Enzyme Replacement / Substrate Reduction Therapy
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Gene Therapy
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Home Care
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Antibiotic / Antifungal Prophylaxis
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Pain Management
+                    p#hrHead Drug Application Related Practice
+                    hr
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Off-Label Use
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Flat Doses / Dose Banding
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Switching Medication
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Prescription Regulations (e.g., Deprescribing)
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Compliance with Guidelines / Protocols
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Preparing IV Medications
+                    p#hrHead Assessment Related Practice
+                    hr
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Cost Analysis
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Occupational Risk / Safety
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Efficacy Analysis
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Pharmacovigilance / Materiovigilance
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Stability / Microbiological Analysis
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Therapeutic Drug Monitoring
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Patient Safety / Tolerability Profile
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Prescribing Habits Analysis
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Medication Reconciliation / Identifying Discrepancies
+                    p#hrHead Communication
+                    hr
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Intervention of Pharmacists
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Interaction with Patients / Participants
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Recommendations to Nurses
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Telepharmacy
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Interview / Questionnaire with Health Professionals
+                    p#hrHead Logistics
+                    hr
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Selection / Procurement
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Stock / Supply / Distribution
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Automated / Robotic Systems
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Cold Chain Management
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Home Delivery
+                    p#hrHead Tech Tools
+                    hr
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Software Aided Decision Making
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Web / Mobile / VR Technologies
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan 3D Printing
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Social Media
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Electronic Patient Management Systems
+                    p#hrHead Challenges
+                    hr
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Drug Shortages
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Adverse Drug Events / Allergies
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Medication Adherence
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Antimicrobial Resistance
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Renal Insufficiency
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Prescription / Preparation / Application Errors
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Falsified Medicines
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Incompatibilities
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Medication Interactions
+                    p#hrHead Organizational
+                    hr
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Resource Management (Human / Material)
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Antimicrobial Stewardship
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Regulatory Policies / Audits
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Multidisciplinary Collaboration
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Multi-Institutional Collaboration
+                    p#hrHead Events
+                    hr
+                    .row.switch
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Drug Recalls
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Education of Health Professionals
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Clinical Trials
+                    p#hrHead Others
+                    hr
+                    .row.switch(style='margin-bottom: 1.5rem;')
+                      label.col.s12.l4#lefty(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Students / Young Pharmacists
+                      label.col.s12.l4(style='font-weight: bold; color: darkslateblue;')
+                        #listIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem;") toc
+                        #addIcon.i.material-icons.left(style="margin-right: 1rem; margin-left: 0.5rem; display: none;") add_box
+                        .advancedSpan Suggesting a Next Step
+          .row(style='margin-top: 4rem;')
+            a#search.col.s2.waves-effect.waves-light.btn.offset-s4(style='border-radius: 12px; width: 25%')
+              | Search
+              i.material-icons.right search
+          .row(style='margin-top: 4rem;')
+            #spinner.col.s5.offset-s5(style="display: none;")
+              .spinner-dual
+                .spinner-dual
+          #resultHeader.row(style='margin-top: 2rem; display: none;')
+            #resultText.col.s12.p
+            h3.col.s12#Resulty(style='margin-top: 1rem; font-weight: bold; color: firebrick;') Results
+          #sortAndAll.row(style='display: none;')
+            form#selectForm.col.s12.m4.left(action='#', style='')
+              p
+                label
+                  input#selectAll.filled-in(type='checkbox')
+                  span(style="font-weight: bold; color: darkslateblue;") Select All
+            select#sortSelect.browser-default.col.s12.m4.right
+              option.sortClass(value='Name') Name (A-Z)
+              option.sortClass(value='Newest', selected='') Newest First
+              option.sortClass(value='Oldest') Oldest First
+          #resultBody.row(style='display: none;')
+            ul#resultList(class="collapsible expandable")
+          .row(style="margin-top: 4rem;")
+            #email.col.s2.waves-effect.waves-light.btn.offset-s4(style='border-radius: 12px; width: 25%; display: none; background-color: royalblue;', onclick="window.open('email','_blank');")
+                | E-Mail Results
+                i.material-icons.right email
+          .row(style="margin-top: 4rem;")
+            p#issue.center-align(style="display: none; color: orangered; font-size: medium; font-weight: 500;") Did not get what your were looking for? Or any of the results is not as you've expected? Report any issue using this <a href='issue' target='_blank'> link</a>
+        .col.s12.m4.l2(style="padding: 3rem;")
+          script(type='text/javascript').
+            var bannersnack_embed = {"hash":"bxhm4i3nd","width":300,"height":1050,"t":1592485287,"userId":41627626,"responsive":true,"type":"html5"};
+          script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
+    include includes/footer.pug
+  // Compiled and minified JavaScript
+  script(src='https://code.jquery.com/jquery-3.4.1.min.js', integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=', crossorigin='anonymous')
+  script(src='js/jquery.paginate.js')
+  script(src='https://cdn.jsdelivr.net/npm/typed.js@2.0.11')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+  // MY SCRIPTS START
+  script.
+    // MATERIALIZE STUFF
+    M.AutoInit();
+    $(document).ready(function(){
+      $('.modal').modal();
+    });
+    document.addEventListener('DOMContentLoaded', function(){
+      var options = {
+        strings: ['PharmaSear^500.ch'],
+        typeSpeed: 100
+      };
+      var typed = new Typed('#logoType', options); 
+    });
+    // COOKIE ENGINE START
+    function createCookie(name,value,days) {
+    if (days) {
+    var date = new Date();
+    date.setTime(date.getTime()+(days*24*60*60*1000));
+    var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
+    }
+    function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+    var c = ca[i];
+    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+    }
+    function eraseCookie(name) {
+    createCookie(name,"",-1);
+    }
+    // COOKIE ENGINE ENDS
+
+    // READ COOKIE FOR THE MODAL
+    let modalBox = readCookie('modalBox');
+    if (modalBox == null) {
+      $(document).ready(function(){
+        $('.modal').modal();
+        $('.modal').modal('open');
+      });
+    } else {
+    }
+
+    // CREATE COOKIE FOR MODAL BOX 
+    $( "#modalAgree" ).click(function() {
+      let modalBox = "Agreed..!"
+      createCookie('modalBox', modalBox, 7);
+    });
+
+    // OPEN ADVANCED LIST ONCE THE INPUT AREA CLICKED
+    /*
+    $( "#advancedInput" ).click(
+      function() {
+        $(".collapsible-header").trigger("click");
+      }
+    );
+    */
+
+    // OPEN COLLAPSIBLE ONLY IF NOT CLICKED BEFORE
+    let advancedInputState = true;
+    $( ".collapsible-header" ).one( "click", function() {
+      advancedInputState = false;
+    });
+
+    // IF NOT CLICKED BEFORE, AS ADVANCED INPUT SECTION CLICKED, OPEN THE LIST
+    $( "#advancedInput" ).one( "click", function() {
+      if (advancedInputState === true) {
+        $(".collapsible-header").trigger("click");
+      }
+    });
+
+    // COOKIE FOR THE ISSUE PAGE, SEARCHARR CREATION
+    $( "#issue" ).click(function() {
+      let searchCookieArr = [];
+      let searchArr = Object.values(searchObj);
+      for (let key in searchArr) {
+        if (searchArr[key].length > 0) {
+            searchCookieArr.push(searchArr[key]);
+            createCookie('searchCookie', searchCookieArr, 1);
+        }
+      }
+    });
+    
+    // TRY FOR THE COUNTRY CHIPS
+    /*
+    let countryBoxData;
+    let countryBox = [];
+    $('#countryChips').chips({
+      placeholder: 'Enter a category',
+      secondaryPlaceholder: '+ Category',
+      onChipAdd: (event, chip) => {
+        countryBoxData = event[0].M_Chips.chipsData;
+        countryBox = [];
+        for (let key in countryBoxData) {
+          countryBox.push(`${countryBoxData[key].tag}`);
+        }
+        console.log(countryBox);
+      },
+      onChipDelete: (event, chip) => {
+        countryBoxData = event[0].M_Chips.chipsData;
+        countryBox = [];
+        for (let key in countryBoxData) {
+          countryBox.push(`${countryBoxData[key].tag}`);
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          'Less than 10': null,
+          '10 - 50': null,
+          '51 - 100': null,
+          '101 - 500': null,
+          '501 - 1000': null,
+          'More than 1000': null
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+    */
+
+    // THESE ARE MY DATA ARRAYS
+    let actArray = [
+      "Tisagenlecleucel",
+      "Axicabtagene ciloleucel",
+      "Apalutamide",
+      "Darolutamide",
+      "Anagrelide",
+      "Leucovorin (Folinic acid)",
+      "Cemiplimab",
+      "Emtricitabine / Tenofovir alafenamide / Bictegravir",
+      "Bictegravir",
+      "Pravastatin",
+      "Triazolam",
+      "Peginterferon Alfa-2a",
+      "Gemfibrozil",
+      "Anidulafungin",
+      "Temocillin",
+      "Flucloxacillin",
+      "Etelcalcetide",
+      "Vernakalant ",
+      "Epoprostenol",
+      "Treprostinil",
+      "Selexipag",
+      "Repaglinide",
+      "Palonosetron",
+      "Netupitant",
+      "Trimebutine",
+      "Tildrakizumab",
+      "Risankizumab",
+      "Remdesivir",
+      "Doravirine",
+      "Darunavir / Cobicistat",
+      "Chloroquine",
+      "Necitumumab",
+      "Motesanib",
+      "Figitumumab",
+      "Cefixime",
+      "Tetracycline",
+      "Spiramycin",
+      "Potassium canrenoate",
+      "Scopolamine",
+      "Bumetanide",
+      "Potassium iodide",
+      "Brigatinib",
+      "Binimetinib",
+      "Encorafenib",
+      "Tropicamide",
+      "Cefoperazone ",
+      "Biotin",
+      "5-azacitidine",
+      "Abacavir",
+      "Abacavir / Dolutegravir / Lamivudine",
+      "Abatacept",
+      "Abemaciclib",
+      "Abiraterone",
+      "Acenocoumarol",
+      "Acetaminophen",
+      "Acetylsalicylic acid",
+      "Acitretin",
+      "Acyclovir",
+      "Adalimumab",
+      "Adrenaline",
+      "Adriamycin",
+      "Afatinib",
+      "Aflibercept",
+      "Albendazole",
+      "Alectinib",
+      "Alemtuzumab",
+      "Alendronate",
+      "Alendronic acid",
+      "Alendronic acid / Colecalciferol",
+      "Alirocumab",
+      "Allopurinol",
+      "Alprazolam",
+      "Alprostadil",
+      "Amikacin",
+      "Amiodarone",
+      "Amisulpiride",
+      "Amitriptyline",
+      "Amlodipin",
+      "Ammonium tetrathiomolybdate",
+      "Amoxicillin",
+      "Amoxicillin / Clavulanic acid",
+      "Amphotericin",
+      "Ampicillin",
+      "Anakinra",
+      "Anlotinib",
+      "Antithrombin III",
+      "Antithymocyte Globulin (Rabbit)",
+      "Apixaban",
+      "Apremilast",
+      "Aripiprazole",
+      "Arsenic trioxide",
+      "Artemisinin",
+      "Artesunate",
+      "Atenolol",
+      "Atezolizumab",
+      "Atorvastatin",
+      "Atracurium",
+      "Atropine",
+      "Avibactam",
+      "Azathioprine",
+      "Azithromycin",
+      "Aztreonam",
+      "BCG Vaccine (Tice strain)",
+      "Baricitinib",
+      "Basiliximab",
+      "Bazedoxifene",
+      "Beclametasone",
+      "Belimumab",
+      "Belinostat",
+      "Bendamustine",
+      "Benralizumab",
+      "Benzydamine",
+      "Betamethasone",
+      "Bevacizumab",
+      "Bezlotoxumab",
+      "Bicalutamide",
+      "Bleomycin",
+      "Blinatumomab",
+      "Boric Acid",
+      "Bortezomib",
+      "Bosutinib",
+      "Botulinum Toxin",
+      "Brentuksimab vedotin",
+      "Brodalumab",
+      "Budesonide",
+      "Bupivacaine",
+      "Cabazitaxel",
+      "Cabozantinib",
+      "Caffeine",
+      "Calcifediol",
+      "Calcipotriol",
+      "Calcipotriol / Betamethasone",
+      "Calcium carbonate",
+      "Calcium citrate",
+      "Calcium folinate",
+      "Calcium phosphate",
+      "Camphor",
+      "Canagliflozin",
+      "Canakinumab",
+      "Candesartan",
+      "Cannabidiol",
+      "Capecitabine",
+      "Captopril",
+      "Carbamazepine",
+      "Carboplatinum",
+      "Carfilzomib",
+      "Carvedilol",
+      "Caspofungin",
+      "Cefazolin",
+      "Cefepime",
+      "Cefotaxime",
+      "Ceftaroline",
+      "Ceftazidime",
+      "Ceftazidime / Avibactam",
+      "Ceftobiprole",
+      "Ceftolozane",
+      "Ceftolozane / Tazobactam",
+      "Ceftriaxone",
+      "Cefuroxime",
+      "Cenegermin",
+      "Certolizumab",
+      "Cetuximab",
+      "Charcoal",
+      "Chloral Hydrate",
+      "Chlorambucil",
+      "Chlorhexidine",
+      "Chlorphenamine",
+      "Ciclosporin",
+      "Cidofovir",
+      "Cinoxacin",
+      "Ciprofloxacin",
+      "Cisplatinum",
+      "Citalopram",
+      "Cladribine",
+      "Clarithromycin",
+      "Clavulanic acid",
+      "Clindamycin",
+      "Clobazam",
+      "Clobetasol",
+      "Clonazepam",
+      "Clopidogrel",
+      "Clorazepate dipotassium",
+      "Clorfenamin",
+      "Clotiapine",
+      "Cloxacillin",
+      "Clozapine",
+      "Cobicistat",
+      "Cobimetinib",
+      "Codeine",
+      "Colchicine",
+      "Colecalciferol",
+      "Colistin",
+      "Cotrimoxazole",
+      "Crizotinib",
+      "Cyamemazine",
+      "Cyclophosphamide",
+      "Cyclosporine",
+      "Cytarabine",
+      "Dabigatran",
+      "Dabrafenib",
+      "Dacarbazine",
+      "Daclatasvir",
+      "Dactynomicin",
+      "Dalbavancin",
+      "Dalteparin",
+      "Danazol",
+      "Dapagliflozin",
+      "Daptomycin",
+      "Daratumumab",
+      "Darbepoetin",
+      "Darunavir",
+      "Darunavir / Cobicistat / Emtricitabine / Tenofovir alafenamide",
+      "Darunavir / Ritonavir",
+      "Dasabuvir",
+      "Dasatinib",
+      "Daunorubicin",
+      "Decitabine",
+      "Delta-9-tetrahydrocannabinol",
+      "Denosumab",
+      "Desmopressin",
+      "Dexamethasone",
+      "Dexchlorpheniramine",
+      "Dexmedetomidine",
+      "Dextrose",
+      "Diazepam",
+      "Diclofenac",
+      "Didanosine",
+      "Digoxin",
+      "Dihydroartemisin",
+      "Diltiazem",
+      "Dimethyl fumarate",
+      "Dipyrone",
+      "Disodium tetraborate",
+      "Dobutamine",
+      "Docetaxel",
+      "Dolutegravir",
+      "Domperidone",
+      "Donepezil",
+      "Dopamine",
+      "Dornase alfa",
+      "Doxepin",
+      "Doxorubicin",
+      "Doxycycline",
+      "Dulanermin",
+      "Duloxetine",
+      "Dupilumab",
+      "Durvalumab",
+      "Econazole",
+      "Eculizumab",
+      "Edoxaban",
+      "Efalizumab",
+      "Efavirenz",
+      "Efmoroctocog alfa",
+      "Elbasvir",
+      "Elbasvir / Grazoprevir",
+      "Eltrombopag",
+      "Elvitegravir",
+      "Empagliflocin",
+      "Emtricitabine",
+      "Emtricitabine / Tenofovir alafenamide / Cobicistat / Darunavir",
+      "Emtricitabine / Tenofovir alafenamide / Elvitegravir / Cobicistat",
+      "Emtricitabine / Tenofovir alafenamide / Rilpivirine",
+      "Emtricitabine / Tenofovir disoproxil",
+      "Emtricitabine / Tenofovir disoproxil / Efavirenz",
+      "Emtricitabine / Tenofovir disoproxil / Elvitegravir",
+      "Emtricitabine / Tenofovir disoproxil / Elvitegravir / Cobicistat",
+      "Emtricitabine / Tenofovir disoproxil / Rilpivirine",
+      "Enalapril",
+      "Enoxaparin",
+      "Enzalutamide",
+      "Epinephrine bitartrate",
+      "Epirubicin",
+      "Epoetin alpha",
+      "Epoetin beta",
+      "Eptinezumab",
+      "Erenumab",
+      "Eribulin",
+      "Erlotinib",
+      "Ertapenem",
+      "Erythropoietin",
+      "Escitalopram",
+      "Esomeprazole",
+      "Etanercept",
+      "Ethinylestradiol",
+      "Etidronate",
+      "Etilefrine",
+      "Etoposide",
+      "Everolimus",
+      "Evolocumab",
+      "Exemestane",
+      "Ezetimibe",
+      "Factor VIII",
+      "Factor VIII (Recombinant)",
+      "Famotidine",
+      "Fampridine",
+      "Febuxostat",
+      "Fentanyl",
+      "Ferric carboxymaltose",
+      "Ferrous fumarate",
+      "Ferrous gluconate",
+      "Ferrous sulphate",
+      "Fibrinogen",
+      "Fidaxomicin",
+      "Filgrastim",
+      "Fingolimod",
+      "Flecainide",
+      "Fluconazole",
+      "Flucytosine",
+      "Flumequine",
+      "Fluorouracil (5-FU)",
+      "Flupentixol",
+      "Fluticasone",
+      "Fluvastatin",
+      "Foscarnet",
+      "Fosfomycin",
+      "Fremanezumab",
+      "Fructose",
+      "Fulvestrant",
+      "Furosemide",
+      "Gabapentin",
+      "Galantamine",
+      "Ganciclovir",
+      "Gefitinib",
+      "Gemcitabine",
+      "Gentamicin",
+      "Glacanezumab",
+      "Glatiramer acetate",
+      "Glecaprevir",
+      "Glecaprevir / Pibrentasvir",
+      "Glucagon",
+      "Glucose",
+      "Glutamine",
+      "Glutathione",
+      "Golimumab",
+      "Grazoprevir",
+      "Growth hormone",
+      "Guselkumab",
+      "Haloperidol",
+      "Heparin",
+      "Honey Bee Venom",
+      "Human albumin",
+      "Human fibrinogen / Human thrombin",
+      "Hyaluronic acid",
+      "Hydrochlorothiazide",
+      "Hydrocortisone",
+      "Hydromorphone",
+      "Hydroxychloroquine",
+      "Hydroxyzine",
+      "Hyoscine",
+      "Ibandronate",
+      "Ibrutinib",
+      "Ibuprofen",
+      "Idarubicin",
+      "Idelalisib",
+      "Ifosfamide",
+      "Imatinib",
+      "Imidazole",
+      "Imiglucerase",
+      "Imipenem",
+      "Imipenem / Cilastatin",
+      "Imiquimod",
+      "Immunoglobulin (IVIg)",
+      "Infliximab",
+      "Inotuzumab / Ozogamicin",
+      "Insulin aspart",
+      "Insulin degludec",
+      "Insulin glargine",
+      "Insulin lispro",
+      "Interferon",
+      "Interferon (Pegylated)",
+      "Interferon beta",
+      "Iopromide",
+      "Ipilimumab",
+      "Irinotecan",
+      "Iron",
+      "Iron sucrose",
+      "Isavuconazole",
+      "Isoniazid / Pyrazinamide / Rifampicin",
+      "Itraconazole",
+      "Ixazomib",
+      "Ixekizumab",
+      "Ketamine",
+      "Labetalol",
+      "Lacosamide",
+      "Lamivudine",
+      "Lamivudine / Abacavir",
+      "Lamotrigine",
+      "Lansoprazole",
+      "Lapatinib",
+      "Latanoprost",
+      "Ledipasvir",
+      "Ledipasvir / Sofosbuvir",
+      "Leflunomide",
+      "Lenalidomide",
+      "Lenvatinib",
+      "Letrozole",
+      "Levetiracetam",
+      "Levocabastine",
+      "Levofloxacin",
+      "Levomepromazine",
+      "Levothyroxine",
+      "Lidocaine hydrochloride",
+      "Linezolid",
+      "Liraglutide",
+      "Lithium",
+      "Lithium carbonate",
+      "Lomefloxacin",
+      "Lonoctocog alfa",
+      "Loperamide",
+      "Lopinavir",
+      "Lopinavir / Ritonavir",
+      "Lorazepam",
+      "Losartan",
+      "Loxapine",
+      "Lurasidone",
+      "Lysine acetylsalicylate",
+      "Magnesium sulphate",
+      "Manidipine",
+      "Melphalan",
+      "Memantine",
+      "Mepivacaine",
+      "Mepolizumab",
+      "Mercaptopurine",
+      "Meropenem",
+      "Mesalamine",
+      "Metamizole",
+      "Metformin",
+      "Methadone",
+      "Methotrexate",
+      "Methylprednisolone",
+      "Metoclopramide",
+      "Metronidazole",
+      "Micafungin",
+      "Micophenolate",
+      "Midazolam",
+      "Midostaurin",
+      "Miglustat",
+      "Misoprostole",
+      "Mitomycin C",
+      "Montelukast",
+      "Morphine",
+      "Moxifloxacin",
+      "Mupirocin",
+      "Mycophenolate",
+      "Nab-paclitaxel",
+      "Nadroparin",
+      "Naftidrofuryl",
+      "Nalidixic acid",
+      "Naloxone",
+      "Natalizumab",
+      "Nicardipine",
+      "Nicorandil",
+      "Nifedipine",
+      "Nilotinib",
+      "Nintedanib",
+      "Niraparib",
+      "Nitrazepam",
+      "Nitroglycerin",
+      "Nivolumab",
+      "Norepinephrine",
+      "Norfloxacin",
+      "Nusinersen",
+      "Nystatin",
+      "Obeticholic acid",
+      "Obinotuzumab",
+      "Ocrelizumab",
+      "Octreotide",
+      "Ofloxacin",
+      "Olanzapine",
+      "Olaparib",
+      "Olaratumab",
+      "Omalizumab",
+      "Ombitasvir",
+      "Ombitasvir / Paritaprevir / Ritonavir",
+      "Ombitasvir / Paritaprevir / Ritonavir / Dasabuvir",
+      "Omeprazole",
+      "Ondansetron",
+      "Oseltamivir",
+      "Osimertinib",
+      "Oxacillin",
+      "Oxaliplatinum",
+      "Oxazepam",
+      "Oxcarbazepine",
+      "Oxybutinin",
+      "Oxycodone",
+      "Paclitaxel",
+      "Palbociclib",
+      "Paliperidone",
+      "Palivizumab",
+      "Panitumumab",
+      "Pantoprazole",
+      "Paracetamol",
+      "Paritaprevir",
+      "Parnaparin",
+      "Paroxetine",
+      "Pazopanib",
+      "Pefloxacin",
+      "Pegaspargase",
+      "Pembrolizumab",
+      "Pemetrexed",
+      "Penicillin G",
+      "Perphenazine",
+      "Pertuzumab",
+      "Pethidine",
+      "Phenobarbital",
+      "Phenol",
+      "Phenprocoumon",
+      "Phenylephrine hydrochloride",
+      "Phenytoin",
+      "Phytomenadione",
+      "Phytonadione",
+      "Pibrentasvir",
+      "Pipemidic acid",
+      "Piperacillin",
+      "Piperacillin / Tazobactam",
+      "Piperaquine",
+      "Piperaquine / Dihydroartemisin",
+      "Pirfenidone",
+      "Piritramide",
+      "Pitavastatin",
+      "Plasma (Platelet Rich)",
+      "Plasma (Rich In Growth Factors)",
+      "Platin",
+      "Pomalidomide",
+      "Ponatinib",
+      "Posaconazole",
+      "Potassium bicarbonate",
+      "Potassium chloride",
+      "Prazosine",
+      "Prednisone",
+      "Propofol",
+      "Propranolol",
+      "Protamine",
+      "Prothrombin complex concentrate",
+      "Prulifloxacin",
+      "Pseudoephedrine",
+      "Quetiapine",
+      "Rabeprazole",
+      "Radium-223 dichloride",
+      "Raloxifene",
+      "Raltegravir",
+      "Raltitrexed",
+      "Ramipril",
+      "Ramucirumab",
+      "Ranibizumab",
+      "Ranitidine",
+      "Ranolazine",
+      "Regorafenib",
+      "Remifentanil",
+      "Reslizumab",
+      "Resorcinol",
+      "Ribavirin",
+      "Ribociclib",
+      "Rifampicin",
+      "Rilpivirine",
+      "Risedronate",
+      "Risperidone",
+      "Ritonavir",
+      "Rituximab",
+      "Rivaroxaban",
+      "Rivastigmine",
+      "Ropivacaine",
+      "Rosuvastatin",
+      "Rufloxacin",
+      "Rurioctocog alfa pegol",
+      "Ruxolitinib",
+      "Sacubitril",
+      "Sacubitril / Valsartan",
+      "Salbutamol",
+      "Salmeterol",
+      "Sarilumab",
+      "Sebelipase alfa",
+      "Secukinumab",
+      "Sertraline",
+      "Sildenafil",
+      "Simeprevir",
+      "Simvastatin",
+      "Simvastatin / Cholesterol (TFSC)",
+      "Sirolimus",
+      "Situximab",
+      "Sodium Ferric Gluconate",
+      "Sodium benzoate",
+      "Sodium chloride",
+      "Sodium glycerophosphate",
+      "Sodium metabisulfite",
+      "Sodium nitroprusside",
+      "Sofosbuvir",
+      "Sofosbuvir / Daclatasvir",
+      "Sofosbuvir / Simeprevir",
+      "Sofosbuvir / Velpatasvir",
+      "Sofosbuvir / Velpatasvir / Voxilaprevir",
+      "Somatostatin",
+      "Sorafenib",
+      "Spironolactone",
+      "Sucralfate",
+      "Sufentanil",
+      "Sulbactam",
+      "Sulfamethoxazole",
+      "Sulfasalazine",
+      "Sunitinib",
+      "Suxamethonium",
+      "Tacrolimus",
+      "Talazoparib",
+      "Taliglucerase alfa",
+      "Tamoxifen",
+      "Tapentadol",
+      "Tazarotene",
+      "Tazobactam",
+      "Tedizolid",
+      "Teicoplanin",
+      "Telmisartan",
+      "Tenofovir",
+      "Tenofovir alafenamide",
+      "Tenofovir disoproxil",
+      "Teriflunomide",
+      "Teriparatide",
+      "Terlipressin",
+      "Tetracaine hydrochloride",
+      "Thalidomide",
+      "Theophylline",
+      "Thiamine",
+      "Thymoglobulin",
+      "Tigecycline",
+      "Tinzaparin sodium",
+      "Tipiracil",
+      "Tivozanib",
+      "Tobramycin",
+      "Tocilizumab",
+      "Tofacitinib",
+      "Tolterodine",
+      "Tolvaptan",
+      "Topiramate",
+      "Trabectedina",
+      "Tramadol",
+      "Trametinib",
+      "Tranexamic acid",
+      "Trastuzumab",
+      "Trastuzumab emtansine",
+      "Trazodone",
+      "Tretinoin",
+      "Triamcinolone",
+      "Trientine",
+      "Trifluridine",
+      "Trifluridine / Tipiracil",
+      "Trimethoprim",
+      "Trimethoprim / Sulfamethoxazole",
+      "Tuberculin",
+      "Urea",
+      "Ursodeoxycholic acid",
+      "Ustekinumab",
+      "Valproic acid",
+      "Valsartan",
+      "Vancomycin",
+      "Vedolizumab",
+      "Vedotin",
+      "Velaglucerase alfa",
+      "Velpatasvir",
+      "Vemurafenib",
+      "Venetoclax",
+      "Venlafaxine",
+      "Verapamil",
+      "Vincristine",
+      "Vinorelbine",
+      "Vismodegib",
+      "Vitamin C",
+      "Vitamin D",
+      "Voriconazole",
+      "Voxilaprevir",
+      "Warfarin",
+      "Zinc",
+      "Ziprasidone",
+      "Ziv-Aflibercept",
+      "Zoledronic acid",
+      "Zolpidem",
+      "Zoplicona",
+      "Zuclopenthixol"
+    ]
+    actArray.sort();
+
+    let indicArray = [
+      "Leukaemia (Acute Lymphocytic)",
+      "Lymphoma (Primary Mediastinal Large B-cell)",
+      "Lymphoma (Diffuse Large B-Cell)",
+      "Alopecia",
+      "Vitiligo",
+      "Prostate Cancer (Non-Metastatic Castration Resistant)",
+      "Optic Neuritis",
+      "Spinal Aplasia",
+      "Rhinorrhea",
+      "Breast Cancer (Luminal Metastatic)",
+      "Lymphocytopenia",
+      "Osteosarcoma",
+      "Multiple Myeloma (Refractory IgD)",
+      "Peritoneal Cancer",
+      "Splenomegaly",
+      "Hypothyroidism",
+      "Multiple Organ Dysfunction Syndrome",
+      "Lymphadenopathy",
+      "Kawasaki Disease",
+      "MyD88 Deficiency",
+      "Central Nervous System Infections",
+      "Mucopolysaccharidosis Type VII",
+      "Hypotension",
+      "Clostridium Difficile Infection",
+      "Cholangitis",
+      "Peritonitis",
+      "Appendicitis",
+      "Diverticulitis",
+      "Gastroenteritis (Acute)",
+      "Pharyngotonsillitis",
+      "Cystitis",
+      "Pyelonephritis (Acute)",
+      "Neonatal Sepsis",
+      "Hyperparathyroidism",
+      "Protein-Energy Undernutrition (PEU)",
+      "Hypoalbuminaemia",
+      "Anasarca",
+      "Hemorrhagic Shock",
+      "Cirrhosis (Decompensated)",
+      "Hepatorenal Syndrome",
+      "Eisenmenger Syndrome",
+      "Congenital Heart Disease",
+      "Long QT Syndrome",
+      "Hepatic Impairment",
+      "Epithelial Defect",
+      "Coronavirus Disease (COVID-19)",
+      "Retinopathy",
+      "Urological Cancer",
+      "5q-Spinal Muscular Atrophy (SMA)",
+      "Abdominal Infection (Severe)",
+      "Achalasia",
+      "Acquired Immunodeficiency Syndrome (AIDS)",
+      "Actinomycosis (Abdominal)",
+      "Acute Cerebellitis",
+      "Acute Coronary Syndrome",
+      "Adenocarcinoma",
+      "Age Related Macular Degeneration",
+      "Alzheimer’s Disease",
+      "Amyloidosis",
+      "Anaphylaxis",
+      "Anemia",
+      "Anemia (Hemolytic)",
+      "Ankylosing Spondylitis",
+      "Antisynthetase Syndrome",
+      "Anxiety",
+      "Aortic Stenosis",
+      "Apnea of Prematurity",
+      "Arrhythmia",
+      "Arteritis",
+      "Arthritis (Inflammatory)",
+      "Arthritis (Juvenile Idiopathic)",
+      "Arthritis (Psoriatic)",
+      "Arthritis (Rheumatoid)",
+      "Arthritis (Septic)",
+      "Ascites",
+      "Aspergillosis",
+      "Aspergillosis (Pulmonary)",
+      "Asthma",
+      "Asthma (Severe / IgE-Mediated)",
+      "Asthma (Severe Refractory)",
+      "Ataxia Telangiectasia",
+      "Atherosclerosis",
+      "Atresia (Oesophageal)",
+      "Atrial Fibrillation",
+      "Autoimmune Disease",
+      "Bacteraemia",
+      "Bacteraemia (Gram Negative)",
+      "Bacterial Keratitis",
+      "Basal Cell Carcinoma",
+      "Behcet Disease",
+      "Benign Prostatic Hyperplasia",
+      "Biliopancreatic Cancer",
+      "Bipolar Disorder",
+      "Bladder Cancer",
+      "Bloodstream Infection",
+      "Bone and/or Prosthetic Infections",
+      "Breast Cancer",
+      "Breast Cancer (Advanced)",
+      "Breast Cancer (HER2 Positive)",
+      "Breast Cancer (HR Positive / HER2 Negative Metastatic)",
+      "Bronchiectasis",
+      "Bronchitis (Acute)",
+      "Candidemia",
+      "Candidiasis",
+      "Candidiasis (Invasive)",
+      "Candidiasis (Oral)",
+      "Cardiac Arrest",
+      "Cardiopulmonary Disease",
+      "Cardiovascular Disease",
+      "Cataract",
+      "Catheter Associated Infections",
+      "Cavernoma",
+      "Cellulitis",
+      "Central Nervous System Disorders",
+      "Cerebrovascular Disease",
+      "Cervical Cancer",
+      "Cholestasis",
+      "Chronic Idiopathic Urticaria",
+      "Chronic Inflammatory Demyelinating Polyneuropathy",
+      "Chronic Obstructive Pulmonary Disease",
+      "Chronic Pain Syndrome",
+      "Cirrhosis",
+      "Cirrhosis (Primary Biliary)",
+      "Coagulation Disorder",
+      "Coagulation Disorder (Congenital)",
+      "Cognitive Disorder",
+      "Colorectal Cancer",
+      "Complement-Mediated Thrombotic Microangiopathy",
+      "Complete Heart Block",
+      "Complicated Skin and Skin Structure Infections",
+      "Confusion",
+      "Congestive Gastropathy",
+      "Conjunctivitis",
+      "Constipation",
+      "Coronary Artery Disease",
+      "Cow's Milk Protein Allergy",
+      "Crohn’s Disease",
+      "Cryoglobulinemia",
+      "Deficiency of the Interleukin-1 Receptor Antagonist",
+      "Deficiency of the Interleukin-36 Receptor Antagonist",
+      "Delusional Disorder",
+      "Dementia",
+      "Depression",
+      "Dermatitis",
+      "Dermatitis (Atopic)",
+      "Diabetes Insipidus (Nephrogenic)",
+      "Diabetes Type I (Juvenile)",
+      "Diabetes Type II (Mellitus)",
+      "Diabetic Foot",
+      "Diabetic Macular Oedema",
+      "Diarrhoea",
+      "Diarrhoea (Chronic)",
+      "Dry Eye Syndrome",
+      "Dyslipidaemia",
+      "Dysphagia",
+      "Dysplasia (Bronchopulmonary)",
+      "Dyspnoea",
+      "Encephalitis",
+      "Encephalomyelitis",
+      "Encephalopathy",
+      "Encephalopathy (Hepatic)",
+      "Endocarditis",
+      "Endometrial Cancer",
+      "Endophtalmitis",
+      "Epidermical Hamartoma",
+      "Epilepsy",
+      "Epilepsy (Dravet Syndrome)",
+      "Epilepsy (Drug-Resistant)",
+      "Epstein-Barr Virus Infection",
+      "Erdheim–Chester Disease",
+      "Erythroderma (Severe)",
+      "Facial Angiofibroma",
+      "Familial Mediterranean Fever",
+      "Fasciitis (Necrotizing)",
+      "Femoral Neck Fractures",
+      "Fibromyalgia",
+      "Fibrosis",
+      "Fibrosis (Cystic)",
+      "Fibrosis (Idiopathic Pulmonary)",
+      "Fibrosis (Liver)",
+      "Functional Disorder",
+      "Fungal Infections",
+      "Fungal Infections (Invasive)",
+      "Fusarium Keratitis",
+      "Gastric Cancer",
+      "Gastritis",
+      "Gastroesophageal Reflux",
+      "Gastrointestinal Infection",
+      "Gastrointestinal Injury",
+      "Gastrointestinal Perforation",
+      "Gastrointestinal Stromal Tumor",
+      "Gaucher Disease",
+      "Genitourinary Cancers",
+      "Glaucoma",
+      "Glioblastoma",
+      "Glomerulonephritis",
+      "Glomerulonephritis (Primary)",
+      "Glomerulopathy (Chronic)",
+      "Glomerulosclerosis",
+      "Graft Versus Host Disease",
+      "Guanidinoacetate Methyltransferase Deficiency",
+      "Guillain-Barré Syndrome",
+      "Haematological Disorder",
+      "Haemophilia A",
+      "Haemorrhage",
+      "Haemorrhoid",
+      "Head and Neck Cancer",
+      "Headache (Medication Overdose)",
+      "Healthcare-Associated Infections",
+      "Heart Failure",
+      "Helicobacter Pylori Infection",
+      "Hematologic Malignancy",
+      "Hematoma",
+      "Hemophagocytic Syndrome",
+      "Hepatitis (Acute)",
+      "Hepatitis B",
+      "Hepatitis C",
+      "Hepatitis C (Chronic)",
+      "Hepatitis C (Genotype 1a)",
+      "Hepatitis C (Genotype 3)",
+      "Hepatitis C (Genotype 4)",
+      "Hepatocarcinoma",
+      "Hepatosplenomegaly",
+      "Hidradenitis suppurativa",
+      "Hip Fracture",
+      "Hip Osteoarthritis",
+      "Horton Disease",
+      "Hypercalcaemia",
+      "Hypercholesterolaemia",
+      "Hyperglycaemia",
+      "Hyperlipidaemia",
+      "Hypernatraemia",
+      "Hypertension",
+      "Hypertension (Pulmonary Arterial)",
+      "Hypocalcaemia",
+      "Hypogammaglobulinaemia",
+      "Hypoglycaemia",
+      "Hypoglycaemia (Iatrogenic)",
+      "Hypokalaemia",
+      "Hypomagnesaemia",
+      "Hyponatraemia",
+      "Hypoparathyroidism",
+      "Hypophosphataemia",
+      "Hypotension (Orthostatic)",
+      "Hypovitaminosis D",
+      "Immune-Mediated Inflammatory Disease",
+      "Immunodeficiency",
+      "Immunodeficiency - Common Variable",
+      "Immunodeficiency - Secondary",
+      "Inappropriate Antidiuretic Hormone Secretion",
+      "Inflammatory Bowel Disease",
+      "Influenza (Flu)",
+      "Influenza A",
+      "Insulin Resistance",
+      "Intellectual Disability",
+      "Intestinal Obstruction",
+      "Intra-abdominal Infection",
+      "Intrauterine Growth Restriction",
+      "Irritable Bowel Disease",
+      "Ischaemia",
+      "Ischaemia (Transient)",
+      "Joint Pathology",
+      "Keratitis",
+      "Kidney Cancer",
+      "Kidney Disease",
+      "Kidney Disease (Acute)",
+      "Kidney Disease (Chronic)",
+      "Kidney Disease (Polycystic - Autosomal Dominant)",
+      "Large Cell Carcinoma",
+      "Lennox–Gastaut Syndrome",
+      "Leukaemia",
+      "Leukaemia (Acute Lymphoblastic)",
+      "Leukaemia (Acute Myeloid)",
+      "Leukaemia (Acute Promyelocytic)",
+      "Leukaemia (Chronic Lymphocytic)",
+      "Leukaemia (Chronic Myeloid)",
+      "Leukopenia",
+      "Liver Damage",
+      "Liver Disease",
+      "Liver Failure",
+      "Lung Cancer",
+      "Lymphoma",
+      "Lymphoma (Follicular)",
+      "Lymphoma (Hodgkin)",
+      "Lymphoma (Mantle Cell)",
+      "Lymphoma (T-Cell)",
+      "Lymphoma (non-Hodgkin)",
+      "Lysosomal Acid Lipase Deficiency",
+      "Malaria",
+      "Melanoma",
+      "Meningitis",
+      "Meningitis (Aseptic)",
+      "Mesothelioma",
+      "Metabolic Syndrome",
+      "Migraine",
+      "Mineral and Bone Disorder",
+      "Minimal Change Disease",
+      "Molluscum Contagiosum",
+      "Morvan Syndrome",
+      "Mucormycosis",
+      "Mucositis",
+      "Multiple Food Allergy (MFA)",
+      "Multiple Myeloma",
+      "Multiple Myeloma (Newly Diagnosed)",
+      "Multiple Sclerosis",
+      "Multiple Sclerosis (Primary Progressive)",
+      "Multiple Sclerosis (Relapsing – Remitting)",
+      "Myasthenia Gravis",
+      "Mycosis",
+      "Myelodysplastic Syndrome",
+      "Myeloproliferative Neoplasm (BCR/JAK2-Rearranged)",
+      "Myelotoxicity",
+      "Myopathy",
+      "Neoplasia",
+      "Neoplasia (Endometrial)",
+      "Neoplasia (Laryngeal)",
+      "Neoplasia (Rectal)",
+      "Nephropathy",
+      "Nephrotic Syndrome",
+      "Neuroblastoma",
+      "Neurodevelopmental Disorders",
+      "Neuromyelitis Optica",
+      "Neuropathic Pain",
+      "Neuropathy",
+      "Neuropathy (Demyelinating)",
+      "Neuropathy (Peripheral)",
+      "Neurotrophic Keratitis",
+      "Neutropenia",
+      "Neutropenia (Febrile)",
+      "Neutropenic Enterocolitis",
+      "Neutrophilia",
+      "Non-Small Cell Lung Cancer",
+      "Non-Small Cell Lung Cancer (ALK Positive)",
+      "Non-Small Cell Lung Cancer (EGFR-Mutated)",
+      "Nonketotic Hyperglycinemia",
+      "Nonvalvular Atrial Fibrillation",
+      "Nosocomial Infection",
+      "Oesophageal Cancer",
+      "Olfactory Dysfunction",
+      "Opsoclonus Myoclonus Syndrome",
+      "Osteoarticular Infection",
+      "Osteomyelitis",
+      "Osteonecrosis",
+      "Osteoporosis",
+      "Ovarian Carcinoma",
+      "Ovarian Serous Adenocarcinoma",
+      "Palmoplantar Pustulosis",
+      "Pancreatic Cancer",
+      "Pancreatitis",
+      "Papillomatosis (Laryngeal)",
+      "Papillomatosis (Oral Florid)",
+      "Papillomatosis (Recurrent Respiratory)",
+      "Paraneoplastic Dermatomyositis",
+      "Paraneoplastic Syndrome",
+      "Parasitaemia",
+      "Parkinson’s Disease",
+      "Patent Ductus Arteriosus",
+      "Peripheral Arterial Disease",
+      "Personality Disorder",
+      "Pharyngeal Cancer",
+      "Pneumonia (Aspiration)",
+      "Pneumonia (Community Acquired)",
+      "Pneumonia (Hospital Acquired)",
+      "Pneumonitis",
+      "Polyarthritis",
+      "Polyneuropathy",
+      "Portal Hypertension",
+      "Postoperative Infection",
+      "Primary Bladder Neck Obstruction",
+      "Proctitis",
+      "Progressive Multifocal Leukoencephalopathy",
+      "Prostate Cancer",
+      "Prostate Cancer (Metastatic Castration Resistant)",
+      "Prostate Cancer (Metastatic Castration Sensitive)",
+      "Psoriasis",
+      "Psoriasis (Moderate to Severe Plaque)",
+      "Pulmonary Embolism",
+      "Pulmonary Infection",
+      "Pure Red Cell Aplasia",
+      "Refeeding Syndrome",
+      "Renal Cell Cancer",
+      "Respiratory Disorders",
+      "Respiratory Distress Syndrome",
+      "Respiratory Syncytial Virus Infection",
+      "Respiratory Tract Infection",
+      "Respiratory Tract Infection (Lower)",
+      "Retinal Vein Occlusion",
+      "Rhabdoid Tumor",
+      "Rheumatological Diseases",
+      "Sarcoidosis",
+      "Schizoaffective Disorder",
+      "Schizophrenia",
+      "Scleroderma",
+      "Sepsis",
+      "Septic Shock",
+      "Serotonin Syndrome",
+      "Short Bowel Syndrome with Intestinal Failure (SBS-IF)",
+      "Sjögren Syndrome",
+      "Skin and Soft Tissue Infection",
+      "Soft Tissue Sarcoma",
+      "Spasmodic Dysphonia",
+      "Spondyloarthropathy",
+      "Squamous Cell Carcinoma",
+      "Squamous Cell Carcinoma of the Rectum",
+      "Statin Intolerance",
+      "Status Epilepticus",
+      "Stevens–Johnson Syndrome",
+      "Stomatitis",
+      "Stroke",
+      "Stroke (Cardioembolic)",
+      "Stroke (Ischemic)",
+      "Stroke (Thromboembolic)",
+      "Substance Related Disorders",
+      "Surgical Site Infection",
+      "Syndrome of Inappropriate Antidiuretic Hormone Secretion",
+      "Systemic Lupus Erythematosus",
+      "Testicular Cancer",
+      "Thrombocytopenia",
+      "Thrombocytopenic Purpura",
+      "Thrombosis (Cancer-Associated)",
+      "Thrombosis (Catheter-Related)",
+      "Thrombosis (Deep Vein)",
+      "Thrombosis (Portal Vein)",
+      "Thyroid Disorders",
+      "Trauma",
+      "Tuberous Sclerosis",
+      "Tumor Necrosis Factor Receptor Associated Periodic Syndrome (TRAPS)",
+      "Ulcer (Corneal)",
+      "Ulcer (Peptic)",
+      "Ulcer (Pressure)",
+      "Ulcer (Stress)",
+      "Ulcerative Colitis",
+      "Ulcerative Proctitis",
+      "Urea Cycle Defects (UCD)",
+      "Urinary Tract Infection",
+      "Urinary Tract Infection (Severe)",
+      "Urticaria",
+      "Uterine Leiomyosarcoma",
+      "Varices (Esophageal)",
+      "Vasculitis",
+      "Vasculitis (Central Nervous System)",
+      "Venous Thromboembolism",
+      "Ventriculitis",
+      "Wilson Disease"
+    ]
+    indicArray.sort();
+
+    let classifyArray = [
+      "Antiandrogenic Drugs",
+      "FLT3 (Tyrosine Kinase) Inhibitors",
+      "Granulocyte-Colony Stimulating Factor (G-CSF)",
+      "PD-1/PD-L1 Inhibitors",
+      "Inotropic Agents",
+      "Beta Lactamase Inhibitors",
+      "Vitamin D Analogues",
+      "Endothelin Receptor Antagonists",
+      "Phosphodiesterase-5 (PDE5) Inhibitors",
+      "Gliptins",
+      "Gargle Solutions",
+      "Insulins (Topical)",
+      "Immunoglobulins",
+      "Recombinant Proteins",
+      "Acetylcholinesterase Inhibitors",
+      "Adrenergic Drugs",
+      "Alimentary Tract And Metabolism Drugs",
+      "Alpha 1 Adrenergic Receptor Antagonists",
+      "Aminoglycosides",
+      "Anaesthetics",
+      "Analgesics",
+      "Anaplastic Lymphoma Kinase (ALK) Inhibitors",
+      "Angiotensin Converting Enzyme (ACE) Inhibitors",
+      "Angiotensin II Receptor Blockers (ARBs)",
+      "Antacids",
+      "Anthelmintics",
+      "Anthracyclines",
+      "Anti-Angiogenic Drugs",
+      "Anti-Dementia Drugs",
+      "Anti-Epileptics",
+      "Anti-Infective Drugs",
+      "Anti-Inflammatory Drugs",
+      "Anti-Inflammatory Drugs (Non-Steroidal)",
+      "Anti-Interleukin-12/23 Drugs",
+      "Anti-Interleukin-17 Drugs",
+      "Anti-Interleukin-5 Monoclonal Antibodies",
+      "Anti-MRSA (Methicillin-Resistant Staphylococcus aureus) Agents",
+      "Anti-Vascular Endothelial Growth Factor Drugs",
+      "Antianginal Drugs",
+      "Antiarrhythmics",
+      "Antibiotics",
+      "Antibiotics (High Spectrum)",
+      "Antibiotics (Oral)",
+      "Antibiotics (Systemic)",
+      "Anticholinergics",
+      "Anticoagulants",
+      "Antidepressants",
+      "Antidepressants (Tricyclic)",
+      "Antidiabetics",
+      "Antidiabetics (Oral)",
+      "Antiemetics",
+      "Antiepileptics",
+      "Antifibrotics",
+      "Antifungal Azoles",
+      "Antifungals",
+      "Antifungals (Systemic)",
+      "Antiglaucoma Drugs",
+      "Antihistamines",
+      "Antihypertensives",
+      "Antihypertensives (Combined with Diuretics)",
+      "Antiinflamatory Drugs",
+      "Antileukotriene Agents",
+      "Antimetabolites",
+      "Antimicrobial Agents",
+      "Antimycotics",
+      "Antineoplastic Drugs",
+      "Antineoplastic Drugs (Oral)",
+      "Antineoplastics and Immunomodulators",
+      "Antiparasitics",
+      "Antiplatelet Agents",
+      "Antipsychotics",
+      "Antipsychotics (Long Acting Injectable)",
+      "Antipsychotics (Second-Generation)",
+      "Antipyretics",
+      "Antiretrovirals",
+      "Antispasmodics (Urinary)",
+      "Antithrombotic Agents",
+      "Antivirals",
+      "Antivirals (Direct Acting)",
+      "Anti‐Bacterial Agents",
+      "Anxiolytics",
+      "Aromatase Inhibitors",
+      "Autologous Fibrin Tissue Adhesive",
+      "Autologous Serum Eye Drops",
+      "BRAF Inhibitors",
+      "Benzodiazepines",
+      "Beta-2-Adrenoreceptor Agonists",
+      "Beta-2-Adrenoreceptor Agonists (Inhaled)",
+      "Beta-Blockers",
+      "Beta-Blockers (Cardioselective)",
+      "Beta-Lactam Antibiotics",
+      "Biologicals",
+      "Biosimilars",
+      "Bisphosphonates",
+      "Blood Products",
+      "Blood and Cardiovascular System Drugs",
+      "Blood and Haematopoietic Derivatives",
+      "CGRP Receptor Antagonists",
+      "Calcium Channel Blockers",
+      "Carbapenems",
+      "Carbonic Anhydrase Inhibitors",
+      "Cardiac Glycosides",
+      "Cardiovascular Drugs",
+      "Cephalosporins",
+      "Cholesterol Lowering Drugs",
+      "Cholinesterase Inhibitors",
+      "Corticosteroids",
+      "Corticosteroids (Inhaled)",
+      "Corticosteroids (Oral)",
+      "Corticosteroids (Systemic)",
+      "Corticosteroids (Topical)",
+      "Cyclin-Dependent Kinases 4/6 Inhibitors",
+      "Cytostatic Drugs",
+      "Dermatological Drugs",
+      "Diabetic Medicines",
+      "Dietetics",
+      "Digestive System and Metabolism Drugs",
+      "Direct Oral Anticoagulants",
+      "Disease Modifying Drugs",
+      "Disease Modifying Drugs (Anti-Rheumatic)",
+      "Diuretics",
+      "Diuretics (Loop)",
+      "Diuretics (Potassium-Sparing)",
+      "Diuretics (Thiazide)",
+      "Echinocandins",
+      "Epidermal Growth Factor Receptor (EGFR) Inhibitors",
+      "Fall-Risk Increasing Drugs (FRIDS)",
+      "Fluoropyrimidines",
+      "Fumarates",
+      "Gamma Aminobutyric Acid (GABA) Analogues",
+      "Gastroprotectors",
+      "Genitourinary Organ And Rectal Agents",
+      "Glucagon-Like Peptide 1 (GLP-1) Receptor Agonists",
+      "Glucocorticoids",
+      "Glycopeptides",
+      "H2-Receptor Antagonists",
+      "HMG-CoA Reductase Inhibitors",
+      "Herbal Products",
+      "Hormonal Drugs",
+      "Hypnotics",
+      "Hypoglycaemics",
+      "Hypotensive Agents",
+      "Immune Checkpoint Inhibitors",
+      "Immune-Modulators",
+      "Immune-Suppressors",
+      "Insulins",
+      "Insulins (Rapid-Acting)",
+      "Integrase Inhibitors",
+      "Interleukin-1 Receptor Antagonists",
+      "Iodinated Contrast Products",
+      "Janus Kinase Inhibitors",
+      "Laxatives",
+      "Lipid Lowering Agents",
+      "Lipoglycopeptides",
+      "Local Anaesthetics",
+      "Long-Acting β Adrenoceptor Agonists",
+      "Low Molecular Weight Heparins",
+      "Lubricants",
+      "MEK Inhibitors",
+      "Macrolides",
+      "Mineralocorticoid Receptor Antagonists",
+      "Miotics",
+      "Monoclonal Antibodies",
+      "Mood Stabilisers",
+      "Muscarinic Antagonist",
+      "Musculoskeletal System Drugs",
+      "Nervous System Drugs",
+      "Neurokinin 1 (NK1) Receptor Antagonists",
+      "Neuroleptics",
+      "Non-Nucleoside Reverse Transcriptase Inhibitors",
+      "Non-Structural Protein 5A (NS5A) Inhibitors",
+      "Novel Oral Anticoagulants",
+      "Nucleoside Reverse Transcriptase Inhibitors",
+      "Nutritional Agents",
+      "Oncologic Drugs",
+      "Ophthalmological Medicines",
+      "Opioids",
+      "Oral Anticoagulants",
+      "Oral Liquid Medicines",
+      "Organic Nitrates",
+      "Over the Counter (OTC) Drugs",
+      "P-glycoprotein (ABCB1) Inhibitors",
+      "Pegylated Interferons (PEG-IFN)",
+      "Penicillins",
+      "Pharmacokinetic Enhancers",
+      "Phosphate Binders",
+      "Platinum Drugs",
+      "Prohemostatic Drugs",
+      "Proprotein Convertase Subtilisin / Kexin Type 9 Enzyme (PCSK9) Inhibitors",
+      "Prostaglandin Analogues",
+      "Protease Inhibitors",
+      "Proteasome Inhibitors",
+      "Proton-Pump Inhibitors",
+      "Psycholeptics",
+      "Psychostimulants",
+      "Psychotropics",
+      "Pyrazolones",
+      "Quinolones",
+      "Respiratory System Drugs",
+      "Salicylates",
+      "Sedatives",
+      "Selective Serotonin Reuptake Inhibitors (SSRIs)",
+      "Serotonergic Agents",
+      "Serotonin 5-HT3 Receptor Antagonists",
+      "Sodium-Glucose Cotransporter-2 (SGLT2) Inhibitors",
+      "Statins",
+      "Sulfonamides",
+      "Sulfonylureas",
+      "Taxanes",
+      "Thickening Agents",
+      "Thiopurines",
+      "Thyroid Hormone Preparations",
+      "Torsadogenic Drugs",
+      "Triptans",
+      "Tumor Necrosis Factor (TNF) Inhibitors",
+      "Tyrosine Kinase Inhibitors",
+      "Urological Drugs",
+      "Vaccines",
+      "Vasoconstrictors",
+      "Vitamin K Antagonists",
+      "Vitamin Supplements",
+      "Xanthine Oxidase Inhibitors"
+    ]
+    classifyArray.sort();
+
+    let medicalArray = [
+      "Catheters (Lumen)",
+      "Peripheral Intravenous Line",
+      "Intraocular Lenses",
+      "Intravitreal Syringes",
+      "Infusion Vials",
+      "Infusion Bags",
+      "Anti-Return Valve",
+      "Infusion Pumps (Portable)",
+      "Articular Prostheses",
+      "Cardiac Implantable Electronic Device",
+      "Catheters",
+      "Catheters (Ureteral)",
+      "Catheters (Venous)",
+      "Cellulose Sponges",
+      "Cervical Ripening Balloon",
+      "Class III Devices",
+      "Closed System Drug-Transfer Device (CSTD)",
+      "Cyclic Olefin Polymer (COP) Syringe",
+      "Elastomeric Devices",
+      "Endoscopic Needle",
+      "Endotracheal Tubes",
+      "Enteral Feeding Syringes",
+      "Enteral Feeding Tubes",
+      "Eppendorf Tubes",
+      "External Ventricular Drain",
+      "Gastrostomy Tube (G-Tube)",
+      "Guedel Cannulas",
+      "Implantable Medical Devices",
+      "Implantable Ports",
+      "Implantable Staples",
+      "Infusers",
+      "Infusion Pumps (Elastomeric)",
+      "Infusion Pumps (Programmable)",
+      "Infusion Warmers",
+      "Low Density Polyethylene (LDPE) Bags",
+      "Luer-Lock Syringes",
+      "Medical Dressings",
+      "Midlines",
+      "Multicompartment Compliance Aids (MCAs)",
+      "Nasogastric Tubes",
+      "Oral Liquid Vehicle Range",
+      "Orthopaedic Implants (Sterile)",
+      "Orthopaedic Implants (Sterilisable)",
+      "Parietal Reinforcement Plates",
+      "Patient Controlled Analgesia Morphine Device",
+      "Permanent Pacemaker",
+      "Personal Protective Equipments",
+      "Plaster Strips",
+      "Polyolefin Infusion Bags",
+      "Polypropylene Syringes",
+      "Prefilled Syringes",
+      "Rectal Cannulas",
+      "Single Use Vials",
+      "Sterile Gloves",
+      "Sublingual Sufentanil Tablet System",
+      "Surgical Mesh (Prosthetic)",
+      "Surgical Procedure Kits",
+      "Surgical Sutures",
+      "Syringe Pumps",
+      "Transcatheter Aortic Valve",
+      "Universal Kits",
+      "Ventriculoperitoneal Shunt",
+      "Vial Adaptors",
+      "Y Fittings"
+    ]
+    medicalArray.sort();
+
+    let departmentArray = [
+      "Nursing Unit",
+      "Paediatrics Infectious Diseases",
+      "COVID Centre",
+      "Cardiology Intensive Care",
+      "Acute Care Unit",
+      "Acute Geriatric Unit",
+      "Addictology",
+      "Adult Cystic Fibrosis Unit",
+      "Allergy",
+      "Anaesthesia",
+      "Anaesthesia - Resuscitation",
+      "Angiology",
+      "Antiblastic Drugs Unit",
+      "Cardiac Surgery",
+      "Cardiology",
+      "Cytotoxic Preparation Unit",
+      "Centralised Intravenous Additive Service",
+      "Chemotherapy",
+      "Child Intensive Care",
+      "Critical Care Unit",
+      "Delivery Room",
+      "Dermatology",
+      "Diabetes Outpatient Clinic",
+      "Diabetology",
+      "Digestive Medicine",
+      "Digestive Surgery",
+      "Emergency Department",
+      "Endocrinology",
+      "Gastroenterology",
+      "Gastrointestinal Surgery",
+      "General Surgery",
+      "Geriatrics Unit",
+      "Gynaecology",
+      "Haematology",
+      "Haemophilia Unit",
+      "Half-Stay Unit",
+      "Hepatology",
+      "Home Care Unit",
+      "Infectious Disease",
+      "Intensive Care",
+      "Internal Medicine",
+      "Maternity",
+      "Microbiology Department",
+      "Neonatal Intensive Care",
+      "Neonatal Unit",
+      "Nephrology",
+      "Neurocritical Care Unit",
+      "Neurology",
+      "Neuropsychology",
+      "Neurosurgery",
+      "Newborn Intensive Care",
+      "Nuclear Medicine",
+      "Nutrition Unit",
+      "Obstetrics and Gynaecology",
+      "Onco-Dermatology",
+      "Oncology Unit",
+      "Operating Room",
+      "Ophthalmology",
+      "Orthogeriatric Unit",
+      "Orthopaedic Surgery",
+      "Orthopaedics",
+      "Otorhinolaryngology",
+      "Outpatient Clinic",
+      "Paediatric Emergency Department",
+      "Paediatric Haematology – Oncology",
+      "Paediatric Intensive Care",
+      "Paediatric Surgery",
+      "Paediatrics",
+      "Palliative Care",
+      "Pharmacovigilance Department",
+      "Plastic and Reconstructive Surgery",
+      "Pneumology",
+      "Postpartum Unit",
+      "Primary Care Unit",
+      "Psychiatry",
+      "Psychogeriatric Unit",
+      "Quality And Risk Management Department",
+      "Rheumatology",
+      "Septic Orthopaedic",
+      "Short Stay Unit",
+      "Sterilisation Unit",
+      "Surgical Unit",
+      "Trauma Intensive Care",
+      "Traumatology",
+      "Tropical Medicine and Infectious Disease",
+      "Urology",
+      "Vascular Angiology",
+      "Vascular Surgery",
+      "Visceral Surgery"
+    ]
+    departmentArray.sort();
+
+    let toolsArray = [
+      "Missed Dose Ratio (MDR)",
+      "Barcelona Clinic Liver Cancer (BCLC) Staging",
+      "Breslow Depth and Clark Level",
+      "Acute Pancreatitis Balthazar Score Calculator",
+      "Wipe Sampling Test",
+      "Calvert's Formula for Dosing Carboplatin",
+      "Mean Percentage Error",
+      "Cohen's Kappa",
+      "The Geneva Score",
+      "The Improve Score For Venous Thromboembolism",
+      "Six-Minute Walk Test (6MWT)",
+      "World Health Organization Functional Classification (WHO-FC)",
+      "Natriuretic Peptide Tests (NT-proBNP)",
+      "International Normalised Ratio (INR)",
+      "Subgroup (Subset) Analysis",
+      "Bayesian Statistics",
+      "Digital Video Monitoring",
+      "Freezing Point Depression",
+      "Mean Relative Error",
+      "Padua Prediction Score",
+      "Glomerular Filtration Rate (GFR)",
+      "ABC/Pareto Analysis",
+      "ATC/DDD Index",
+      "Aalen - Johansen Estimator",
+      "Activity Analysis",
+      "Adjusted Morbidity Groups",
+      "Aggregation Number",
+      "Analysis of Covariance (ANCOVA)",
+      "Analysis of Variance (ANOVA)",
+      "Anticholinergic Burden Calculator",
+      "Anticholinergic Risk Scale",
+      "Association of Litigation and Risk Management (ALARM)",
+      "Asthma Control Test",
+      "Asthma Quality of Life Questionnaire",
+      "Barcelona Smell Test",
+      "Barthel Index",
+      "Bath Ankylosing Spondylitis Disease Activity Index (BASDAI)",
+      "Bayesian Population Pharmacokinetic Approach",
+      "Beers Criteria",
+      "Binary Logistic Regression Analysis",
+      "Bishop Score",
+      "Brief Psychiatric Rating Scale (BPRS)",
+      "Bristol Online Survey Tool",
+      "Broselow Tape Method",
+      "Bucher's Method",
+      "CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk",
+      "CURB-65 Pneumonia Severity Assessment",
+      "Capillary Electrophoresis",
+      "Capillary Liquid Chromatography",
+      "Cardiovascular Risk Score (QRISK2)",
+      "Cation Exchange Chromatography",
+      "Cause and Effect Analysis",
+      "Charlson Comorbidity Index",
+      "Chi-Square (χ2) Test",
+      "Child–Pugh Score",
+      "Chronic Kidney Disease Epidemiology Collaboration (CKD-EPI) Equation",
+      "Clinical Global Impressions Scale (CGI)",
+      "Cochran Test",
+      "Cockcroft–Gault Creatinine Clearance",
+      "Common Terminology Criteria for Adverse Events",
+      "Comparative Risk Assessment",
+      "Comprehensive Geriatric Assessment",
+      "Computer Assisted Web Interviewing (CAWI)",
+      "Concordance Index",
+      "Consignment Inventory Management",
+      "Consolidated Framework for Implementation Research",
+      "Correlation Analysis",
+      "Cost Benefits Analysis",
+      "Cost Minimisation Analysis (CMA)",
+      "Cox Proportional Hazards Regression Analysis",
+      "Critical to Quality (CTQ) Tree",
+      "Cronbach's Coefficient Alpha Method",
+      "Cumulative Illness Rating Scale (CIRS)",
+      "DN4 Assessment Tool",
+      "Defined Daily Dose (DDD)",
+      "Delphi Method",
+      "DerSimonian and Laird Method",
+      "Dermatology Life Quality Index",
+      "Descriptive Statistics",
+      "Deviance Information Criterion",
+      "Disease Activity Score-28 (DAS28) for Rheumatoid Arthritis",
+      "Distributed Cognition for Teamwork (DiCoT)",
+      "Downton Fall Risk Index",
+      "Drug Burden Index Score",
+      "Drug Interaction Probability Scale (DIPS)",
+      "Drug Utilization 90% (DU90) Method",
+      "Dynamic Light Scattering",
+      "Dynamic Modeling",
+      "ELISA Immunoassay",
+      "Eadon Scoring Criteria",
+      "Eastern Cooperative Oncology Group (ECOG) Performance Status",
+      "Eczema Area and Severity Index",
+      "Estimated Glomerular Filtration Rate (eGFR)",
+      "EuroQol Visual Analogue Scale (EQ-VAS)",
+      "EuroQol-5D",
+      "EuroQol-5D 5-Level Version (EQ-5D-5L)",
+      "Expanded Disability Status Scale",
+      "FRAIL (Fatigue, Resistance, Ambulation, Illnesses and Loss of Weight) Scale",
+      "Failure Mode, Effects and Criticality Analysis (FMECA)",
+      "Failure Modes and Effects Analysis (FMEA)",
+      "First-Order Conditional Estimation with Interaction (FOCEI)",
+      "Fisher–Snedecor F Distribution",
+      "Fisher’s Exact Test",
+      "Fleiss' Kappa",
+      "Fluorescence Resonance Energy Transfer (FRET)",
+      "Follicular Lymphoma International Prognostic Index (FLIPI)",
+      "Fragrance Identification",
+      "Framework Analysis Approach",
+      "Framingham Risk Score",
+      "Ganzoni Equation for Iron Deficiency Anemia",
+      "Gel Electrophoresis",
+      "Girerd's Questionnaire",
+      "Glasgow Coma Scale",
+      "Glasgow Prognostic Score",
+      "Gleason Grading System",
+      "Global Deterioration Scale (GDS)",
+      "Grading of Recommendations Assessment, Development and Evaluation (GRADE) Approach",
+      "Gravimetric Analysis",
+      "HAS-BLED Score for Major Bleeding Risk",
+      "HIVTSQ - HIV Treatment Satisfaction Questionnaire",
+      "Hammersmith Functional Motor Scale-Expanded (HFMSE)",
+      "Hammersmith Infant Neurological Examination (HINE)",
+      "Harris Benedict Equation",
+      "Harris Hip Score",
+      "Harvey-Bradshaw Index (HBI) for Crohn's Disease",
+      "Hazard Vulnerability Analysis",
+      "Health Related Quality of Life (HRQOL)",
+      "Health Technology Assessment",
+      "High Performance Liquid Chromatography (HPLC)",
+      "High Performance Liquid Chromatography - Mass Spectrometry Detection (HPLC-MS)",
+      "High Performance Liquid Chromatography Reversed-Phase (RP-HPLC)",
+      "High Performance Liquid Chromatography with Diode-Array Detection (HPLC-DAD)",
+      "High-Performance Liquid Chromatography - Ultraviolet (HPLC-UV)",
+      "Homeostatic Model Assessment for Insulin Resistance (HOMA-IR)",
+      "Hospital Anxiety and Depression Scale (HADS)",
+      "Hospital Survey on Patient Safety Culture",
+      "Hydrophilic-Lipophilic Balance (HLB)",
+      "Improving Prescribing in the Elderly Tool (IPET)",
+      "Inductively Coupled Plasma Mass Spectrometry (ICP-MS)",
+      "International League Against Epilepsy Criteria",
+      "International Prognostic Score System (IPSS)",
+      "Ishikawa (Fishbone) Diagram",
+      "Kaizen Meetings",
+      "Kanban Board",
+      "Kaplan-Meier Method",
+      "Karch-Lasagna Modified Algorithm",
+      "Karnofsky Performance Status Scale",
+      "Kellgren-Lawrence Classification System",
+      "Kinetic Chromogenic Method",
+      "Kolmogorov–Smirnov Test",
+      "Kompetitive Allele Specific PCR (KASP)",
+      "Kruskal-Wallis H Test",
+      "Laser Diffraction Analysis",
+      "Light Obscuration",
+      "Likert Scale",
+      "Liquid Chromatography Mass Spectrometry (LC-MS)",
+      "Liquid Chromatography Tandem - Mass Spectrometry (LC–MS/MS)",
+      "List Evidence-based Deprescribing For Chronic Patients Criteria (LESS-CHRON)",
+      "Log Rank Test",
+      "Logistic Regression Analysis",
+      "METAVIR Score",
+      "Madeline Hunter's Mastery Teaching",
+      "Mann-Whitney U Test",
+      "Maslach Burnout Inventory",
+      "McNemar Test",
+      "Mediation Analysis",
+      "Medication Appropriateness Index",
+      "Medication Possession Ratio",
+      "Medication Regimen Complexity Index",
+      "Medicines Optimisation Assessment Tool",
+      "Mental Health Composite Score (MCS)",
+      "Miller-Payne Criteria (MPC)",
+      "Mini Nutritional Assessment – Short Form (MNA-SF)",
+      "Mobile Application Rating Scale (MARS)",
+      "Modified Rankin Scale",
+      "Monte Carlo Simulation",
+      "Morisky Medication Adherence Scale",
+      "Morisky – Green Questionnaire",
+      "Multi-State Markov Model",
+      "Multiple Criteria Decision Analysis",
+      "Multiple Linear Regression Analysis",
+      "Multiple Sclerosis Quality of Life-54 Questionnaire",
+      "Multivariate Analysis",
+      "Multivariate Logistic Regression Analysis",
+      "Nanoparticle Tracking Analysis (NTA)",
+      "Naranjo Algorithm (Adverse Drug Reaction Probability Scale)",
+      "National Coordinating Council for Medication Error Reporting and Prevention (NCC MERP) Index",
+      "National Institutes of Health Stroke Scale",
+      "New York Heart Association (NYHA) Classification",
+      "Next Generation Sequencing (NGS)",
+      "Node‐Splitting Analysis",
+      "Nonlinear Mixed Effects Modelling",
+      "Nuclear Magnetic Resonance",
+      "Numeric Rating Scale (NRS)",
+      "Numeric Verbal Scale (NVS)",
+      "Odds Ratio",
+      "Optical Coherence Tomography",
+      "PICO (Patient, Intervention, Comparison And Outcome) - Procedure",
+      "PRECISE-DAPT Score",
+      "PRISMA-7 Questionnaire",
+      "Palatability Score",
+      "Pareto Principle",
+      "Partial Least Squares Discriminant Analysis (PLS-DA)",
+      "Pearson Correlation Coefficient",
+      "Pediatric Index of Mortality (PIM) 2 Score",
+      "Percentage Of Fat Residing In Globules Larger Than 5µm (PFAT5) Method",
+      "Pfeiffer Test",
+      "Pharmacokinetic / Pharmacodynamic (PK/PD) Efficacy Index",
+      "Photographic Recognition",
+      "Physical Health Composite Score (PCS)",
+      "Pill Count Method",
+      "Plan-Do-Check-Act (PDCA) Cycle",
+      "Pneumonia Severity Index of Fine Score",
+      "Point Prevalence Survey",
+      "Poisson Regression",
+      "Positive and Negative Syndrome Scale (PANSS)",
+      "Premature Infant Pain Profile (PIPP)",
+      "Prescribed Daily Dose (PDD)",
+      "Proactive Analysis",
+      "Propensity Score Matching",
+      "Psoriasis Area and Severity Index (PASI)",
+      "Radio Frequency Identification (RFID)",
+      "Real-Time Polymerase Chain Reaction",
+      "Relative Standard Deviation (RSD)",
+      "Relative Value Units",
+      "Response Evaluation Criteria In Solid Tumours (RECIST)",
+      "Restricted Mean Survival Time (RMST)",
+      "Risk Management Assessment Matrix",
+      "STATA",
+      "STOPP/START Criteria",
+      "Sawchuk – Zaske Method",
+      "Scoring Atopic Dermatitis (SCORAD) Index",
+      "Sensitivity Analysis",
+      "Shakespeare Method",
+      "Shapiro–Wilk Test",
+      "Six Sigma Approach",
+      "Size Exclusion Chromatography - High Performance Liquid Chromatography (SEC-HPLC)",
+      "Size-Exclusion Chromatography (SEC)",
+      "Snowball (Chain-Referral) Sampling",
+      "Social Authority Score",
+      "Sokal Index for Chronic Myelogenous Leukemia",
+      "Spearman's Rank Correlation Coefficient",
+      "Spectrophotometry",
+      "Statistical Hypothesis Testing",
+      "Statistical Package for the Social Sciences (SPSS)",
+      "Statistical Software for Excel (XLSTAT)",
+      "Student's T-test",
+      "Subvisible Particle Testing",
+      "Survival Analysis",
+      "Sustained Virologic Response (SVR)",
+      "Systematic Coronary Risk Evaluation",
+      "Systematic Text Condensation",
+      "The Children's Hospital of Philadelphia Infant Test of Neuromuscular Disorders (CHOP INTEND)",
+      "The Mayo Score for Ulcerative Colitis",
+      "The R Project for Statistical Computing",
+      "Theoretical Domains Framework",
+      "Think Aloud Protocol",
+      "Treatment Adherence Questionnaire (TAQ)",
+      "Triple Quadrupole Mass Spectrometer (QqQ MS)",
+      "Turbidimetry",
+      "UV Raman Spectroscopy (UV-Raman)",
+      "Ultra High Performance Liquid Chromatography (UHPLC)",
+      "Ultraviolet – Visible Spectrophotometry",
+      "Univariate Analysis",
+      "Univariate Linear Regression Test",
+      "Urticaria Activity Score (UAS)",
+      "Visual Analogue Scale",
+      "Voice of the Customer (VoC) Method",
+      "Wald Test",
+      "Welch's T-Test",
+      "Western Ontario and McMaster Universities Osteoarthritis Index (WOMAC)",
+      "Wilcoxon Signed Rank Test",
+      "eHealth Literacy Scale (eHEALS)"
+    ]
+    toolsArray.sort();
+
+    let designArray = [
+      "Proof of Concept Study",
+      "Meta-Analysis (Network)",
+      "Ambispective Study",
+      "Analytical Study",
+      "Bibliographic Search",
+      "Case Reports / Series",
+      "Cluster Randomized Trials",
+      "Cohort Study",
+      "Comparative Study",
+      "Cross-Sectional Study",
+      "Descriptive Study",
+      "Interventional Study",
+      "Laboratory Research",
+      "Literature Review",
+      "Longitudinal Study",
+      "Meta-Analysis",
+      "Mixed Methods Research",
+      "Observational Study",
+      "Point Prevalence Study",
+      "Preliminary Research",
+      "Prospective Study",
+      "Qualitative Research",
+      "Quantitative Research",
+      "Quasi-Experimental Study",
+      "Randomized Controlled Trial",
+      "Retrospective Study",
+      "Scoping Review",
+      "Simulation Study",
+      "Systematic Review",
+      "Transversal Study"
+    ]
+    designArray.sort();
+
+    let settingArray = [
+      "Hospital",
+      "Laboratory",
+      "Community Pharmacy"
+    ]
+    // settingArray.sort();
+
+    let patientsArray = [
+      "Less than 10 patients or participants",
+      "10 - 50 patients or participants",
+      "51 - 100 patients or participants",
+      "101 - 500 patients or participants",
+      "501 - 1000 patients or participants",
+      "More than 1000 patients or participants"
+    ]
+    // patientsArray.sort();
+
+    let prescriptionsArray = [
+      "Less than 10 prescriptions",
+      "10 - 50 prescriptions",
+      "51 - 100 prescriptions",
+      "101 - 500 prescriptions",
+      "501 - 1000 prescriptions",
+      "More than 1000 prescriptions"
+    ]
+    // prescriptionsArray.sort();
+
+    let durationArray = [
+      "Less than 3 months",
+      "3 months - 5 months",
+      "6 months - 1 year",
+      "More than 1 year - 2 years",
+      "More than 2 years - 5 years",
+      "More than 5 years - 10 years",
+      "More than 10 years"
+    ]
+    // durationArray.sort();
+
+    let countryArray = [
+      "Costa Rica",
+      "Iceland",
+      "Estonia",
+      "Uganda",
+      "Zimbabwe",
+      "Bosnia and Herzegovina",
+      "Finland",
+      "Argentina",
+      "Australia",
+      "Austria",
+      "Belgium",
+      "Benin",
+      "Brazil",
+      "Bulgaria",
+      "Canada",
+      "China",
+      "Czech Republic",
+      "Denmark",
+      "France",
+      "Germany",
+      "Greece",
+      "Hong Kong",
+      "Hungary",
+      "Iraq",
+      "Ireland",
+      "Israel",
+      "Italy",
+      "Japan",
+      "Latvia",
+      "Lebanon",
+      "Malta",
+      "Morocco",
+      "Netherlands",
+      "New Zealand",
+      "Norway",
+      "Poland",
+      "Portugal",
+      "Qatar",
+      "Romania",
+      "Saudi Arabia",
+      "Serbia",
+      "Singapore",
+      "Slovenia",
+      "South Korea",
+      "Spain",
+      "Sweden",
+      "Switzerland",
+      "Taiwan",
+      "Thailand",
+      "Tunisia",
+      "USA",
+      "United Arab Emirates",
+      "United Kingdom",
+      "Zambia"
+    ]
+    countryArray.sort();
+
+    let yearArray = [
+      "2019",
+      "2020",
+      "2021"
+    ]
+    // yearArray.sort();
+
+    let advancedArray = [
+      "Pediatrics",
+      "Geriatrics",
+      "Neonatology",
+      "Oncology",
+      "Pharmacogenetics",
+      "Pharmacoeconomics",
+      "Radiopharmaceuticals",
+      "Compounding / Production",
+      "Medical Devices / Equipments",
+      "Personalized Medicine / Individual Therapy",
+      "Enteral / Parenteral Nutrition",
+      "Orphan Drugs",
+      "High Risk (High Alert) Medicines",
+      "Hospice / Nursing Home Treatment",
+      "Self-Medication",
+      "Peri / Post - Operative Medication",
+      "Outpatient Treatment",
+      "Enzyme Replacement / Substrate Reduction Therapy",
+      "Gene Therapy",
+      "Home Care",
+      "Antibiotic / Antifungal Prophylaxis",
+      "Pain Management",
+      "Off-Label Use",
+      "Flat Doses / Dose Banding",
+      "Switching Medication",
+      "Prescription Regulations (e.g., Deprescribing)",
+      "Compliance with Guidelines / Protocols",
+      "Preparing IV Medications",
+      "Cost Analysis",
+      "Efficacy Analysis",
+      "Occupational Risk / Safety",
+      "Pharmacovigilance / Materiovigilance",
+      "Stability / Microbiological Analysis",
+      "Therapeutic Drug Monitoring",
+      "Patient Safety / Tolerability Profile",
+      "Prescribing Habits Analysis",
+      "Medication Reconciliation / Identifying Discrepancies",
+      "Intervention of Pharmacists",
+      "Interaction with Patients / Participants",
+      "Recommendations to Nurses",
+      "Telepharmacy",
+      "Interview / Questionnaire with Health Professionals",
+      "Selection / Procurement",
+      "Stock / Supply / Distribution",
+      "Automated / Robotic Systems",
+      "Cold Chain Management",
+      "Home Delivery",
+      "Software Aided Decision Making",
+      "Web / Mobile / VR Technologies",
+      "3D Printing",
+      "Social Media",
+      "Electronic Patient Management Systems",
+      "Drug Shortages",
+      "Adverse Drug Events / Allergies",
+      "Medication Adherence",
+      "Antimicrobial Resistance",
+      "Renal Insufficiency",
+      "Prescription / Preparation / Application Errors",
+      "Falsified Medicines",
+      "Incompatibilities",
+      "Medication Interactions",
+      "Resource Management (Human / Material)",
+      "Antimicrobial Stewardship",
+      "Regulatory Policies / Audits",
+      "Multidisciplinary Collaboration",
+      "Multi-Institutional Collaboration",
+      "Drug Recalls",
+      "Education of Health Professionals",
+      "Clinical Trials",
+      "Students / Young Pharmacists",
+      "Suggesting a Next Step"
+    ];
+    advancedArray.sort();
+
+    let totalArray = actArray.concat(indicArray, classifyArray, medicalArray, departmentArray, toolsArray, designArray, settingArray, patientsArray, prescriptionsArray, durationArray, countryArray, yearArray, advancedArray);
+
+    // CHIPS WHICH DYNAMICALLY CREATES AND UPDATES THE LIST FOR THE SEARCH OBJECT
+    let actBoxData;
+    let actBox = [];
+    $('#actChips').chips({
+      placeholder: 'Click or type',
+      secondaryPlaceholder: '+ Active substance',
+      onChipAdd: (event, chip) => {
+        // GET THE LIST DATA
+        actBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        actBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in actBoxData) {
+          actBox.push(`${actBoxData[key].tag}`);
+        }
+      },
+      onChipDelete: (event, chip) => {
+        // GET THE LIST DATA
+        actBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        actBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in actBoxData) {
+          actBox.push(`${actBoxData[key].tag}`);
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+
+    let indiBoxData;
+    let indiBox = [];
+    $('#indiChips').chips({
+      placeholder: 'Click or type',
+      secondaryPlaceholder: '+ Indication',
+      onChipAdd: (event, chip) => {
+        // GET THE LIST DATA
+        indiBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        indiBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in indiBoxData) {
+          indiBox.push(`${indiBoxData[key].tag}`);
+        }
+      },
+      onChipDelete: (event, chip) => {
+        // GET THE LIST DATA
+        indiBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        indiBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in indiBoxData) {
+          indiBox.push(`${indiBoxData[key].tag}`);
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+
+    let classifyBoxData;
+    let classifyBox = [];
+    $('#classifyChips').chips({
+      placeholder: 'Click or type',
+      secondaryPlaceholder: '+ Classification',
+      onChipAdd: (event, chip) => {
+        // GET THE LIST DATA
+        classifyBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        classifyBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in classifyBoxData) {
+          classifyBox.push(`${classifyBoxData[key].tag}`);
+        }
+      },
+      onChipDelete: (event, chip) => {
+        // GET THE LIST DATA
+        classifyBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        classifyBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in classifyBoxData) {
+          classifyBox.push(`${classifyBoxData[key].tag}`);
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+
+    let medicalBoxData;
+    let medicalBox = [];
+    $('#medicalChips').chips({
+      placeholder: 'Click or type',
+      secondaryPlaceholder: '+ Device / Equipment',
+      onChipAdd: (event, chip) => {
+        // GET THE LIST DATA
+        medicalBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        medicalBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in medicalBoxData) {
+          medicalBox.push(`${medicalBoxData[key].tag}`);
+        }
+      },
+      onChipDelete: (event, chip) => {
+        // GET THE LIST DATA
+        medicalBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        medicalBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in medicalBoxData) {
+          medicalBox.push(`${medicalBoxData[key].tag}`);
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+
+    let departmentBoxData;
+    let departmentBox = [];
+    $('#departmentChips').chips({
+      placeholder: 'Click or type',
+      secondaryPlaceholder: '+ Department',
+      onChipAdd: (event, chip) => {
+        // GET THE LIST DATA
+        departmentBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        departmentBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in departmentBoxData) {
+          departmentBox.push(`${departmentBoxData[key].tag}`);
+        }
+      },
+      onChipDelete: (event, chip) => {
+        // GET THE LIST DATA
+        departmentBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        departmentBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in departmentBoxData) {
+          departmentBox.push(`${departmentBoxData[key].tag}`);
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+
+    let toolBoxData;
+    let toolBox = [];
+    $('#toolsChips').chips({
+      placeholder: 'Click or type',
+      secondaryPlaceholder: '+ Tools / Cr. / Meth.',
+      onChipAdd: (event, chip) => {
+        // GET THE LIST DATA
+        toolBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        toolBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in toolBoxData) {
+          toolBox.push(`${toolBoxData[key].tag}`);
+        }
+      },
+      onChipDelete: (event, chip) => {
+        // GET THE LIST DATA
+        toolBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        toolBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in toolBoxData) {
+          toolBox.push(`${toolBoxData[key].tag}`);
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+
+    let designBoxData;
+    let designBox = [];
+    $('#designChips').chips({
+      placeholder: 'Click or type',
+      secondaryPlaceholder: '+ Study Design',
+      onChipAdd: (event, chip) => {
+        // GET THE LIST DATA
+        designBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        designBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in designBoxData) {
+          designBox.push(`${designBoxData[key].tag}`);
+        }
+      },
+      onChipDelete: (event, chip) => {
+        // GET THE LIST DATA
+        designBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        designBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in designBoxData) {
+          designBox.push(`${designBoxData[key].tag}`);
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+
+    let settingsBoxData;
+    let settingsBox = [];
+    $('#settingChips').chips({
+      placeholder: 'Click or type',
+      secondaryPlaceholder: '+ Setting',
+      onChipAdd: (event, chip) => {
+        // GET THE LIST DATA
+        settingsBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        settingsBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in settingsBoxData) {
+          settingsBox.push(`${settingsBoxData[key].tag}`);
+        }
+      },
+      onChipDelete: (event, chip) => {
+        // GET THE LIST DATA
+        settingsBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        settingsBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in settingsBoxData) {
+          settingsBox.push(`${settingsBoxData[key].tag}`);
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+
+    let patientsBoxData;
+    let patientsBox = [];
+    $('#patientsChips').chips({
+      placeholder: 'Click or type',
+      secondaryPlaceholder: '+ Number',
+      onChipAdd: (event, chip) => {
+        // GET THE LIST DATA
+        patientsBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        patientsBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in patientsBoxData) {
+          patientsBox.push(`${patientsBoxData[key].tag}`);
+        }
+      },
+      onChipDelete: (event, chip) => {
+        // GET THE LIST DATA
+        patientsBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        patientsBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in patientsBoxData) {
+          patientsBox.push(`${patientsBoxData[key].tag}`);
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+
+    let prescriptionsBoxData;
+    let prescriptionsBox = [];
+    $('#prescriptionsChips').chips({
+      placeholder: 'Click or type',
+      secondaryPlaceholder: '+ Number',
+      onChipAdd: (event, chip) => {
+        // GET THE LIST DATA
+        prescriptionsBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        prescriptionsBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in prescriptionsBoxData) {
+          prescriptionsBox.push(`${prescriptionsBoxData[key].tag}`);
+        }
+      },
+      onChipDelete: (event, chip) => {
+        // GET THE LIST DATA
+        prescriptionsBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        prescriptionsBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in prescriptionsBoxData) {
+          prescriptionsBox.push(`${prescriptionsBoxData[key].tag}`);
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+
+    let durationBoxData;
+    let durationBox = [];
+    $('#durationChips').chips({
+      placeholder: 'Click or type',
+      secondaryPlaceholder: '+ Duration',
+      onChipAdd: (event, chip) => {
+        // GET THE LIST DATA
+        durationBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        durationBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in durationBoxData) {
+          durationBox.push(`${durationBoxData[key].tag}`);
+        }
+      },
+      onChipDelete: (event, chip) => {
+        // GET THE LIST DATA
+        durationBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        durationBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in durationBoxData) {
+          durationBox.push(`${durationBoxData[key].tag}`);
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+
+    let countryBoxData;
+    let countryBox = [];
+    $('#countryChips').chips({
+      placeholder: 'Click or type',
+      secondaryPlaceholder: '+ Country',
+      onChipAdd: (event, chip) => {
+        // GET THE LIST DATA
+        countryBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        countryBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in countryBoxData) {
+          countryBox.push(`${countryBoxData[key].tag}`);
+        }
+      },
+      onChipDelete: (event, chip) => {
+        // GET THE LIST DATA
+        countryBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        countryBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in countryBoxData) {
+          countryBox.push(`${countryBoxData[key].tag}`);
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+
+    let yearBoxData;
+    let yearBox = [];
+    $('#yearChips').chips({
+      placeholder: 'Click or type',
+      secondaryPlaceholder: '+ Year',
+      onChipAdd: (event, chip) => {
+        // GET THE LIST DATA
+        yearBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        yearBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in yearBoxData) {
+          yearBox.push(`${yearBoxData[key].tag}`);
+        }
+      },
+      onChipDelete: (event, chip) => {
+        // GET THE LIST DATA
+        yearBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        yearBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in yearBoxData) {
+          yearBox.push(`${yearBoxData[key].tag}`);
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+
+    let totalBoxData;
+    // let totalBox = [];
+    $('#totalLine').chips({
+      placeholder: 'Type for parameters ...',
+      secondaryPlaceholder: '+ Parameter',
+      onChipAdd: (event, chip) => {
+        // PRE-BUILD SEARCH OBJECT
+        searchObj = {
+          actSubs: [],
+          indication: [],
+          statedClass: [],
+          typeOfMedical: [],
+          studyDesign: [],
+          setting: [],
+          ward: [],
+          numPatients: [],
+          numPrescriptions: [],
+          studyLength: [],
+          criteriaMethod: [],
+          country: [],
+          year: [],
+          pediatrics: [],
+          geriatrics: [],
+          neonatology: [],
+          oncology: [],
+          pharmacogenetics: [],
+          pharmacoeconomy: [],
+          radiopharmaceuticals: [],
+          compounding: [],
+          medicalDevices: [],
+          personalized: [],
+          nutrition: [],
+          highRisk: [],
+          endOfLife: [],
+          selfMedication: [],
+          preopMedication: [],
+          outpatient: [],
+          enzymeSubstrate: [],
+          geneTherapy: [],
+          homeCare: [],
+          antibioticProphylaxis: [],
+          painManagement: [],
+          offLabel: [],
+          flatDoses: [],
+          switching: [],
+          deprescribing: [],
+          prepareIV: [],
+          costAnalysis: [],
+          riskSafety: [],
+          vigilance: [],
+          stability: [],
+          drugMonitoring: [],
+          safetyProfile: [],
+          intervention: [],
+          patientIntervention: [],
+          nursesReccomend: [],
+          telepharmacy: [],
+          interview: [],
+          selection: [],
+          stock: [],
+          automated: [],
+          coldChain: [],
+          softwareAided: [],
+          mobileVR: [],
+          Printing3D: [],
+          socialMedia: [],
+          shortages: [],
+          adverseEvents: [],
+          adherence: [],
+          resistance: [],
+          renal: [],
+          errors: [],
+          administrative: [],
+          stewardship: [],
+          policiesAudits: [],
+          multidisciplinary: [],
+          institutional: [],
+          recalls: [],
+          education: [],
+          clinicalTrials: [],
+          youngPharma: [],
+          nextStep: [],
+          compliance: [],
+          orphan: [],
+          delivery: [],
+          falsified: [],
+          incompatibilities: [],
+          habits: [],
+          drugInteractions: [],
+          history: [],
+          ePrescribing: [],
+          efficacyAnalysis: []
+        };
+        // GET THE LIST DATA
+        totalBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA (not needed anymore?)
+        // totalBox = [];
+        // PREPARE THE NEW LIST
+        let actSubs = [];
+        let indication = [];
+        let statedClass = [];
+        let typeOfMedical = [];
+        let studyDesign = [];
+        let setting = [];
+        let ward = [];
+        let numPatients = [];
+        let numPrescriptions = [];
+        let studyLength = [];
+        let criteriaMethod = [];
+        let country = [];
+        let year = [];
+        let advanced = [];
+
+        for (let key in totalBoxData) {
+          // for every filter we check and add to searchObj if the result is (+)
+          if (actArray.includes(`${totalBoxData[key].tag}`)) {
+            actSubs.push(`${totalBoxData[key].tag}`);
+            searchObj.actSubs = actSubs;
+          };
+
+          if (indicArray.includes(`${totalBoxData[key].tag}`)) {
+            indication.push(`${totalBoxData[key].tag}`);
+            searchObj.indication = indication;
+          };
+
+          if (classifyArray.includes(`${totalBoxData[key].tag}`)) {
+            statedClass.push(`${totalBoxData[key].tag}`);
+            searchObj.statedClass = statedClass;
+          };
+
+          if (medicalArray.includes(`${totalBoxData[key].tag}`)) {
+            typeOfMedical.push(`${totalBoxData[key].tag}`);
+            searchObj.typeOfMedical = typeOfMedical;
+          };
+
+          if (designArray.includes(`${totalBoxData[key].tag}`)) {
+            studyDesign.push(`${totalBoxData[key].tag}`);
+            searchObj.studyDesign = studyDesign;
+          };
+
+          if (settingArray.includes(`${totalBoxData[key].tag}`)) {
+            setting.push(`${totalBoxData[key].tag}`);
+            searchObj.setting = setting;
+          };
+
+          if (departmentArray.includes(`${totalBoxData[key].tag}`)) {
+            ward.push(`${totalBoxData[key].tag}`);
+            searchObj.ward = ward;
+          };
+
+          if (patientsArray.includes(`${totalBoxData[key].tag}`)) {
+            numPatients.push(`${totalBoxData[key].tag}`);
+            searchObj.numPatients = numPatients;
+          };
+
+          if (prescriptionsArray.includes(`${totalBoxData[key].tag}`)) {
+            numPrescriptions.push(`${totalBoxData[key].tag}`);
+            searchObj.numPrescriptions = numPrescriptions;
+          };
+
+          if (durationArray.includes(`${totalBoxData[key].tag}`)) {
+            studyLength.push(`${totalBoxData[key].tag}`);
+            searchObj.studyLength = studyLength;
+          };
+
+          if (toolsArray.includes(`${totalBoxData[key].tag}`)) {
+            criteriaMethod.push(`${totalBoxData[key].tag}`);
+            searchObj.criteriaMethod = criteriaMethod;
+          };
+
+          if (countryArray.includes(`${totalBoxData[key].tag}`)) {
+            country.push(`${totalBoxData[key].tag}`);
+            searchObj.country = country;
+          };
+
+          if (yearArray.includes(`${totalBoxData[key].tag}`)) {
+            year.push(`${totalBoxData[key].tag}`);
+            searchObj.year = year;
+          };
+
+          if (advancedArray.includes(`${totalBoxData[key].tag}`)) {
+            if (`${totalBoxData[key].tag}` === "Pediatrics") {
+              searchObj.pediatrics = ["pediatrics"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Geriatrics") {
+              searchObj.geriatrics = ["geriatrics"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Neonatology") {
+              searchObj.neonatology = ["neonatology"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Oncology") {
+              searchObj.oncology = ["oncology"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Pharmacogenetics") {
+              searchObj.pharmacogenetics = ["pharmacogenetics"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Pharmacoeconomics") {
+              searchObj.pharmacoeconomy = ["pharmacoeconomy"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Radiopharmaceuticals") {
+              searchObj.radiopharmaceuticals = ["radiopharmaceuticals"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Compounding / Production") {
+              searchObj.compounding = ["compounding"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Medical Devices / Equipments") {
+              searchObj.medicalDevices = ["medicalDevices"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Personalized Medicine / Individual Therapy") {
+              searchObj.personalized = ["personalized"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Enteral / Parenteral Nutrition") {
+              searchObj.nutrition = ["nutrition"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Orphan Drugs") {
+              searchObj.orphan = ["orphan"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "High Risk (High Alert) Medicines") {
+              searchObj.highRisk = ["highRisk"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Hospice / Nursing Home Treatment") {
+              searchObj.endOfLife = ["endOfLife"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Self-Medication") {
+              searchObj.selfMedication = ["selfMedication"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Peri / Post - Operative Medication") {
+              searchObj.preopMedication = ["preopMedication"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Outpatient Treatment") {
+              searchObj.outpatient = ["outpatient"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Enzyme Replacement / Substrate Reduction Therapy") {
+              searchObj.enzymeSubstrate = ["enzymeSubstrate"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Gene Therapy") {
+              searchObj.geneTherapy = ["geneTherapy"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Home Care") {
+              searchObj.homeCare = ["homeCare"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Antibiotic / Antifungal Prophylaxis") {
+              searchObj.antibioticProphylaxis = ["antibioticProphylaxis"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Pain Management") {
+              searchObj.painManagement = ["painManagement"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Off-Label Use") {
+              searchObj.offLabel = ["offLabel"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Flat Doses / Dose Banding") {
+              searchObj.flatDoses = ["flatDoses"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Switching Medication") {
+              searchObj.switching = ["switching"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Prescription Regulations (e.g., Deprescribing)") {
+              searchObj.deprescribing = ["deprescribing"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Compliance with Guidelines / Protocols") {
+              searchObj.compliance = ["compliance"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Preparing IV Medications") {
+              searchObj.prepareIV = ["prepareIV"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Cost Analysis") {
+              searchObj.costAnalysis = ["costAnalysis"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Efficacy Analysis") {
+              searchObj.efficacyAnalysis = ["efficacyAnalysis"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Occupational Risk / Safety") {
+              searchObj.riskSafety = ["riskSafety"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Pharmacovigilance / Materiovigilance") {
+              searchObj.vigilance = ["vigilance"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Stability / Microbiological Analysis") {
+              searchObj.stability = ["stability"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Therapeutic Drug Monitoring") {
+              searchObj.drugMonitoring = ["drugMonitoring"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Patient Safety / Tolerability Profile") {
+              searchObj.safetyProfile = ["safetyProfile"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Prescribing Habits Analysis") {
+              searchObj.habits = ["habits"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Medication Reconciliation / Identifying Discrepancies") {
+              searchObj.history = ["history"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Intervention of Pharmacists") {
+              searchObj.intervention = ["intervention"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Interaction with Patients / Participants") {
+              searchObj.patientIntervention = ["patientIntervention"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Recommendations to Nurses") {
+              searchObj.nursesReccomend = ["nursesReccomend"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Telepharmacy") {
+              searchObj.telepharmacy = ["telepharmacy"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Interview / Questionnaire with Health Professionals") {
+              searchObj.interview = ["interview"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Selection / Procurement") {
+              searchObj.selection = ["selection"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Stock / Supply / Distribution") {
+              searchObj.stock = ["stock"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Automated / Robotic Systems") {
+              searchObj.automated = ["automated"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Cold Chain Management") {
+              searchObj.coldChain = ["coldChain"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Home Delivery") {
+              searchObj.delivery = ["delivery"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Software Aided Decision Making") {
+              searchObj.softwareAided = ["softwareAided"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Web / Mobile / VR Technologies") {
+              searchObj.mobileVR = ["mobileVR"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "3D Printing") {
+              searchObj.Printing3D = ["Printing3D"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Social Media") {
+              searchObj.socialMedia = ["socialMedia"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Electronic Patient Management Systems") {
+              searchObj.ePrescribing = ["ePrescribing"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Drug Shortages") {
+              searchObj.shortages = ["shortages"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Adverse Drug Events / Allergies") {
+              searchObj.adverseEvents = ["adverseEvents"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Medication Adherence") {
+              searchObj.adherence = ["adherence"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Antimicrobial Resistance") {
+              searchObj.resistance = ["resistance"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Renal Insufficiency") {
+              searchObj.renal = ["renal"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Prescription / Preparation / Application Errors") {
+              searchObj.errors = ["errors"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Falsified Medicines") {
+              searchObj.falsified = ["falsified"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Incompatibilities") {
+              searchObj.incompatibilities = ["incompatibilities"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Medication Interactions") {
+              searchObj.drugInteractions = ["drugInteractions"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Resource Management (Human / Material)") {
+              searchObj.administrative = ["administrative"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Antimicrobial Stewardship") {
+              searchObj.stewardship = ["stewardship"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Regulatory Policies / Audits") {
+              searchObj.policiesAudits = ["policiesAudits"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Multidisciplinary Collaboration") {
+              searchObj.multidisciplinary = ["multidisciplinary"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Multi-Institutional Collaboration") {
+              searchObj.institutional = ["institutional"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Drug Recalls") {
+              searchObj.recalls = ["recalls"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Education of Health Professionals") {
+              searchObj.education = ["education"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Clinical Trials") {
+              searchObj.clinicalTrials = ["clinicalTrials"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Students / Young Pharmacists") {
+              searchObj.youngPharma = ["youngPharma"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Suggesting a Next Step") {
+              searchObj.nextStep = ["nextStep"];
+            }
+          };
+        }
+      },
+      onChipDelete: (event, chip) => {
+        // PRE-BUILD SEARCH OBJECT
+        searchObj = {
+          actSubs: [],
+          indication: [],
+          statedClass: [],
+          typeOfMedical: [],
+          studyDesign: [],
+          setting: [],
+          ward: [],
+          numPatients: [],
+          numPrescriptions: [],
+          studyLength: [],
+          criteriaMethod: [],
+          country: [],
+          year: [],
+          pediatrics: [],
+          geriatrics: [],
+          neonatology: [],
+          oncology: [],
+          pharmacogenetics: [],
+          pharmacoeconomy: [],
+          radiopharmaceuticals: [],
+          compounding: [],
+          medicalDevices: [],
+          personalized: [],
+          nutrition: [],
+          highRisk: [],
+          endOfLife: [],
+          selfMedication: [],
+          preopMedication: [],
+          outpatient: [],
+          enzymeSubstrate: [],
+          geneTherapy: [],
+          homeCare: [],
+          antibioticProphylaxis: [],
+          painManagement: [],
+          offLabel: [],
+          flatDoses: [],
+          switching: [],
+          deprescribing: [],
+          prepareIV: [],
+          costAnalysis: [],
+          riskSafety: [],
+          vigilance: [],
+          stability: [],
+          drugMonitoring: [],
+          safetyProfile: [],
+          intervention: [],
+          patientIntervention: [],
+          nursesReccomend: [],
+          telepharmacy: [],
+          interview: [],
+          selection: [],
+          stock: [],
+          automated: [],
+          coldChain: [],
+          softwareAided: [],
+          mobileVR: [],
+          Printing3D: [],
+          socialMedia: [],
+          shortages: [],
+          adverseEvents: [],
+          adherence: [],
+          resistance: [],
+          renal: [],
+          errors: [],
+          administrative: [],
+          stewardship: [],
+          policiesAudits: [],
+          multidisciplinary: [],
+          institutional: [],
+          recalls: [],
+          education: [],
+          clinicalTrials: [],
+          youngPharma: [],
+          nextStep: [],
+          compliance: [],
+          orphan: [],
+          delivery: [],
+          falsified: [],
+          incompatibilities: [],
+          habits: [],
+          drugInteractions: [],
+          history: [],
+          ePrescribing: [],
+          efficacyAnalysis: []
+        };
+        // GET THE LIST DATA
+        totalBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA (not needed anymore?)
+        // totalBox = [];
+        // PREPARE THE NEW LIST
+        let actSubs = [];
+        let indication = [];
+        let statedClass = [];
+        let typeOfMedical = [];
+        let studyDesign = [];
+        let setting = [];
+        let ward = [];
+        let numPatients = [];
+        let numPrescriptions = [];
+        let studyLength = [];
+        let criteriaMethod = [];
+        let country = [];
+        let year = [];
+        let advanced = [];
+
+        for (let key in totalBoxData) {
+          // for every filter we check and add to searchObj if the result is (+)
+          if (actArray.includes(`${totalBoxData[key].tag}`)) {
+            actSubs.push(`${totalBoxData[key].tag}`);
+            searchObj.actSubs = actSubs;
+          };
+
+          if (indicArray.includes(`${totalBoxData[key].tag}`)) {
+            indication.push(`${totalBoxData[key].tag}`);
+            searchObj.indication = indication;
+          };
+
+          if (classifyArray.includes(`${totalBoxData[key].tag}`)) {
+            statedClass.push(`${totalBoxData[key].tag}`);
+            searchObj.statedClass = statedClass;
+          };
+
+          if (medicalArray.includes(`${totalBoxData[key].tag}`)) {
+            typeOfMedical.push(`${totalBoxData[key].tag}`);
+            searchObj.typeOfMedical = typeOfMedical;
+          };
+
+          if (designArray.includes(`${totalBoxData[key].tag}`)) {
+            studyDesign.push(`${totalBoxData[key].tag}`);
+            searchObj.studyDesign = studyDesign;
+          };
+
+          if (settingArray.includes(`${totalBoxData[key].tag}`)) {
+            setting.push(`${totalBoxData[key].tag}`);
+            searchObj.setting = setting;
+          };
+
+          if (departmentArray.includes(`${totalBoxData[key].tag}`)) {
+            ward.push(`${totalBoxData[key].tag}`);
+            searchObj.ward = ward;
+          };
+
+          if (patientsArray.includes(`${totalBoxData[key].tag}`)) {
+            numPatients.push(`${totalBoxData[key].tag}`);
+            searchObj.numPatients = numPatients;
+          };
+
+          if (prescriptionsArray.includes(`${totalBoxData[key].tag}`)) {
+            numPrescriptions.push(`${totalBoxData[key].tag}`);
+            searchObj.numPrescriptions = numPrescriptions;
+          };
+
+          if (durationArray.includes(`${totalBoxData[key].tag}`)) {
+            studyLength.push(`${totalBoxData[key].tag}`);
+            searchObj.studyLength = studyLength;
+          };
+
+          if (toolsArray.includes(`${totalBoxData[key].tag}`)) {
+            criteriaMethod.push(`${totalBoxData[key].tag}`);
+            searchObj.criteriaMethod = criteriaMethod;
+          };
+
+          if (countryArray.includes(`${totalBoxData[key].tag}`)) {
+            country.push(`${totalBoxData[key].tag}`);
+            searchObj.country = country;
+          };
+
+          if (yearArray.includes(`${totalBoxData[key].tag}`)) {
+            year.push(`${totalBoxData[key].tag}`);
+            searchObj.year = year;
+          };
+
+          if (advancedArray.includes(`${totalBoxData[key].tag}`)) {
+            if (`${totalBoxData[key].tag}` === "Pediatrics") {
+              searchObj.pediatrics = ["pediatrics"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Geriatrics") {
+              searchObj.geriatrics = ["geriatrics"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Neonatology") {
+              searchObj.neonatology = ["neonatology"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Oncology") {
+              searchObj.oncology = ["oncology"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Pharmacogenetics") {
+              searchObj.pharmacogenetics = ["pharmacogenetics"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Pharmacoeconomics") {
+              searchObj.pharmacoeconomy = ["pharmacoeconomy"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Radiopharmaceuticals") {
+              searchObj.radiopharmaceuticals = ["radiopharmaceuticals"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Compounding / Production") {
+              searchObj.compounding = ["compounding"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Medical Devices / Equipments") {
+              searchObj.medicalDevices = ["medicalDevices"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Personalized Medicine / Individual Therapy") {
+              searchObj.personalized = ["personalized"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Enteral / Parenteral Nutrition") {
+              searchObj.nutrition = ["nutrition"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Orphan Drugs") {
+              searchObj.orphan = ["orphan"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "High Risk (High Alert) Medicines") {
+              searchObj.highRisk = ["highRisk"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Hospice / Nursing Home Treatment") {
+              searchObj.endOfLife = ["endOfLife"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Self-Medication") {
+              searchObj.selfMedication = ["selfMedication"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Peri / Post - Operative Medication") {
+              searchObj.preopMedication = ["preopMedication"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Outpatient Treatment") {
+              searchObj.outpatient = ["outpatient"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Enzyme Replacement / Substrate Reduction Therapy") {
+              searchObj.enzymeSubstrate = ["enzymeSubstrate"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Gene Therapy") {
+              searchObj.geneTherapy = ["geneTherapy"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Home Care") {
+              searchObj.homeCare = ["homeCare"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Antibiotic / Antifungal Prophylaxis") {
+              searchObj.antibioticProphylaxis = ["antibioticProphylaxis"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Pain Management") {
+              searchObj.painManagement = ["painManagement"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Off-Label Use") {
+              searchObj.offLabel = ["offLabel"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Flat Doses / Dose Banding") {
+              searchObj.flatDoses = ["flatDoses"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Switching Medication") {
+              searchObj.switching = ["switching"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Prescription Regulations (e.g., Deprescribing)") {
+              searchObj.deprescribing = ["deprescribing"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Compliance with Guidelines / Protocols") {
+              searchObj.compliance = ["compliance"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Preparing IV Medications") {
+              searchObj.prepareIV = ["prepareIV"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Cost Analysis") {
+              searchObj.costAnalysis = ["costAnalysis"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Efficacy Analysis") {
+              searchObj.efficacyAnalysis = ["efficacyAnalysis"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Occupational Risk / Safety") {
+              searchObj.riskSafety = ["riskSafety"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Pharmacovigilance / Materiovigilance") {
+              searchObj.vigilance = ["vigilance"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Stability / Microbiological Analysis") {
+              searchObj.stability = ["stability"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Therapeutic Drug Monitoring") {
+              searchObj.drugMonitoring = ["drugMonitoring"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Patient Safety / Tolerability Profile") {
+              searchObj.safetyProfile = ["safetyProfile"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Prescribing Habits Analysis") {
+              searchObj.habits = ["habits"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Medication Reconciliation / Identifying Discrepancies") {
+              searchObj.history = ["history"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Intervention of Pharmacists") {
+              searchObj.intervention = ["intervention"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Interaction with Patients / Participants") {
+              searchObj.patientIntervention = ["patientIntervention"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Recommendations to Nurses") {
+              searchObj.nursesReccomend = ["nursesReccomend"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Telepharmacy") {
+              searchObj.telepharmacy = ["telepharmacy"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Interview / Questionnaire with Health Professionals") {
+              searchObj.interview = ["interview"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Selection / Procurement") {
+              searchObj.selection = ["selection"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Stock / Supply / Distribution") {
+              searchObj.stock = ["stock"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Automated / Robotic Systems") {
+              searchObj.automated = ["automated"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Cold Chain Management") {
+              searchObj.coldChain = ["coldChain"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Home Delivery") {
+              searchObj.delivery = ["delivery"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Software Aided Decision Making") {
+              searchObj.softwareAided = ["softwareAided"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Web / Mobile / VR Technologies") {
+              searchObj.mobileVR = ["mobileVR"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "3D Printing") {
+              searchObj.Printing3D = ["Printing3D"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Social Media") {
+              searchObj.socialMedia = ["socialMedia"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Electronic Patient Management Systems") {
+              searchObj.ePrescribing = ["ePrescribing"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Drug Shortages") {
+              searchObj.shortages = ["shortages"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Adverse Drug Events / Allergies") {
+              searchObj.adverseEvents = ["adverseEvents"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Medication Adherence") {
+              searchObj.adherence = ["adherence"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Antimicrobial Resistance") {
+              searchObj.resistance = ["resistance"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Renal Insufficiency") {
+              searchObj.renal = ["renal"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Prescription / Preparation / Application Errors") {
+              searchObj.errors = ["errors"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Falsified Medicines") {
+              searchObj.falsified = ["falsified"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Incompatibilities") {
+              searchObj.incompatibilities = ["incompatibilities"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Medication Interactions") {
+              searchObj.drugInteractions = ["drugInteractions"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Resource Management (Human / Material)") {
+              searchObj.administrative = ["administrative"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Antimicrobial Stewardship") {
+              searchObj.stewardship = ["stewardship"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Regulatory Policies / Audits") {
+              searchObj.policiesAudits = ["policiesAudits"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Multidisciplinary Collaboration") {
+              searchObj.multidisciplinary = ["multidisciplinary"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Multi-Institutional Collaboration") {
+              searchObj.institutional = ["institutional"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Drug Recalls") {
+              searchObj.recalls = ["recalls"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Education of Health Professionals") {
+              searchObj.education = ["education"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Clinical Trials") {
+              searchObj.clinicalTrials = ["clinicalTrials"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Students / Young Pharmacists") {
+              searchObj.youngPharma = ["youngPharma"];
+            }
+
+            if (`${totalBoxData[key].tag}` === "Suggesting a Next Step") {
+              searchObj.nextStep = ["nextStep"];
+            }
+          };
+
+        }
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 2
+      }
+    });
+
+    let advancedBoxData;
+    let advancedBox = [];
+    $('#advancedChips').chips({
+      placeholder: 'Click or type',
+      secondaryPlaceholder: '+ Parameter',
+      onChipAdd: (event, chip) => {
+        // GET THE LIST DATA
+        advancedBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        advancedBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in advancedBoxData) {
+          advancedBox.push(`${advancedBoxData[key].tag}`);
+        }
+        console.log(advancedBox);
+      },
+      onChipDelete: (event, chip) => {
+        // GET THE LIST DATA
+        advancedBoxData = event[0].M_Chips.chipsData;
+        // RESET THE LIST DATA
+        advancedBox = [];
+        // PREPARE THE NEW LIST
+        for (let key in advancedBoxData) {
+          advancedBox.push(`${advancedBoxData[key].tag}`);
+        }
+        console.log(advancedBox);
+      },
+      autocompleteOptions: {
+        data: {
+          // data will be added below from the array
+        },
+        limit: Infinity,
+        minLength: 0
+      }
+    });
+
+    // WE POINT THE TARGETS WHERE WE WILL INJECT THE DATA
+    var chipInstance = M.Chips.getInstance($('#actChips'));
+    let actData = chipInstance.options.autocompleteOptions.data;
+
+    var chipInstance02 = M.Chips.getInstance($('#indiChips'));
+    let indiData = chipInstance02.options.autocompleteOptions.data;
+
+    var chipInstance03 = M.Chips.getInstance($('#classifyChips'));
+    let classifyData = chipInstance03.options.autocompleteOptions.data;
+
+    var chipInstance04 = M.Chips.getInstance($('#medicalChips'));
+    let medicalData = chipInstance04.options.autocompleteOptions.data;
+
+    var chipInstance05 = M.Chips.getInstance($('#departmentChips'));
+    let departmentData = chipInstance05.options.autocompleteOptions.data;
+
+    var chipInstance06 = M.Chips.getInstance($('#toolsChips'));
+    let toolsData = chipInstance06.options.autocompleteOptions.data;
+
+    var chipInstance07 = M.Chips.getInstance($('#designChips'));
+    let designData = chipInstance07.options.autocompleteOptions.data;
+
+    var chipInstance08 = M.Chips.getInstance($('#settingChips'));
+    let settingData = chipInstance08.options.autocompleteOptions.data;
+
+    var chipInstance09 = M.Chips.getInstance($('#patientsChips'));
+    let patientsData = chipInstance09.options.autocompleteOptions.data;
+    
+    var chipInstance10 = M.Chips.getInstance($('#prescriptionsChips'));
+    let prescriptionsData = chipInstance10.options.autocompleteOptions.data;
+
+    var chipInstance11 = M.Chips.getInstance($('#durationChips'));
+    let durationData = chipInstance11.options.autocompleteOptions.data;
+
+    var chipInstance12 = M.Chips.getInstance($('#countryChips'));
+    let countryData = chipInstance12.options.autocompleteOptions.data;
+
+    var chipInstance13 = M.Chips.getInstance($('#yearChips'));
+    let yearData = chipInstance13.options.autocompleteOptions.data;
+
+    var chipInstance14 = M.Chips.getInstance($('#totalLine'));
+    let totalData = chipInstance14.options.autocompleteOptions.data;
+
+    var chipInstance15 = M.Chips.getInstance($('#advancedChips'));
+    let advancedData = chipInstance15.options.autocompleteOptions.data;
+
+    // NOW FIRE THE DATA ARRAYS TO THE DATA SECTIONS IN EVERY CHIP STRUCTURE
+    for (let key in actArray) {
+        actData[`${actArray[key]}`] = null;
+    }
+
+    for (let key in indicArray) {
+        indiData[`${indicArray[key]}`] = null;
+    }
+
+    for (let key in classifyArray) {
+        classifyData[`${classifyArray[key]}`] = null;
+    }
+
+    for (let key in medicalArray) {
+        medicalData[`${medicalArray[key]}`] = null;
+    }
+
+    for (let key in departmentArray) {
+        departmentData[`${departmentArray[key]}`] = null;
+    }
+
+    for (let key in toolsArray) {
+        toolsData[`${toolsArray[key]}`] = null;
+    }
+
+    for (let key in designArray) {
+        designData[`${designArray[key]}`] = null;
+    }
+
+    for (let key in settingArray) {
+        settingData[`${settingArray[key]}`] = null;
+    }
+
+    for (let key in patientsArray) {
+        patientsData[`${patientsArray[key]}`] = null;
+    }
+
+    for (let key in prescriptionsArray) {
+        prescriptionsData[`${prescriptionsArray[key]}`] = null;
+    }
+
+    for (let key in durationArray) {
+        durationData[`${durationArray[key]}`] = null;
+    }
+
+    for (let key in countryArray) {
+        countryData[`${countryArray[key]}`] = null;
+    }
+
+    for (let key in yearArray) {
+        yearData[`${yearArray[key]}`] = null;
+    }
+
+    for (let key in totalArray) {
+        totalData[`${totalArray[key]}`] = null;
+    }
+
+    for (let key in advancedArray) {
+        advancedData[`${advancedArray[key]}`] = null;
+    }
+
+    // HOVER CHANGE FOR THE ADVANCED SEARCH ICONS
+    $( ".advancedSpan" ).hover(
+      function() {
+        $(this).siblings('div#listIcon').text('add_box');
+      }, function() {
+        $(this).siblings('div#listIcon').text('toc');
+      }
+    );
+
+    // CLICK - ADD FOR THE ADVANCED ITEMS AND HOVER THE ADDED INFO 
+    var chipInstanceAdvanced = M.Chips.getInstance($('#advancedChips'));
+    var chipInstanceTotal = M.Chips.getInstance($('#totalLine'));
+    $( ".advancedSpan" ).click(
+      function() {
+        let advancedValue = $(this).text();
+        if (plainMode === "yes") {
+          console.log('Yeap it is plain');
+          chipInstanceTotal.addChip({
+          tag: advancedValue
+        });
+        } else {
+          console.log('Nope it is not');
+          chipInstanceAdvanced.addChip({
+          tag: advancedValue
+        });
+        }
+        let toastHTML = `<span>"${advancedValue}" was added to your search list!</span>`;
+        M.toast({html: toastHTML, classes: 'rounded'});
+        $('#toast-container > div').css("background-color", "lightseagreen");
+      }
+    );
+    
+    // READ COOKIE FOR NIGHT MODE
+    let checkNight = readCookie('nightMode');
+    if (checkNight == null) {
+    } else {
+      $("#nightMode").trigger("click");
+      $("main").css("background-color", "darkgray");
+      $("header").css("background-color", "darkgray");
+      $("footer").css("background-color", "gray");
+      $(".collapsible-header").css("background-color", "darkgray");
+      $("#sortSelect").css("background-color", "darkgray");
+      $("#email").css("background-color", "darkslateblue");
+      $("#search").css("background-color", "darkslateblue");
+      $("#issue").css("color", "white");
+      $("#resultBody > nav").css("background-color", "darkslategray");
+      $(".nav-wrapper").css("background", "");
+      $(".nav-wrapper").css("background-color", "darkslateblue");
+    }
+
+    // READ COOKIE FOR PLAIN MODE
+    let plainMode = readCookie('plainMode');
+    if (plainMode == null) {
+    } else {
+      $("#plainMode").trigger("click");
+      $('.toggleForm').slideToggle();
+      searchObj = {
+        actSubs: [],
+        indication: [],
+        statedClass: [],
+        typeOfMedical: [],
+        studyDesign: [],
+        setting: [],
+        ward: [],
+        numPatients: [],
+        numPrescriptions: [],
+        studyLength: [],
+        criteriaMethod: [],
+        country: [],
+        year: [],
+        pediatrics: [],
+        geriatrics: [],
+        neonatology: [],
+        oncology: [],
+        pharmacogenetics: [],
+        pharmacoeconomy: [],
+        radiopharmaceuticals: [],
+        compounding: [],
+        medicalDevices: [],
+        personalized: [],
+        nutrition: [],
+        highRisk: [],
+        endOfLife: [],
+        selfMedication: [],
+        preopMedication: [],
+        outpatient: [],
+        enzymeSubstrate: [],
+        geneTherapy: [],
+        homeCare: [],
+        antibioticProphylaxis: [],
+        painManagement: [],
+        offLabel: [],
+        flatDoses: [],
+        switching: [],
+        deprescribing: [],
+        prepareIV: [],
+        costAnalysis: [],
+        riskSafety: [],
+        vigilance: [],
+        stability: [],
+        drugMonitoring: [],
+        safetyProfile: [],
+        intervention: [],
+        patientIntervention: [],
+        nursesReccomend: [],
+        telepharmacy: [],
+        interview: [],
+        selection: [],
+        stock: [],
+        automated: [],
+        coldChain: [],
+        softwareAided: [],
+        mobileVR: [],
+        Printing3D: [],
+        socialMedia: [],
+        shortages: [],
+        adverseEvents: [],
+        adherence: [],
+        resistance: [],
+        renal: [],
+        errors: [],
+        administrative: [],
+        stewardship: [],
+        policiesAudits: [],
+        multidisciplinary: [],
+        institutional: [],
+        recalls: [],
+        education: [],
+        clinicalTrials: [],
+        youngPharma: [],
+        nextStep: [],
+        compliance: [],
+        orphan: [],
+        delivery: [],
+        falsified: [],
+        incompatibilities: [],
+        habits: [],
+        drugInteractions: [],
+        history: [],
+        ePrescribing: [],
+        efficacyAnalysis: []
+      };
+    }
+    
+    // FOR EVERY CHIP, WHEN PRESSED ENTER, TOAST AND SEARCH & SCROLL MECHANISM
+    $(".chips").keyup(function(event) {
+      if (event.keyCode === 13) {
+          chipData = event.currentTarget.M_Chips.chipsData;
+          let count = 0;
+          for (let key in chipData) {
+            if (totalArray.includes(`${chipData[key].tag}`)) {
+            } else {
+              count = 1;
+              let missingtoastHTML = `<span>"${chipData[key].tag}" is not included in our parameters list, and will be ignored for the search</span>`;
+              M.toast({html: missingtoastHTML, classes: 'rounded'});
+              $('#toast-container > div').css("background-color", "lightseagreen");
+            }
+            // only if every key is registered in the database, fire the search and scroll
+            if (count === 0) {
+              $("#search").click();
+              $("#search").get(0).scrollIntoView();
+            }
+          }
+      }
+    });
+
+    $(document).on('keypress',function(e) {
+      if(e.which == 13) {
+        $("#search").click();
+        $("#search").get(0).scrollIntoView();
+      }
+    });
+
+  script.
+    // GET JSON DATA
+    var dataReq = new XMLHttpRequest();
+    var url = "protected/data/data.json";
+    dataReq.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    console.log('Data loaded with success!');
+    }
+    };
+    dataReq.open("GET", url, true);
+    dataReq.send();
+  script.
+    // WHEN YOU FIRE THE SEARCH
+    $("#search").click(function() {
+    // LET THE CIRCLE START TURNING
+    $('#spinner').css("display", "block");
+    // First of the 3 setTimeouts
+    setTimeout(function() {
+    // ERASE THE PREV RESULT TEXT
+    $('#resultList').text('');
+    // LOAD THE DATA TO THE myData VARIABLE
+    let myData = JSON.parse(dataReq.responseText);
+
+    // LET'S DECIDE IF WE PERFORM A PLAIN SEARCH OR A MULTI-PARAMETER
+    if (plainMode === "yes") {
+    // PLAIN SEARCH
+      // works fine, so did not work on it
+    } else {
+    // MULTI-PARAMETER SEARCH
+      // PUT THE DATA ARRAYS INTO NEW VARIABLES
+      let actSubs = actBox;
+      let indication = indiBox;
+      let statedClass = classifyBox;
+      let studyDesign = designBox;
+      let setting = settingsBox;
+      let ward = departmentBox;
+      let numPatients = patientsBox;
+      let numPrescriptions = prescriptionsBox;
+      let studyLength = durationBox;
+      let criteriaMethod = toolBox;
+      let country = countryBox;
+      let year = yearBox;
+      let typeOfMedical = medicalBox;
+      // IF NOTHING WAS SELECTED, SET THE VALUE AS "EMPTY"
+      if (actSubs === "") {
+      actSubs = "empty"
+      }
+
+      if (indication === "") {
+      indication = "empty"
+      }
+
+      if (statedClass === "") {
+      statedClass = "empty"
+      }
+
+      if (studyDesign === "") {
+      studyDesign = "empty"
+      }
+
+      if (setting === "") {
+      setting = "empty"
+      }
+
+      if (ward === "") {
+      ward = "empty"
+      }
+
+      if (numPatients === "") {
+      numPatients = "empty"
+      }
+
+      if (numPrescriptions === "") {
+      numPrescriptions = "empty"
+      }
+
+      if (studyLength === "") {
+      studyLength = "empty"
+      }
+
+      if (criteriaMethod === "") {
+      criteriaMethod = "empty"
+      }
+
+      if (country === "") {
+      country = "empty"
+      }
+
+      if (year === "") {
+      year = "empty"
+      }
+
+      if (typeOfMedical === "") {
+      typeOfMedical = "empty"
+      }
+
+      // RESET THE SEARCH OBJECT / ADD VALUES FROM THE LIST SELECTS FOR THE NEW SEARCH
+      searchObj = {
+        actSubs: actSubs,
+        indication: indication,
+        statedClass: statedClass,
+        typeOfMedical: typeOfMedical,
+        studyDesign: studyDesign,
+        setting: setting,
+        ward: ward,
+        numPatients: numPatients,
+        numPrescriptions: numPrescriptions,
+        studyLength: studyLength,
+        criteriaMethod: criteriaMethod,
+        country: country,
+        year: year,
+        pediatrics: [],
+        geriatrics: [],
+        neonatology: [],
+        oncology: [],
+        pharmacogenetics: [],
+        pharmacoeconomy: [],
+        radiopharmaceuticals: [],
+        compounding: [],
+        medicalDevices: [],
+        personalized: [],
+        nutrition: [],
+        highRisk: [],
+        endOfLife: [],
+        selfMedication: [],
+        preopMedication: [],
+        outpatient: [],
+        enzymeSubstrate: [],
+        geneTherapy: [],
+        homeCare: [],
+        antibioticProphylaxis: [],
+        painManagement: [],
+        offLabel: [],
+        flatDoses: [],
+        switching: [],
+        deprescribing: [],
+        prepareIV: [],
+        costAnalysis: [],
+        riskSafety: [],
+        vigilance: [],
+        stability: [],
+        drugMonitoring: [],
+        safetyProfile: [],
+        intervention: [],
+        patientIntervention: [],
+        nursesReccomend: [],
+        telepharmacy: [],
+        interview: [],
+        selection: [],
+        stock: [],
+        automated: [],
+        coldChain: [],
+        softwareAided: [],
+        mobileVR: [],
+        Printing3D: [],
+        socialMedia: [],
+        shortages: [],
+        adverseEvents: [],
+        adherence: [],
+        resistance: [],
+        renal: [],
+        errors: [],
+        administrative: [],
+        stewardship: [],
+        policiesAudits: [],
+        multidisciplinary: [],
+        institutional: [],
+        recalls: [],
+        education: [],
+        clinicalTrials: [],
+        youngPharma: [],
+        nextStep: [],
+        compliance: [],
+        orphan: [],
+        delivery: [],
+        falsified: [],
+        incompatibilities: [],
+        habits: [],
+        drugInteractions: [],
+        history: [],
+        ePrescribing: [],
+        efficacyAnalysis: []
+      };
+
+      // IF VALUE WAS NOT SELECTED (EMPTY), DESTROY THEM
+      if (actSubs === "empty") {
+      searchObj['actSubs'] = [];
+      }
+      if (indication === "empty") {
+      searchObj['indication'] = [];
+      }
+      if (statedClass === "empty") {
+      searchObj['statedClass'] = [];
+      }
+      if (studyDesign == "empty") {
+      searchObj['studyDesign'] = [];
+      }
+      if (setting === "empty") {
+      searchObj['setting'] = [];
+      }
+      if (ward === "empty") {
+      searchObj['ward_focused'] = [];
+      }
+      if (numPatients === "empty") {
+      searchObj['numPatients'] = [];
+      }
+      if (numPrescriptions == "empty") {
+      searchObj['numPrescriptions'] = [];
+      }
+      if (studyLength === "empty") {
+      searchObj['studyLength'] = [];
+      }
+      if (criteriaMethod === "empty") {
+      searchObj['criteriaMethod'] = [];
+      }
+      if (country === "empty") {
+      searchObj['country'] = [];
+      }
+      if (year == "empty") {
+      searchObj['year'] = [];
+      }
+      if (year == "empty") {
+      searchObj['typeOfMedical'] = [];
+      }    
+
+      // ADD THE DATA IN THE FILTER TO THE SEARCH OBJECT
+      if (advancedBox.includes("Pediatrics")) {
+        searchObj.pediatrics = ["pediatrics"];
+      }
+
+      if (advancedBox.includes("Geriatrics")) {
+        searchObj.geriatrics = ["geriatrics"];
+      }
+
+      if (advancedBox.includes("Neonatology")) {
+        searchObj.neonatology = ["neonatology"];
+      }
+
+      if (advancedBox.includes("Oncology")) {
+        searchObj.oncology = ["oncology"];
+      }
+
+      if (advancedBox.includes("Pharmacogenetics")) {
+        searchObj.pharmacogenetics = ["pharmacogenetics"];
+      }
+
+      if (advancedBox.includes("Pharmacoeconomics")) {
+        searchObj.pharmacoeconomy = ["pharmacoeconomy"];
+      }
+
+      if (advancedBox.includes("Radiopharmaceuticals")) {
+        searchObj.radiopharmaceuticals = ["radiopharmaceuticals"];
+      }
+
+      if (advancedBox.includes("Compounding / Production")) {
+        searchObj.compounding = ["compounding"];
+      }
+
+      if (advancedBox.includes("Medical Devices / Equipments")) {
+        searchObj.medicalDevices = ["medicalDevices"];
+      }
+
+      if (advancedBox.includes("Personalized Medicine / Individual Therapy")) {
+        searchObj.personalized = ["personalized"];
+      }
+
+      if (advancedBox.includes("Enteral / Parenteral Nutrition")) {
+        searchObj.nutrition = ["nutrition"];
+      }
+
+      if (advancedBox.includes("High Risk (High Alert) Medicines")) {
+        searchObj.highRisk = ["highRisk"];
+      }
+
+      if (advancedBox.includes("Hospice / Nursing Home Treatment")) {
+        searchObj.endOfLife = ["endOfLife"];
+      }
+
+      if (advancedBox.includes("Self-Medication")) {
+        searchObj.selfMedication = ["selfMedication"];
+      }
+
+      if (advancedBox.includes("Peri / Post - Operative Medication")) {
+        searchObj.preopMedication = ["preopMedication"];
+      }
+
+      if (advancedBox.includes("Outpatient Treatment")) {
+        searchObj.outpatient = ["outpatient"];
+      }
+
+      if (advancedBox.includes("Enzyme Replacement / Substrate Reduction Therapy")) {
+        searchObj.enzymeSubstrate = ["enzymeSubstrate"];
+      }
+
+      if (advancedBox.includes("Gene Therapy")) {
+        searchObj.geneTherapy = ["geneTherapy"];
+      }
+
+      if (advancedBox.includes("Home Care")) {
+        searchObj.homeCare = ["homeCare"];
+      }
+
+      if (advancedBox.includes("Antibiotic / Antifungal Prophylaxis")) {
+        searchObj.antibioticProphylaxis = ["antibioticProphylaxis"];
+      }
+
+      if (advancedBox.includes("Pain Management")) {
+        searchObj.painManagement = ["painManagement"];
+      }
+
+      if (advancedBox.includes("Off-Label Use")) {
+        searchObj.offLabel = ["offLabel"];
+      }
+
+      if (advancedBox.includes("Flat Doses / Dose Banding")) {
+        searchObj.flatDoses = ["flatDoses"];
+      }
+
+      if (advancedBox.includes("Switching Medication")) {
+        searchObj.switching = ["switching"];
+      }
+
+      if (advancedBox.includes("Prescription Regulations (e.g., Deprescribing)")) {
+        searchObj.deprescribing = ["deprescribing"];
+      }
+
+      if (advancedBox.includes("Preparing IV Medications")) {
+        searchObj.prepareIV = ["prepareIV"];
+      }
+
+      if (advancedBox.includes("Cost Analysis")) {
+        searchObj.costAnalysis = ["costAnalysis"];
+      }
+
+      if (advancedBox.includes("Efficacy Analysis")) {
+        searchObj.efficacyAnalysis = ["efficacyAnalysis"];
+      }
+
+      if (advancedBox.includes("Occupational Risk / Safety")) {
+        searchObj.riskSafety = ["riskSafety"];
+      }
+
+      if (advancedBox.includes("Pharmacovigilance / Materiovigilance")) {
+        searchObj.vigilance = ["vigilance"];
+      }
+
+      if (advancedBox.includes("Stability / Microbiological Analysis")) {
+        searchObj.stability = ["stability"];
+      }
+
+      if (advancedBox.includes("Therapeutic Drug Monitoring")) {
+        searchObj.drugMonitoring = ["drugMonitoring"];
+      }
+
+      if (advancedBox.includes("Patient Safety / Tolerability Profile")) {
+        searchObj.safetyProfile = ["safetyProfile"];
+      }
+
+      if (advancedBox.includes("Intervention of Pharmacists")) {
+        searchObj.intervention = ["intervention"];
+      }
+
+      if (advancedBox.includes("Interaction with Patients / Participants")) {
+        searchObj.patientIntervention = ["patientIntervention"];
+      }
+
+      if (advancedBox.includes("Recommendations to Nurses")) {
+        searchObj.nursesReccomend = ["nursesReccomend"];
+      }
+
+      if (advancedBox.includes("Telepharmacy")) {
+        searchObj.telepharmacy = ["telepharmacy"];
+      }
+
+      if (advancedBox.includes("Interview / Questionnaire with Health Professionals")) {
+        searchObj.interview = ["interview"];
+      }
+
+      if (advancedBox.includes("Selection / Procurement")) {
+        searchObj.selection = ["selection"];
+      }
+
+      if (advancedBox.includes("Stock / Supply / Distribution")) {
+        searchObj.stock = ["stock"];
+      }
+
+      if (advancedBox.includes("Automated / Robotic Systems")) {
+        searchObj.automated = ["automated"];
+      }
+
+      if (advancedBox.includes("Cold Chain Management")) {
+        searchObj.coldChain = ["coldChain"];
+      }
+
+      if (advancedBox.includes("Software Aided Decision Making")) {
+        searchObj.softwareAided = ["softwareAided"];
+      }
+
+      if (advancedBox.includes("Web / Mobile / VR Technologies")) {
+        searchObj.mobileVR = ["mobileVR"];
+      }
+
+      if (advancedBox.includes("3D Printing")) {
+        searchObj.Printing3D = ["Printing3D"];
+      }
+
+      if (advancedBox.includes("Social Media")) {
+        searchObj.socialMedia = ["socialMedia"];
+      }
+
+      if (advancedBox.includes("Drug Shortages")) {
+        searchObj.shortages = ["shortages"];
+      }
+
+      if (advancedBox.includes("Adverse Drug Events / Allergies")) {
+        searchObj.adverseEvents = ["adverseEvents"];
+      }
+
+      if (advancedBox.includes("Medication Adherence")) {
+        searchObj.adherence = ["adherence"];
+      }
+
+      if (advancedBox.includes("Antimicrobial Resistance")) {
+        searchObj.resistance = ["resistance"];
+      }
+
+      if (advancedBox.includes("Renal Insufficiency")) {
+        searchObj.renal = ["renal"];
+      }
+
+      if (advancedBox.includes("Prescription / Preparation / Application Errors")) {
+        searchObj.errors = ["errors"];
+      }
+
+      if (advancedBox.includes("Resource Management (Human / Material)")) {
+        searchObj.administrative = ["administrative"];
+      }
+
+      if (advancedBox.includes("Antimicrobial Stewardship")) {
+        searchObj.stewardship = ["stewardship"];
+      }
+
+      if (advancedBox.includes("Regulatory Policies / Audits")) {
+        searchObj.policiesAudits = ["policiesAudits"];
+      }
+
+      if (advancedBox.includes("Multidisciplinary Collaboration")) {
+        searchObj.multidisciplinary = ["multidisciplinary"];
+      }
+
+      if (advancedBox.includes("Multi-Institutional Collaboration")) {
+        searchObj.institutional = ["institutional"];
+      }
+
+      if (advancedBox.includes("Drug Recalls")) {
+        searchObj.recalls = ["recalls"];
+      }
+
+      if (advancedBox.includes("Education of Health Professionals")) {
+        searchObj.education = ["education"];
+      }
+
+      if (advancedBox.includes("Clinical Trials")) {
+        searchObj.clinicalTrials = ["clinicalTrials"];
+      }
+
+      if (advancedBox.includes("Students / Young Pharmacists")) {
+        searchObj.youngPharma = ["youngPharma"];
+      }
+
+      if (advancedBox.includes("Suggesting a Next Step")) {
+        searchObj.nextStep = ["nextStep"];
+      }
+
+      if (advancedBox.includes("Compliance with Guidelines / Protocols")) {
+        searchObj.compliance = ["compliance"];
+      }
+
+      if (advancedBox.includes("Orphan Drugs")) {
+        searchObj.orphan = ["orphan"];
+      }
+
+      if (advancedBox.includes("Home Delivery")) {
+        searchObj.delivery = ["delivery"];
+      }
+
+      if (advancedBox.includes("Falsified Medicines")) {
+        searchObj.falsified = ["falsified"];
+      }
+
+      if (advancedBox.includes("Incompatibilities")) {
+        searchObj.incompatibilities = ["incompatibilities"];
+      }
+
+      if (advancedBox.includes("Prescribing Habits Analysis")) {
+        searchObj.habits = ["habits"];
+      }
+
+      if (advancedBox.includes("Medication Interactions")) {
+        searchObj.drugInteractions = ["drugInteractions"];
+      }
+
+      if (advancedBox.includes("Medication Reconciliation / Identifying Discrepancies")) {
+        searchObj.history = ["history"];
+      }
+
+      if (advancedBox.includes("Electronic Patient Management Systems")) {
+        searchObj.ePrescribing = ["ePrescribing"];
+      }
+    }
+
+    // THE OLD COLD WHICH DID THE MAGIC ONLY IF IT ALLOWED MULTISELECT ISSUE
+    /*
+    const filterEngine = Object.values(searchObj).flat();
+
+    let result = myData.filter(({filters}) => {
+      const objFilters = Object.values(filters).flat();
+      return filterEngine.every(val => objFilters.includes(val));
+    });
+    */
+
+    // LET THE NEW CODE DO THE MAGIC WITH MULTI SELECTION-RESULTS
+    let result = myData.filter(({filters}) => {
+      let isOK = true, k;
+      for(k in searchObj){
+        isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+      }
+      return isOK;
+    });
+    
+    // THIS CODE ALSO DOES THE MAGIC BUT IT WAS SENT TO BE AN UNDERDOG
+    /*
+    let result = myData.filter(({filters}) => {
+      // Check if every filter has a value that is present in searchObj
+      let isMatch = Object.entries(filters).every(([key, values]) => {
+        // Check if the filter is not empty
+        if(searchObj[key] && searchObj[key].length > 0) {
+        // Check current filter values against product filter values
+          return searchObj[key].some(value => values.includes(value));
+        }
+        
+        return true;
+      });
+
+      return isMatch;
+    })
+    */
+
+    // IF THERE'S A RESULT
+    if (result.length > 0) {
+      let sortName = $('#sortSelect').find(":selected").text();
+      
+      // OLDEST FIRST
+      if (sortName == "Oldest First") {
+        function sort(valuePath, array) {
+          let path = valuePath.split('.')
+          let value = getType(array[0],path);
+        
+          return array.sort((a, b) => getValue(a,path) -  getValue(b,path));
+
+        
+          function getValue(obj, path) {
+            path.forEach(path => obj = obj[path])
+            return obj;
+          }
+        
+          function getType(obj, path) {
+            path.forEach(path => obj = obj[path])
+            return typeof obj;
+          }
+        }
+
+        result = sort('filters.year', result);
+
+      } else {
+        function sort(valuePath, array) {
+          let path = valuePath.split('.')
+          let value = getType(array[0],path);
+          
+          if (value == 'string') {
+            return array.sort((a, b) => (getValue(a,path).toUpperCase() > getValue(b,path).toUpperCase()) - (getValue(a,path).toUpperCase() < getValue(b,path).toUpperCase()))
+          } else {
+            return array.sort((a, b) => getValue(b,path) -  getValue(a,path));
+          }
+        
+          function getValue(obj, path) {
+            path.forEach(path => obj = obj[path])
+            return obj;
+          }
+        
+          function getType(obj, path) {
+            path.forEach(path => obj = obj[path])
+            return typeof obj;
+          }
+        }
+        
+        // MAY PAUSE THIS FOR FIXING OPERATIONS LATER
+        // NEWEST FIRST
+        if (sortName == "Newest First") {
+          result = sort('filters.year', result);
+        } else {
+        // A to Z SORTING
+          result = sort('title', result);
+        }
+  
+      }
+    }
+
+    // TIME TO PRESENT THE INTRO
+    let resultLength = result.length;
+
+    $("#resultText").html(`We have found ${resultLength} result(s)`);
+    // IF THERE'S A RESULT MAKE THE CHANGES
+    if (resultLength > 0) {
+      $('#Resulty').empty();
+      $('#Resulty').append("Results");
+      $('#resultHeader').hide();
+      $('#sortAndAll').hide();
+      $('#resultBody').hide();
+      $('#email').hide();
+      $('#issue').hide();
+      $('#resultHeader').fadeIn(300);
+      $('#sortAndAll').fadeIn(300);
+      $('#resultBody').fadeIn(500);
+      $('#email').fadeIn(500);
+      $('#issue').fadeIn(500);
+    // IF THERE'S NO RESULT, HIDE THE NECESSARY PARTS
+    } else {
+      $('#Resulty').empty();
+      $('#Resulty').append("Results");
+      $('#sortAndAll').hide();
+      $('#resultBody').hide();
+      $('#email').hide();
+      $('#issue').hide();
+      $('#issue').fadeIn(500);
+      $('#resultHeader').fadeIn(300);
+    }
+    // PREPARE THE LIST, APPEND TO RESULTLIST SECTION
+    result.forEach(function(item) {
+    var li = document.createElement("li");
+    var text = `<div class="collapsible-header"><form action="#" style="margin-top: 0.5rem;"><p><label><input type="checkbox" data-check="isChecked" class="filled-in" /><span></span></label></p></form><p><a> ${item.title}. </a> ${item.filters.journal}, ${item.filters.year}</p></div><div class="collapsible-body"><span>${item.authors}</span><br><br><span style="font-size: small;">${item.institution}</span><br><br><div style="margin-top: 2rem;"><a href='${item.url}' target='_blank'><i class="material-icons" style="margin-left: 0.5rem; vertical-align: sub; color: darkred;">filter_none</i><span style="color: darkred;"> Open the Study</span></a><div class="error" style="float: right; margin-right: 2rem;"><a href='/report' target='_blank'><i class="material-icons" style="margin-left: 0.5rem; vertical-align: sub; color: indianred;">error</i><span style="color: indianred; font-size: small;"> Report an Error</span></a></div></div></div>`;
+    li.innerHTML = text;
+    document.getElementById("resultList").appendChild(li);
+    // CREATE THE COLLAPSIBLE STYLE
+    let elem = document.querySelectorAll('.collapsible.expandable');
+    let instance = M.Collapsible.init(elem, {
+    accordion: false,
+    });
+    });
+    }, 100);
+
+    // LOADING CIRCLE SHOULD STOP NOW
+    // Second of the 3 setTimeouts
+    setTimeout(function() {
+    $('#spinner').css("display", "none");
+    }, 150);
+    
+    // PAGINATE START
+    // Last of the 3 setTimeouts
+    setTimeout(function() {
+    $('#resultList').paginate({
+      perPage: 10,
+      useHashLocation: true,
+      autoScroll: false
+    });
+
+    // FIX FOR THE RE-PAGINATION WITHOUT REFRESHING THE PAGE, KILL / RE-PAGINATE
+    $('#resultList').data('paginate').kill();
+
+    $('#resultList').paginate({
+      perPage: 10,
+      useHashLocation: false,
+      autoScroll: false
+    });      
+    // PAGINATE END
+    }, 200);
+
+    // IF IT'S NIGHT MODE COLOR THE COLLAPSIBLE HEADERS
+    let nightHeader = readCookie('nightMode');
+    if (nightHeader == null) {
+    } else {
+    $(".collapsible-header").css("background-color", "darkgray");
+    $("#resultBody > nav").css("background-color", "darkslategray");
+    }
+
+    // ERROR REPORTING
+    let reportName;
+    $( ".error" ).click(function() {
+      let string = $(this).parent().parent().parent()[0].innerText;
+      // method works only when you type a ";" after the study name. Study name should not include ";"
+      let reportName = string.split('.')[0];
+      createCookie('reportName', reportName, 1);
+    });
+
+    });
+
+    // IF SORT SELECTION CHANGES, SEARCH AGAIN
+    $('#sortSelect').change(function() {
+        $("#search").trigger( "click" );
+    });
+
+    // SELECT ALL ENGINE STARTS WITH A COUNTER
+    let counter = [false];
+
+    // CHECKED - TRUE / NOT-CHECKED - FALSE MECHANISM (caps down please)
+    $("#selectAll").click(function () {
+        if (counter[0] === false) {
+          $('.filled-in').prop('checked', true);
+          counter[0] = true;
+        } else {
+          $('.filled-in').prop('checked', false);
+          counter[0] = false;
+        }
+        
+    });
+    // SELECT ALL ENGINE ENDS
+
+    // WHEN E-MAIL ME CLICKED
+    $("#email").click(function () {
+      // CREATE A TEXT ARRAY AND ADD INSIDE THE TEXTs of THE SELECTED STUDIES
+      let textArray = [];
+      textArray = $("input:checkbox[data-check='isChecked']:checked").map(function() {
+        return $(this).parent().parent().parent().parent().siblings()[0].previousSibling.innerText;
+      }).get();
+      console.log(textArray);
+
+      // CREATE A LINK ARRAY AND ADD INSIDE THE LINKs of THE SELECTED STUDIES
+      let linkArray = [];
+      linkArray = $("input:checkbox[data-check='isChecked']:checked").map(function() {
+        return $(this).parent().parent().parent().parent().siblings()[0].children[6].firstElementChild.href;
+      }).get();
+
+      // CONVERT ARRAYS TO JSONs
+      let json_text = JSON.stringify(textArray);
+      console.log(json_text);
+      let json_link = JSON.stringify(linkArray);
+
+      // ERASE PRE-COOKIES
+      eraseCookie('text');
+      eraseCookie('link');
+      eraseCookie('reportName');
+      // CREATE NEW COOKIES AS JSONs
+      createCookie('text', json_text, 1);
+      createCookie('link', json_link, 1);
+
+    });      
+  script.
+    // FOOTER SLIDING DATA
+    $( "body" ).one('mouseover', function() {
+      setTimeout(function() {
+      let slideData = JSON.parse(dataReq.responseText);
+      document.getElementById("slider").innerHTML = `${slideData.length} studies in our database are ready for you to perform your search now!`;
+      }, 500);
+    });
+    
+    // THIS WAS CREATED FOR MONO-SELECT DROPDOWNS THROUGH THE SELECTED LIST OF IDs
+    /*
+    $( ".input-field span" ).click(function() {
+      let foundID = $(this).parent().parent().parent();
+      foundID = foundID[0].lastChild.id;
+      if (foundID === "studyDesign" || foundID === "numPatients" || foundID === "numPrescriptions" || foundID === "studyLength" || foundID === "year") {
+      let selecty = $(this).parent().siblings(".selected");
+      selecty.trigger( "click" ); 
+      }
+    });
+    */
+    
+    // IF ANOTHER SELECT WAS CLICKED UNSELECT THE SELECT-ALL CHECKBOX
+    $("body").on("change", "input[data-check='isChecked']", function () {
+        $("#selectAll").prop('checked', false);
+    });
+    
+    // PLAIN MODE SWITCH
+    $( "#plainMode" ).click(function() {
+      let plainMode = readCookie('plainMode');
+      if (plainMode == null) {
+        let plainMode = "yes";
+        createCookie('plainMode', plainMode, 2);
+        location.assign('/');
+      } else {
+        eraseCookie('plainMode');
+        location.assign('/');
+      }
+    });
+    // NIGHT MODE SWITCH
+    $( "#nightMode" ).click(function() {
+    let nightMode = readCookie('nightMode');
+    if (nightMode == null) {
+      let nightMode = "yes";
+      createCookie('nightMode', nightMode, 2);
+      $("main").css("background-color", "darkgray");
+      $("header").css("background-color", "darkgray");
+      $("footer").css("background-color", "darkgray");
+      $(".page-footer").css("background-color", "gray");
+      $(".collapsible-header").css("background-color", "darkgray");
+      $("#sortSelect").css("background-color", "darkgray");
+      $("#email").css("background-color", "darkslateblue");
+      $("#search").css("background-color", "darkslateblue");
+      $("#issue").css("color", "white");
+      $("#resultBody > nav").css("background-color", "darkslategray");
+      $(".nav-wrapper").css("background", "");
+      $(".nav-wrapper").css("background-color", "darkslateblue");
+    } else {
+      eraseCookie('nightMode');
+      $("main").css("background-color", "aliceblue");
+      $("header").css("background-color", "aliceblue");
+      $("footer").css("background-color", "aliceblue");
+      $(".collapsible-header").css("background-color", "aliceblue");
+      $("#sortSelect").css("background-color", "aliceblue");
+      $("#email").css("background-color", "royalblue");
+      $("#search").css("background-color", "royalblue");
+      $("#issue").css("color", "orangered");
+      $("#resultBody > nav").css("background-color", "dodgerblue");
+      $(".page-footer").css("background-color", "royalblue");
+      $(".nav-wrapper").css("background-color", "royalblue");
+    }
+    });

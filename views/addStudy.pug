@@ -1,0 +1,244 @@
+doctype html
+html(lang='en')
+    head
+      title PharmaSearch || Add Study
+      meta(name='Description', content='Submit studies you wish to be in our website. We will revise the submissions and add them into our database as soon as possible.')
+      include includes/head.pug
+    body
+      include includes/header.pug
+      main
+        .row
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;")
+            script(type='text/javascript').
+              var bannersnack_embed = {"hash":"b7hnejnub","width":300,"height":1050,"t":1592480941,"userId":41627626,"responsive":true,"type":"html5"};
+            script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
+          .col.s12.m4.l8(style="margin-top: 1rem;")
+            form.col.s12(action='/addStudy', method='post')
+              .row
+                .input-field.col.s12
+                  textarea#title.materialize-textarea(name='title')
+                  label(for='title') Study Title
+                .input-field.col.s12
+                  textarea#studyUrl.materialize-textarea(name='studyUrl')
+                  label(for='studyUrl') Study URL (strongly advised)
+                .input-field.col.s12
+                  textarea#studyDetails.materialize-textarea(name='studyDetails')
+                  label(for='studyDetails') Details (optional)
+                .input-field.col.s12
+                  input#email.validate(type='email', name='email')
+                  label(for='email') Your E-Mail (optional)
+                  span.helper-text(data-error='Please check your mail again', data-success='')
+              .row(style="margin-top: -1.5rem;")
+                // label(style="font-weight: bolder; color: royalblue; font-size: small;") Active Substance
+                #dataChips.chips.chips-autocomplete(style="margin-left: 0.5rem; margin-right: 0.5rem;")
+              .row  
+                button#addStudy.col.s2.waves-effect.waves-light.btn.offset-s4(style='border-radius: 12px; width: 25%; background-color: royalblue;', type='submit' name="addStudy")
+                    | Submit for Review
+                    i.material-icons.right library_add
+            .row.center-align
+              p#add.col.s12(style="font-weight: bold; color: darkslateblue;")= StudyAdd
+              #spinner.col.s5.offset-s5(style="display: none;")
+                .spinner-dual
+                  .spinner-dual
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;")
+            script(type='text/javascript').
+              var bannersnack_embed = {"hash":"bxhm4i3nd","width":300,"height":1050,"t":1592485287,"userId":41627626,"responsive":true,"type":"html5"};
+            script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
+      include includes/footer.pug
+    // Compiled and minified JavaScript
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js', integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=', crossorigin='anonymous')
+    script(src='js/jquery.paginate.js')
+    script(src='https://cdn.jsdelivr.net/npm/typed.js@2.0.11')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+    // MY SCRIPTS START
+    script.
+      // MATERIALIZE STUFF
+      M.AutoInit();
+      document.addEventListener('DOMContentLoaded', function(){
+        var options = {
+          strings: ['PharmaSear^500.ch'],
+          typeSpeed: 100
+        };
+        var typed = new Typed('#logoType', options); 
+      });
+      // COOKIE ENGINE START
+      function createCookie(name,value,days) {
+      if (days) {
+      var date = new Date();
+      date.setTime(date.getTime()+(days*24*60*60*1000));
+      var expires = "; expires="+date.toGMTString();
+      }
+      else var expires = "";
+      document.cookie = name+"="+value+expires+"; path=/";
+      }
+      function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+      }
+      function eraseCookie(name) {
+      createCookie(name,"",-1);
+      }
+      // COOKIE ENGINE END
+
+      // READ COOKIE FOR NIGHT MODE
+      let checkNight = readCookie('nightMode');
+      if (checkNight == null) {
+      } else {
+        $("main").css("background-color", "darkgray");
+        $("header").css("background-color", "darkgray");
+        $("footer").css("background-color", "gray");
+        $("#addStudy").css("background-color", "darkslateblue");
+        $(".nav-wrapper").css("background", "");
+        $(".nav-wrapper").css("background-color", "darkslateblue");
+      }
+      $('#switch').hide();
+      // (FAILED TEST) $('#chips::placeholder').css('color', 'red');
+      // Improved the CHIPS before the big improvement on the main search screen. Selected chips are in the "box" now 
+      let boxData;
+      let box = [];
+      $('#dataChips').chips({
+        placeholder: 'Enter a category',
+        secondaryPlaceholder: '+ Category',
+        onChipAdd: (event, chip) => {
+          boxData = event[0].M_Chips.chipsData
+          for (let key in boxData) {
+            box = (`${boxData[key].tag}`);
+          }
+        },
+        onChipDelete: (event, chip) => {
+          boxData = event[0].M_Chips.chipsData
+          for (let key in boxData) {
+            box = (`${boxData[key].tag}`);
+          }
+        },
+        autocompleteOptions: {
+          data: {
+            // data will be added below from the dataArray
+          },
+        limit: Infinity,
+        minLength: 0
+        }
+      });
+      $( ".dropdown-content" ).css('min-width', '40%');
+
+    script.
+      // ADVANCED SEARCH ITEMS TO BE INJECTED INTO THE DATA SET
+      // Set the data and sort alphabetically
+      let dataArray = [
+        "Pediatrics",
+        "Geriatrics",
+        "Neonatology",
+        "Oncology",
+        "Pharmacogenetics",
+        "Pharmacoeconomics",
+        "Radiopharmaceuticals",
+        "Compounding / Production",
+        "Medical Devices / Equipments",
+        "Personalized Medicine / Individual Therapy",
+        "Enteral / Parenteral Nutrition",
+        "Orphan Drugs",
+        "High Risk (High Alert) Medicines",
+        "Hospice / Nursing Home Treatment",
+        "Self-Medication",
+        "Peri / Post - Operative Medication",
+        "Outpatient Treatment",
+        "Enzyme Replacement / Substrate Reduction Therapy",
+        "Gene Therapy",
+        "Home Care",
+        "Antibiotic / Antifungal Prophylaxis",
+        "Pain Management",
+        "Off-Label Use",
+        "Flat Doses / Dose Banding",
+        "Switching Medication",
+        "Prescription Regulations (e.g., Deprescribing)",
+        "Compliance with Guidelines / Protocols",
+        "Preparing IV Medications",
+        "Cost Analysis",
+        "Occupational Risk / Safety",
+        "Pharmacovigilance / Materiovigilance",
+        "Stability / Microbiological Analysis",
+        "Therapeutic Drug Monitoring",
+        "Patient Safety / Tolerability Profile",
+        "Prescribing Habits Analysis",
+        "Medication Reconciliation / Identifying Discrepancies",
+        "Intervention of Pharmacists",
+        "Interaction with Patients / Participants",
+        "Recommendations to Nurses",
+        "Telepharmacy",
+        "Interview / Questionnaire with Health Professionals",
+        "Selection / Procurement",
+        "Stock / Supply / Distribution",
+        "Automated / Robotic Systems",
+        "Cold Chain Management",
+        "Home Delivery",
+        "Software Aided Decision Making",
+        "Web / Mobile / VR Technologies",
+        "3D Printing",
+        "Social Media",
+        "Electronic Prescribing Systems",
+        "Drug Shortages",
+        "Adverse Drug Events / Allergies",
+        "Medication Adherence",
+        "Antimicrobial Resistance",
+        "Renal Insufficiency",
+        "Prescription / Preparation / Application Errors",
+        "Falsified Medicines",
+        "Incompatibilities",
+        "Medication Interactions",
+        "Resource Management (Human / Material)",
+        "Antimicrobial Stewardship",
+        "Regulatory Policies / Audits",
+        "Multidisciplinary Collaboration",
+        "Multi-Institutional Collaboration",
+        "Drug Recalls",
+        "Education of Health Professionals",
+        "Clinical Trials",
+        "Students / Young Pharmacists",
+        "Suggesting a Next Step"
+      ];
+      dataArray.sort();
+      // Point the related data
+      var chipInstance = M.Chips.getInstance($('#dataChips'));
+      let listData = chipInstance.options.autocompleteOptions.data;
+      // Inject the data
+      for (let key in dataArray) {
+          listData[`${dataArray[key]}`] = null;
+      }
+    
+      // GET JSON DATA
+      var dataReq = new XMLHttpRequest();
+      var url = "protected/data/data.json";
+      dataReq.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      console.log('Data loaded with success!');
+      }
+      };
+      dataReq.open("GET", url, true);
+      dataReq.send();
+      // FOOTER SLIDING DATA
+      $( "body" ).one('mouseover', function() {
+        setTimeout(function() { 
+        let slideData = JSON.parse(dataReq.responseText);
+        document.getElementById("slider").innerHTML = `${slideData.length} studies in our database are ready for you to perform your search now!`;
+        }, 500);
+      });
+      // SPINNER TRIGGER
+      $("#addStudy").click(function () {
+        $('#spinner').css("display", "block");
+        setTimeout(function() {
+          $('#add').text('Process of your request is taking longer than usual and it will be completed shortly. Thank you for your patience...');
+          $('#spinner').css("margin-top", "2rem");
+        }, 5000);
+      });
+
+      // Let's strech the search list's width to right
+      $( "#dataChips" ).click(function() {
+        $('#dataChips > ul').css("min-width", "90%");
+      });
+
