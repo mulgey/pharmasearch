@@ -47,9 +47,17 @@ html(lang='en')
               .input-field.col.s10.l6.offset-s1#spec-group(style='display:none; margin-top: -0.9rem')
                 label(style="font-weight: bolder; color: royalblue; font-size: small;") Select Item
                 #specificChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+            .row(style='margin-top: 2rem; margin-bottom: 4rem;')
+              a#search.col.s2.waves-effect.waves-light.btn.offset-s4(style='border-radius: 12px; width: 25%')
+                | See Trends
+                i.material-icons.right search
             canvas#myChart(style="display: default;")
             script(src='https://cdn.jsdelivr.net/npm/chart.js')
             script.
+              let graphName01;
+              ("#search").click(function() {
+
+              }
               var ctx = document.getElementById('myChart');
               var myChart = new Chart(ctx, {
               type: 'bar',
