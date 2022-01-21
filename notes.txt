@@ -27,6 +27,8 @@ Improvements postponed after complation of the 2021 book
 82) Should "policiesAudits" checked and removed the ones includes about medical "guidelines" ? "Evaluation of prescription adequacy to the antibiotherapy protocol in intra-abdominal infection in a regional hospital" and before
 83) "Data were obtained from the electronic medical records" is a reason for "ePrescribing" key?
 84) Sort arrays by name and check for the duplicates
+85) "Disease Modifying Drugs" should be collected under one group?
+86) All wards should be modified to add "department"-like word to the end?
 
 For search demonstration
 1) "Cost effectiveness analysis of meropenem dose optimisation in critical patients -- "administrative"
