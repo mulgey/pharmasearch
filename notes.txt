@@ -29,6 +29,7 @@ Improvements postponed after complation of the 2021 book
 84) Sort arrays by name and check for the duplicates
 85) "Disease Modifying Drugs" should be collected under one group?
 86) All wards should be modified to add "department"-like word to the end?
+87) Search back for "Pharmaceutical Care Network Europe (PCNE) Classification" currently have 2
 
 For search demonstration
 1) "Cost effectiveness analysis of meropenem dose optimisation in critical patients -- "administrative"
