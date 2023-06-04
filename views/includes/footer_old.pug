@@ -1,0 +1,19 @@
+footer(style="position: relative; z-index: 1;")
+  footer.page-footer
+    .container
+      .row
+        .col.l6.s12
+          h5.white-text PharmaSearch
+          p.grey-text.text-lighten-4 Your search hub for the studies across pharma world.
+        .col.l4.offset-l2.s12
+          h5.white-text In-Site Links
+          ul
+            li
+              a.grey-text.text-lighten-3(href='/addStudy') + Add Study
+            li(style="margin-top: 0.5rem;")
+              a.grey-text.text-lighten-3(href='/typeSearch') Type-Search
+            li(style="margin-top: 0.5rem;")
+              a.grey-text.text-lighten-3(href='/about') About
+    .footer-copyright
+      .container
+        marquee(id='slider' behavior='scroll', direction='left' scrollamount='12')

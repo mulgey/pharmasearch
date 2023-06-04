@@ -8,23 +8,23 @@ html(lang='en')
       include includes/header.pug
       main
         .row
-          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;")
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;").hide-on-small-only
             script(type='text/javascript').
               var bannersnack_embed = {"hash":"b7hnejnub","width":300,"height":1050,"t":1592480941,"userId":41627626,"responsive":true,"type":"html5"};
             script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
           .col.s12.m4.l8(style="margin-top: 2rem;")
             .row#users
               // class="search" automagically makes an input a search field.
-              input.search.col.s12(style="margin-bottom: 2rem;" placeholder='Search')
+              input.search.col.m12.s10.offset-s1(style="margin-bottom: 2rem;" placeholder='Search')
               // class="sort" automagically makes an element a sort buttons. The date-sort value decides what to sort by.
               div
-                a.waves-effect.waves-light.btn-small.sort.col.s12.m3.offset-m1(style="margin-top: 2rem; background-color: steelblue;", data-sort='name')
+                a.waves-effect.waves-light.btn-small.sort.col.s10.m2.offset-m1.offset-s1(style="margin-top: 2rem; background-color: steelblue;", data-sort='name')
                   | Sort by Name
                 // class="sort" automagically makes an element a sort buttons. The date-sort value decides what to sort by.
-                a.waves-effect.waves-light.btn-small.sort.col.s12.m3.offset-m1(style="margin-top: 2rem; background-color: steelblue;", data-sort='country')
+                a.waves-effect.waves-light.btn-small.sort.col.s10.m2.offset-m2.offset-s1(style="margin-top: 2rem; background-color: steelblue;", data-sort='country')
                   | Sort by Country
                 // class="sort" automagically makes an element a sort buttons. The date-sort value decides what to sort by.
-                a.waves-effect.waves-light.btn-small.sort.col.s12.m3.offset-m1(style="margin-top: 2rem; background-color: steelblue;", data-sort='year')
+                a.waves-effect.waves-light.btn-small.sort.col.s10.m2.offset-m2.offset-s1(style="margin-top: 2rem; background-color: steelblue;", data-sort='year')
                   | Sort by Year
               // Child elements of container with class="list" becomes list items
               ul#root.list.col.s12(style="margin-bottom: 4rem;")
@@ -32,7 +32,7 @@ html(lang='en')
                 #spinner.col.s5.offset-s5(style="display: none;")
                   .spinner-dual
                     .spinner-dual
-          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;")
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;").hide-on-small-only
             script(type='text/javascript').
               var bannersnack_embed = {"hash":"bxhm4i3nd","width":300,"height":1050,"t":1592485287,"userId":41627626,"responsive":true,"type":"html5"};
             script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
@@ -47,6 +47,7 @@ html(lang='en')
     script.
       // MATERIALIZE STUFF
       M.AutoInit();
+      // We don't need plain search and night mode here
       $('#switch').hide();
       document.addEventListener('DOMContentLoaded', function(){
         var options = {

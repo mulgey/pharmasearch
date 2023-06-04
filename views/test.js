@@ -27,6 +27,7 @@ subsList = [...new Set(subsList)];
 
 // DATA SECTION ENDS
 
+// WE HAVE ARRAYS FOR EVERY CATEGORY, SO THAT SECTION IS NOT NEEDED ANYMORE
 // INDEX.PUG SECTION
 // Create array to fill in
 let listArray = [];
@@ -73,7 +74,7 @@ data = Object.keys(data);
 */
 
 // TRENDS SECTION
-let rowData = JSON.parse(dataReq.responseText);
+// let rowData = JSON.parse(dataReq.responseText);
 let rowDataNumber = rowData.length;
 
 searchObj = {
@@ -801,7 +802,7 @@ for (let key in actArray) {
 }
 
 // FIND THE RESULT NUMBERS FOR EVERY SECTION
-let rowData = JSON.parse(dataReq.responseText);
+// let rowData = JSON.parse(dataReq.responseText);
 
 searchObj = {
     actSubs: [],

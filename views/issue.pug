@@ -8,7 +8,7 @@ html(lang='en')
       include includes/header.pug
       main
         .row
-          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;")
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;").hide-on-small-only
             script(type='text/javascript').
               var bannersnack_embed = {"hash":"b7hnejnub","width":300,"height":1050,"t":1592480941,"userId":41627626,"responsive":true,"type":"html5"};
             script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
@@ -16,8 +16,8 @@ html(lang='en')
             form.col.s12(action='/issue', method='post')
               .row
                 .input-field.col.s12
-                  textarea(readonly='' name='title')#title.materialize-textarea
-                  label(for='title') Search Parameters
+                  textarea(readonly='' name='parameters')#title.materialize-textarea
+                  label(for='parameters') Search Parameters
                 .input-field.col.s12
                   textarea#details.materialize-textarea(name='details')
                   label(for='details') Your Feedback
@@ -27,14 +27,14 @@ html(lang='en')
                   span.helper-text(data-error='Please check your mail again', data-success='')
               .row  
                 button#issue.col.s2.waves-effect.waves-light.btn.offset-s4(style='border-radius: 12px; width: 25%; background-color: royalblue;', type='submit' name="addStudy")
-                    | Submit for Review
-                    i.material-icons.right library_add
+                    | Submit Issue
+                    i.material-icons.right report
             .row.center-align
               p#iss.col.s12(style="font-weight: bold; color: darkslateblue;")= myIssue
               #spinner.col.s5.offset-s5(style="display: none;")
                 .spinner-dual
                   .spinner-dual
-          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;")
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;").hide-on-small-only
             script(type='text/javascript').
               var bannersnack_embed = {"hash":"bxhm4i3nd","width":300,"height":1050,"t":1592485287,"userId":41627626,"responsive":true,"type":"html5"};
             script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')

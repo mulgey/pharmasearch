@@ -11,6 +11,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
+// External array work
+// var otherFile = require("array.js");
+
+
 /*
 // THIS SECTION WAS PUT ON HOLD DUE TO BLOCKING THE WORK WITH THE DATA ALSO TO US
 // TIME TO PROTECT THE PROTECTED FOLDER

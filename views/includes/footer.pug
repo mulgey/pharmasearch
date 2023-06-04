@@ -5,15 +5,33 @@ footer(style="position: relative; z-index: 1;")
         .col.l6.s12
           h5.white-text PharmaSearch
           p.grey-text.text-lighten-4 Your search hub for the studies across pharma world.
+          p
+            a.grey-text.text-lighten-3(href='/about') About
+          p
+            a(href='mailto:mail@pharmasear.ch' style='color: white;') Contact Us
         .col.l4.offset-l2.s12
           h5.white-text In-Site Links
           ul
             li
               a.grey-text.text-lighten-3(href='/addStudy') + Add Study
             li(style="margin-top: 0.5rem;")
-              a.grey-text.text-lighten-3(href='/search') Type-Search
+              a.grey-text.text-lighten-3(href='/typeSearch') Type-Search
             li(style="margin-top: 0.5rem;")
-              a.grey-text.text-lighten-3(href='/about') About
-    .footer-copyright
-      .container
-        marquee(id='slider' behavior='scroll', direction='left' scrollamount='12')
+              a.grey-text.text-lighten-3(href='/trends') Trends
+    .row(style="margin-bottom: 0rem; background-color: royalblue;")
+      .footer-copyright
+        .container(style="width: 100%;")
+          marquee(id='slider' behavior='scroll', direction='left' scrollamount='12')
+    .row(style="background-color: lightblue; padding-top: 0.6rem; padding-bottom: 0.3rem; margin-bottom: 0rem;")
+      .col.s12.a.center-align
+        a(href='https://www.facebook.com/pharmaSearchWeb/' target="_blank")
+          img(src='/img/facebook.png', href="facebook.com", width='30', height='30')
+        a(href='https://www.instagram.com/pharma_search' target="_blank" style="margin-left: 2rem;")
+          img(src='/img/instagram.png', width='30', height='30')
+        a(href='https://www.twitter.com/PharmaSearchWeb' target="_blank" style="margin-left: 2rem;")
+          img(src='/img/twitter.png', width='30', height='30')
+        a(href='https://www.linkedin.com/company/pharma-search' target="_blank" style="margin-left: 2rem;")
+          img(src='/img/linkedin.png', width='30', height='30')
+    .row#responsibility-row(style="background-color: steelblue; margin-bottom: 0rem; /*padding-left: 5rem; padding-right: 5rem;*/")
+      .col.s12.a.center-align
+        p#responsibility-text(style="/* padding-left: 5rem; padding-right: 5rem; */font-size: small; color: rgba(255,255,255,.6);") This website is intended for healthcare professionals and we don't own the property of the scientific materials in our database

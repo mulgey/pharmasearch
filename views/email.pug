@@ -8,7 +8,7 @@ html(lang='en')
       include includes/header.pug
       main
         .row
-          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;")
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;").hide-on-small-only
             script(type='text/javascript').
               var bannersnack_embed = {"hash":"b7hnejnub","width":300,"height":1050,"t":1592480941,"userId":41627626,"responsive":true,"type":"html5"};
             script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
@@ -16,7 +16,7 @@ html(lang='en')
             form.col.s12(action='/email', method='post')
               .row
                 .input-field.col.s12
-                  input#email.validate(type='email', name='email')
+                  input#email.validate(type='text', name='email')
                   label(for='email') E-mail to be Sent
                   span.helper-text(data-error='Please check your mail again', data-success='')
                 .input-field.col.s12
@@ -31,7 +31,7 @@ html(lang='en')
               #spinner.col.s5.offset-s5(style="display: none;")
                 .spinner-dual
                   .spinner-dual
-          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;")
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;").hide-on-small-only
             script(type='text/javascript').
               var bannersnack_embed = {"hash":"bxhm4i3nd","width":300,"height":1050,"t":1592485287,"userId":41627626,"responsive":true,"type":"html5"};
             script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')

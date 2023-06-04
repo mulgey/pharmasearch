@@ -80,7 +80,6 @@ nav {
 .page-footer {
     background-color: royalblue;
     margin-top: 3rem;
-    padding-top: 10px;
 }
 
 /* sticky footer */
@@ -161,6 +160,11 @@ div.input-field {
 }
 
 @media only screen and (min-width: 500px) {
+    #responsibility-text {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+
     #advSearch {
         margin-left: 35%;
     }
@@ -172,6 +176,11 @@ div.input-field {
 }
 
 @media only screen and (min-width: 993px) {
+    #responsibility-row {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+
     a.brand-logo {
         margin-left: 2rem;
     }
