@@ -1,0 +1,162 @@
+Bench Notes
+1) did also Saturday. 2 left. 1 weekend, 1 shift day
+
+Improvements postponed after complation of the 2021 book
+1) Protect the data (hopeless issue)
+2) Interactive stats about the database (Trends - ChartJS)
+4) Featured result at the top
+5) Live search .. two countries.. needs a blank (not critical)
+6) Empty requests possible for submitting study?
+7) Random "next study" offers?
+8) Chat..!
+9) "advancedSearch" parameters groups may be 2 colors in order (maybe not necessary)
+
+66) Don't forget to remove the pause
+67) 2019 and 2020 National Poster Winners were not included
+68) Remove only (1) results. Especially in criteriaMethod. "costAnalysis" has 2 parameters with 1 or 2 results
+69) Acetaminophen (Paracetamol) ?
+70) All "compliance" are "policiesAudits" ?
+71) All "history" are "patientIntervention" ?
+72) Fix back, all Biologicals are NOT biosimilars. Point is where the focus is.
+73) Check back "meta analysis", for "network meta analysis"
+74) Add back "Hepatic Impairment"
+75) There is "Survival Analysis" but is it related to PFS and OS?
+76) Should remove "clinicalTrials" if it was "Literature Search"ed?
+77) Should add "department" to the "Paediatrics"
+78) 2021 journal did not include "Compounding" section with "0" results. Please chech that again later.
+79) wards --> "intensive care" --> there are many to be united
+80) "Beta lactam inh." and "Beta lactamase inh." are the same. Unite!
+81) Hover on result and see the parameters as a list
+82) Should "policiesAudits" checked and removed the ones includes about medical "guidelines" ? "Evaluation of prescription adequacy to the antibiotherapy protocol in intra-abdominal infection in a regional hospital" and before
+83) "Data were obtained from the electronic medical records" is a reason for "ePrescribing" key? Not! Fix before "Tocilizumab in patients with COVID-19: results in clinical practice"
+84) Sort arrays by name and check for the duplicates
+85) "Disease Modifying Drugs" should be collected under one group?
+86) All wards should be modified to add "department"-like word to the end? 
+87) Search back for "Pharmaceutical Care Network Europe (PCNE) Classification" currently have 2
+88) Empty DOI's, check them back if they are fill-able
+89) A toast may pop-up like "You have added from department class" when using Plain Mode
+90) "Home Care" looks like forgotten, not very efficient
+91) How to check double titles / abstracts?
+92) "Deprescribing" only with "intervention"? Check & Fix
+93) "Outpatient Pharmacy" is a ward?
+94) Are "Colistin"s "Colistimethate" before "Difference in adherence associated with the route of administration"?
+95) All "Outpatient" wards are also selected for the "outpatient"?
+96) All "DDD"s are "trend"s ??
+97) Check back for "Myocardial infarction"
+98) "Imipenem/Cilastatin" was not along "Imipenem" and "Cilastatin". Check back for similar mistakes.
+99) Banners are high in trends section
+100) You may remove the non-used arrays on trends.pug
+101) Specific chips mechanism may only work when Specific Search was selected
+102) Category --> Specific. Delete chips if the category was switched
+103) Night mode for trends section
+104) guidelines section should only "question", if it complies with the guides?
+105) add back "Chemotherapy induced nausea and vomiting (CINV)" for indication
+106) Fix "report.pug" cookies don't work
+107) Should update "arrays" and "searchObj" in type-search and trends section
+108) May check back and add "Bivariate analysis"
+109) $(".collapsible-header").css may be copied for $(".collapsible-body").css .. for advertisement results
+110) "Beta-lactam ant" and "Beta lactamase inhibitors" are the same?
+110) "Multiple Sclerosis" and "Multiple Sclerosis (Relapsing – Remitting)". Should really consider binding those similar keys
+111) "Torsade de Pointes" search back
+112) Should add "pharmacokinetics" for every "drugMonitoring" ??
+113) "Biologicals", "Monoclonal Antibodies" same ??
+114) "efficacyAnalysis" only for clinical situations? not protocols and methods?
+115) "Coronavirus Disease (COVID-19)", "Pneumonitis" = "SARS-CoV-2 pneumonia" ??
+116) "Outpatient" departments should be reconsidered
+117) All "telepharmacy" are "patientIntervention" ?
+118) I think I've missed a few "Clostridium Difficile Infection"s .. check back
+119) "Enzyme Immunoassay" just added. Check back
+120) "Z-Test" just added, check back
+121) We have double "Morisky", remove one if it's possible
+122) Check back "case studies" to add "less than 10 patients"
+123) "Adverse Drug Events / Allergies" may change with "Adverse Drug / Allergy Events"
+124) PRISMA was discovered on 161588 .. now you may check back all for PRISMA
+125) "Antineoplastics and Immunomodulators" class should be divided
+126) "Elastomeric Devices", "Infusion Pumps". What about "Elastomeric Infusion Pumps" ??
+127) "Preliminary Risk Analysis" is both a tool and a study method
+128) Slide footer is always problem on the first load, may be prolonged by increasing the miliseconds. Search button always fails on the first run. A fake-background search-trigger may be set during the first load
+129) "Pneumonitis" includes many "pneumonia" and there's not a single search option for "pneumonia"
+130) "A qualitative study on pharmacist prescribing for patients with chronic kidney disease" made me think about the parameter: "pharmacistPrescribing"
+131) Category change deletes only 1 item in trends page
+132) "Immune-Suppressors" ve "Selective Immunosuppressants"
+133) "Obesity" may be considered to add as an "indication"
+
+For search demonstration
+1) "Cost effectiveness analysis of meropenem dose optimisation in critical patients -- "administrative"
+2) "Use of oseltamivir in the treatment of influenza A" -- "instutional" 2 hospitals - 251 patients
+3) "Switching to equivalent alternatives: antiretroviral optimisation strategy" - "costAnalysis" - says: optimisation but not "cost"
+4) "Changing from cobicistat to a ritonavir boosted regimen in HIV positive patients" -- "outpatient" switch is being made for outpatients, not in the wards
+5) Test: Retrospective studies for the end-of-life patients
+6) "Evaluation of a pharmaceutical care programme for patients being treated with omalizumab" -- "selfmedication" under the stated Phar.Programme
+7) Artificial intelligence fails: "Pharmaceutical interventions in drugs provided to the outpatient hospital pharmacy" -- text contains "oncology" but can't be listed in Oncology
+8) In doubt: "Analysis of antibiotic consumption in a nursing home" .. "antimicrobial stewardship programmes are necessary" it says so should I add the "stewardship" key?
+9) "Preliminary design of hospital telepharmacy" -- there is no "telepharmacy"
+10) "Nutritional risk evaluation in institutionalised elderly patients in a public nursing home" -- there's "intervention" but not stated in the title
+11) "Prevalence of nutritional complications according to the requested hospitalisation service of total parenteral nutrition" -- oncology ward but it's about "nutrition"
+12) "Evaluation of the introduction of a medical device for mechanical induction of labour in women with unfavourable cervix" --- "costAnalysis
+
+For examples demonstration
+1) "habits" for "AIDS"
+2) "biosimilars" for "Rituximab" maybe plus "costAnalysis"
+3) "medicalDevices" "safetyProfile" sounds cool (maybe + "multidisciplinary")
+4) "errors" in "geriatrics"
+5) "riskSafety" for "compounding"
+6) "nextStep" for "shortages"
+7) "costAnalysis" for "oncology"
+8) "education" for "youngPharma"
+9) "offLabel" for ? (actSubs)
+10) "costAnalysis" for "clinicalTrials" (?)
+11) "offLabel" search // add "dalbavancin" and re-search // switch to "Tocilizumab" and re-search
+12) "costAnalysis" for "resistance"
+13) "policiesAudits" for "biosimilars" plus "biosimilars"
+14) "compounding" with "shortages"
+15) 
+16) "administrative" "policiesAudits"
+17) "Clopidogrel" "pharmacogenetics" studies
+18) "interactions" "softwareaided" ?
+
+EAHP Session
+--- check their pronounciations ---
+--- clear cookies ---
+0) present the parameters. don't click & bring list every one of them. choose a few good. "These parameters include details only exist in the posters". start with plain
+1) "geriatrics" and "errors" bring results // add "intervention" and re-search // later add "reconciliation" and re-search // select one abstract to go to the website (pre-opened and cached) // select all - remove - select 3 of them and e-mail (check e-mail list and shift + delete before)
+2) "prepareIV" and "automated". Tell they are currently sorted by year, from 2019-2022. We can also sort by name or old-to-new
+3) "education" for "youngPharma"
+4) "offLabel" "efficacyAnalysis" and "safetyProfile"
+5) "pharmacogenetics" and "oncology" // remove "oncology" and add "fluoropyrimidines" and re-search
+6) (plain search) "compounding" and "shortages" // remove "shortages" and add "riskSafety"
+7) (plain mode) "flatDoses" and "costAnalysis"
+
+8) (plain search) "community pharmacy" and "multidisciplinary"
+9) "pharmacogenetics" and "efficacyAnalysis"
+10) (plain search) "compounding" and "paediatrics" 
+11) (plain mode) "drugMonitoring" and "vancomycin"
+12) (plain mode) "habits" and "direct Oral Anticoagulants"
+13) (plain mode) "COVID" and "telepharmacy"
+14) (plain mode) "COVID" and "homeDelivery"
+15) (plain mode) "COVID" and "efficacyAnalysis"
+16) (plain mode) "selection" and "costAnalysis"
+17) (plain mode) "softwareAided" and "interactions"
+18) (plain mode) "socialMedia" and "webMobileVR"
+19) category search -- indication -- first all, then remove 2021 and show that COVID was gone
+20) category search -- country -- first all, then only 2020 (italy), then only 2019 (morocco)
+21) specific search -- department -- emergency, intensive care, internal medicine // covid made intensive care jump in 2021
+22) specific search -- active subs. -- Tocilizumab, Infliximab and Etanercept, Tocilizumab from rheumatology to offLabel COVID use boost
+23) live-search "oncology pharmacy production"
+24) e-mail / report / add-study / issue
+25) "Deprescribing" and "costAnalysis"
+26) "homeDelivery" and "coldChain"
+27) "errors" and "costAnalysis"
+
+-----
+
+"riskSafety" for "compounding" // "aids" for "drugInteractions" // "education" for "youngPharma" // "biosimilars" for "switch" // "clinicalTrials" vs "costAnalysis"
+
+"advantages demonstration" for in-promotion
+1) A pharmacist started in Medical Devices Department and don't know what to do. "selection" or "costAnalysis"
+2) Optimisation of denosumab prescription in osteoporosis patients. costAnalysis was not stated in the headline
+
+Personal Notes
+1) "The effect of geriatric stewardship on drug-related problems after discharge" and "Medication-related readmissions: documentation and communication to the next healthcare providers and patients" -- Turkish pharmacist in Netherlands
+2) "Pharmacologic intervention by hospital pharmacist for leucopenia due to tazobactam/piperacillin in the postpartum period: a case report" can we?
+3) "A descriptive, retrospective analysis of high-dose intravenous vitamin C administration in critically ill COVID-19 patients" -- Turkish pharmacist

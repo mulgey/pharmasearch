@@ -1,0 +1,25 @@
+header
+  .navbar-fixed(style='margin-bottom: 2rem;')  
+    nav
+      .nav-wrapper(style='background-color: royalblue;')
+        a.brand-logo.hide-on-med-and-down(href='/', style="margin-left: 2rem; margin-top: 0.5rem;")
+          img(src='/img/logo.png', alt='PharmaSearch', width="40", height="40")
+        a#logoType(href='/', style="letter-spacing: 2px; font-size: x-large;")
+        ul#nav-mobile.right.hide-on-med-and-down
+          li
+            a(href='/addStudy' style='margin-right: 1rem;') + Add Study
+          li
+            a(href='/typeSearch' style='margin-right: 1rem;') Type-Search
+          li
+            a(href='/trends' style='margin-right: 1rem;') Trends &#128202;
+          li
+            a(href='/about' style='margin-right: 1rem;') About
+        #switch.switch(style="margin-bottom: 2rem;")
+          label.left(style="margin-left: 3rem; color: black; font-weight: 500; border: 2px solid rgba(111,111,111,0.2); border-radius: 10px; padding-top: 0.5rem; padding-bottom: 0.7rem; padding-right: 1rem; background-color: lightblue;")
+            input#plainMode(type='checkbox')
+            span.lever
+            | Plain Mode &#128209;
+          label.hide-on-small-only.right(style="margin-right: 3rem; color: black; font-weight: 500; border: 2px solid rgba(111,111,111,0.2); border-radius: 10px; padding-top: 0.5rem; padding-bottom: 0.7rem; padding-right: 1rem; background-color: lightblue;")
+            input#nightMode(type='checkbox')
+            span.lever
+            | Dark Mode 🌙

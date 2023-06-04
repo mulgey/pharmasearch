@@ -1,0 +1,13 @@
+endOfLife: All of them are geriatrics
+history: strict (only) with "reconciliation" and "discrepancies"
+orphan: strict (only) with activeSubstances, not indications
+outpatient: ambulatory care
+efficacyAnalysis: they may be only "overall survival analyse" and/or "benefit"
+policiesAudits: don't swing too much on the "guidelines" side
+deprescription: removal or reduction of medications
+
+---
+
+"biosimilars" = "biologicals"
+"flatDoses" ~ "compounding"
+"automated" ~ "stock"
