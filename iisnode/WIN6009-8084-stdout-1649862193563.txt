@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 Express in kulağı 3000 de, pür dikkat
 [0mGET /robots.txt [33m404[0m 6.811 ms - 149[0m
+=======
+Express in kulağı 3000 de, pür dikkat
+[0mGET /robots.txt [33m404[0m 6.811 ms - 149[0m
+>>>>>>> 1b35242c2b235c5a8b25d142cc08b6d2ece8faaa

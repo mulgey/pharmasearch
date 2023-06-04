@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 doctype html
 html(lang='en')
     head
@@ -3157,3 +3158,3164 @@ html(lang='en')
           
         }, 1000);
       });
+=======
+doctype html
+html(lang='en')
+    head
+      title PharmaSearch || Trends
+      meta(name='Description', content='Error reporting form for users if they spot anything wrong about the search results.')
+      include includes/head.pug
+    body
+      include includes/header.pug
+      main
+        .row
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;").hide-on-small-only
+            script(type='text/javascript').
+              var bannersnack_embed = {"hash":"b7hnejnub","width":300,"height":1050,"t":1592480941,"userId":41627626,"responsive":true,"type":"html5"};
+            script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
+          .col.s12.m4.l8#main(style="margin-top: 2rem;")
+            form.row(action='#')
+              .input-field.col.s10.l6.offset-s1
+                select(multiple='')#journal
+                  option(value='' disabled='') Choose your option
+                  option(value='' disabled='' selected='') European Journal of Hospital Pharmacists - Abstract Book
+                label(style="font-weight: bolder; color: royalblue; font-size: small;") Choose Journal
+              .input-field.col.s10.l6.offset-s1
+                select(multiple='')#method
+                  option(value='' disabled='') Choose your option
+                  option(value='Category Search' selected='') Category Search
+                  option(value='Specific Search')#specific Specific Search
+                label(style="font-weight: bolder; color: royalblue; font-size: small;") Choose Trends Method
+            form.row(action='#')
+              .input-field.col.s10.l6.offset-s1
+                select(multiple='')#major
+                  option(value='' disabled='') Choose your option
+                  option(value='Active Substance') Active Substance
+                  option(value='Stated Therapeutic Indication') Stated Therapeutic Indication
+                  option(value='Department') Department
+                  option(value='Tools / Criterias / Methods') Tools / Criterias / Methods
+                  option(value='Design of The Study') Design of The Study
+                  option(value='Stated Drug Classification') Country
+                label(style="font-weight: bolder; color: royalblue; font-size: small;") Select Category
+              .input-field.col.s10.l6.offset-s1#cat-group
+                select(multiple='')#years
+                  option(value='' disabled='') Choose your option
+                  option(value='2022' selected='') 2022
+                  option(value='2021' selected='') 2021
+                  option(value='2020' selected='') 2020
+                  option(value='2019' selected='') 2019
+                label(style="font-weight: bolder; color: royalblue; font-size: small;") Choose Period
+              .input-field.col.s10.l6.offset-s1#spec-group(style='display:none; margin-top: -0.9rem')
+                label(style="font-weight: bolder; color: royalblue; font-size: small;") Select Item
+                #specificChips.chips.chips-autocomplete(style="margin-right: 0.5rem; margin-top: 2rem;")
+            .row(style='margin-top: 2rem; margin-bottom: 4rem;')
+              a#search.col.s2.waves-effect.waves-light.btn.offset-s4(style='border-radius: 12px; width: 25%')
+                | See Trends
+                i.material-icons.right search
+            .row.center-align
+              p#waiting.col.s12(style="font-weight: bold; color: darkslateblue;")
+            .row
+              #spinner.col.s5.offset-s5(style="display: none;")
+                .spinner-dual
+                  .spinner-dual
+            canvas#myChart(style="display: default;")
+            script(src='https://cdn.jsdelivr.net/npm/chart.js')
+            script(src='https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0 ')
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;").hide-on-small-only
+            script(type='text/javascript').
+              var bannersnack_embed = {"hash":"bxhm4i3nd","width":300,"height":1050,"t":1592485287,"userId":41627626,"responsive":true,"type":"html5"};
+            script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
+      include includes/footer.pug
+    // Compiled and minified JavaScript
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js', integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=', crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/typed.js@2.0.11')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+    // Global arrays for the website is here
+    script(src="/protected/data/arrays.js")
+    // MY SCRIPTS START
+    script.
+      // MATERIALIZE STUFF
+      M.AutoInit();
+      // We don't need plain search and night mode here
+      $('#switch').hide();
+      // MATERIALIZE STUFF
+      $(document).ready(function() {
+        $('.parallax').parallax();
+        $('select').formSelect();
+      });
+
+      document.addEventListener('DOMContentLoaded', function(){
+        var options = {
+          strings: ['PharmaSear^500.ch'],
+          typeSpeed: 100
+        };
+        var typed = new Typed('#logoType', options); 
+      });
+
+      // COOKIE ENGINE START
+      function createCookie(name,value,days) {
+      if (days) {
+      var date = new Date();
+      date.setTime(date.getTime()+(days*24*60*60*1000));
+      var expires = "; expires="+date.toGMTString();
+      }
+      else var expires = "";
+      document.cookie = name+"="+value+expires+"; path=/";
+      }
+      function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+      }
+      function eraseCookie(name) {
+      createCookie(name,"",-1);
+      }
+      // COOKIE ENGINE END
+
+      // READ COOKIE FOR NIGHT MODE
+      /* not ready for the night mode on trends page
+      let checkNight = readCookie('nightMode');
+      if (checkNight == null) {
+      } else {
+        $("main").css("background-color", "darkgray");
+        $("header").css("background-color", "darkgray");
+        $("footer").css("background-color", "gray");
+        $("#sendReport").css("background-color", "darkslateblue");
+        $(".nav-wrapper").css("background", "");
+        $(".nav-wrapper").css("background-color", "darkslateblue");
+      }
+      */
+      
+      // GET JSON DATA
+      var dataReq = new XMLHttpRequest();
+      var url = "protected/data/data.json";
+      dataReq.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      console.log('Data loaded with success!');
+      }
+      };
+      dataReq.open("GET", url, true);
+      dataReq.send();
+      // FOOTER SLIDING DATA
+      $( "body" ).one('mouseover', function() {
+        setTimeout(function() { 
+        let slideData = JSON.parse(dataReq.responseText);
+        document.getElementById("slider").innerHTML = `${slideData.length} studies in our database are ready for you to perform your search now!`;
+        }, 500);
+      });
+
+      // SOME GLOBAL VARIABLES FOR THE SPECIFIC SEARCH
+      // selectedChip to proceed with a single item in specific search
+      let selectedChip;
+      let selectedChip02;
+      let selectedChip03;
+      let selectedChip04;
+
+      // objSelector to determine which section to place the specific chip
+      let objSelector;
+      // result set for the line chart
+      let result01;
+      let result02;
+      let result03;
+      let result04;
+
+      let result21;
+      let result22;
+      let result23;
+      let result24;
+
+      let result31;
+      let result32;
+      let result33;
+      let result34;
+
+      // This code did not work properly so added a TIMEOUT FUNCTION
+      setTimeout(function() {
+        $(".input-field span").click(function() {
+          // OPTIMIZE THE MULTI-SELECT STRUCTURE WITH MONO-SELECT
+          let foundID = $(this).parent().parent().parent();
+          foundID = foundID[0].lastChild.id;
+          if (foundID === "major" || foundID === "method") {
+          let selecty = $(this).parent().siblings(".selected");
+          selecty.trigger( "click" );
+          }
+          // SWITCH MECHANISM BETWEEN SPEC AND CATEGORY GROUP
+          if ($(this).parent()[0].innerText === "Specific Search") {
+            $("#cat-group").css("display","none");
+            $("#spec-group").css("display","inline");
+            // Check and kill the previous chart
+            if (window.trendsChart != null) {
+              window.trendsChart.destroy();
+            }
+          } else if ($(this).parent()[0].innerText === "Category Search") {
+            $("#spec-group").css("display","none");
+            $("#cat-group").css("display","inline");
+            // Check and kill the previous chart
+            if (window.trendsChart != null) {
+              window.trendsChart.destroy();
+            }
+          }
+
+          // UPDATING THE DATA LOAD ON SPECIFIC-CHIPS, DEPENDING ON THE LIST SELECTION 
+          // Get the category text and create the updater object
+          let catText = $(this).parent()[0].innerText;
+          let updateObject = {};
+          // Fire the updating project
+          if (catText === "Active Substance") {
+            objSelector = "actSubs";
+            M.Chips.getInstance($('#specificChips')).deleteChip(0);
+            for (let key in actArray) {
+              updateObject[`${actArray[key]}`] = null;
+            }
+            M.Chips.getInstance($('#specificChips')).autocomplete.updateData(updateObject);
+          } else if (catText === "Stated Therapeutic Indication") {
+            objSelector = "indication";
+            M.Chips.getInstance($('#specificChips')).deleteChip(0);
+            for (let key in indicArray) {
+              updateObject[`${indicArray[key]}`] = null;
+            }
+            M.Chips.getInstance($('#specificChips')).autocomplete.updateData(updateObject);
+          } else if (catText === "Department") {
+            objSelector = "ward";
+            M.Chips.getInstance($('#specificChips')).deleteChip(0);
+            for (let key in departmentArray) {
+              updateObject[`${departmentArray[key]}`] = null;
+            }
+            M.Chips.getInstance($('#specificChips')).autocomplete.updateData(updateObject);
+          } else if (catText === "Tools / Criterias / Methods") {
+            objSelector = "criteriaMethod";
+            M.Chips.getInstance($('#specificChips')).deleteChip(0);
+            for (let key in toolsArray) {
+              updateObject[`${toolsArray[key]}`] = null;
+            }
+            M.Chips.getInstance($('#specificChips')).autocomplete.updateData(updateObject);
+          } else if (catText === "Design of The Study") {
+            objSelector = "studyDesign";
+            M.Chips.getInstance($('#specificChips')).deleteChip(0);
+            for (let key in designArray) {
+              updateObject[`${designArray[key]}`] = null;
+            }
+            M.Chips.getInstance($('#specificChips')).autocomplete.updateData(updateObject);
+          } else if (catText === "Country") {
+            objSelector = "country";
+            M.Chips.getInstance($('#specificChips')).deleteChip(0);
+            for (let key in countryArray) {
+              updateObject[`${countryArray[key]}`] = null;
+            }
+            M.Chips.getInstance($('#specificChips')).autocomplete.updateData(updateObject);
+          } else {
+            // TO BE ADDED, MAYBE
+          }
+
+        });
+      }, 1000);
+
+      // CHIPS STRUCTURE UP-FRONT
+      let specificBoxData;
+      let specificBox = [];
+      $('#specificChips').chips({
+        placeholder: 'Click or type',
+        onChipAdd: (event, chip) => {
+          // Check and kill the previous chart
+          if (window.trendsChart != null) {
+            window.trendsChart.destroy();
+          }
+          // GET THE LIST DATA
+          specificBoxData = event[0].M_Chips.chipsData;
+          // RESET THE LIST DATA
+          specificBox = [];
+          // PREPARE THE NEW LIST
+          for (let key in specificBoxData) {
+            specificBox.push(`${specificBoxData[key].tag}`);
+          }
+          
+          if (M.Chips.getInstance($('#specificChips')).chipsData.length > 3) {
+            M.Chips.getInstance($('#specificChips')).deleteChip(3);
+          }
+
+        },
+        onChipDelete: (event, chip) => {
+          // Check and kill the previous chart
+          if (window.trendsChart != null) {
+            window.trendsChart.destroy();
+          }
+          // GET THE LIST DATA
+          specificBoxData = event[0].M_Chips.chipsData;
+          // RESET THE LIST DATA
+          specificBox = [];
+          // PREPARE THE NEW LIST
+          for (let key in specificBoxData) {
+            specificBox.push(`${specificBoxData[key].tag}`);
+          }
+        },
+        autocompleteOptions: {
+          data: {
+            // data will be added below from the array
+          },
+          limit: Infinity,
+          minLength: 0
+        }
+      });
+
+      // Pre-load of specificChips goes through actArray
+      var chipInstance = M.Chips.getInstance($('#specificChips'));
+      let specData = chipInstance.options.autocompleteOptions.data;
+      for (let key in actArray) {
+        specData[`${actArray[key]}`] = null;
+      }
+
+      const ctx = $('#myChart')[0].getContext('2d');
+      // Our searchObject
+        let searchObj;
+      // WHEN TREND-SEARCH WAS FIRED
+      $("#search").click(function() {
+        // Hide the chart and error message at the start
+        $("#waiting").css({"background-color": "", "padding": "", "border": ""});
+        $('#waiting').text('');
+        $('#myChart').css("display", "none");
+        // Let the circle start turning
+        $('#spinner').css("display", "block");
+
+        // Timeout for a better operation (tested)
+        setTimeout(function() {
+          if (window.trendsChart != null) {
+            window.trendsChart.destroy();
+          }
+          // Store the whole data
+          let rowData = JSON.parse(dataReq.responseText);
+          // First, get the selected names from every "select"s
+          let methodText;
+          let categoryText;
+          methodText = $('#method').find(":selected").text();
+          categoryText = $('#major').find(":selected").text();
+
+          // Years comes adjacent, then we work on it
+          let rowYears;
+          let selectedYears;
+          // catBox to determine the array we're going to use
+          let catBox;
+          // Array for the subgroup of the array
+          let detailObj;
+          // A blank object to fill with results
+          let objectToFill;
+          // Timer for the waiting message
+          // let timer = 0;
+          // Check if there should be a graph to build
+          let graphOn = 1;
+
+          
+          
+          if (methodText === "Category Search") {
+            selectedYears = [];
+            rowYears = $('#years').find(":selected").text();
+            rowYears = rowYears.match(/.{1,4}/g);
+            for (let key in rowYears) {
+              selectedYears.push(`${rowYears[key]}`);
+            }
+            
+            // Empty and fill the catBox and detailObj with related category
+            catBox = [];
+            if (categoryText === "Active Substance") {
+              catBox = actArray;
+              detailObj = "actSubs";
+            } else if (categoryText === "Stated Therapeutic Indication") {
+              catBox = indicArray;
+              detailObj = "indication";
+            } else if (categoryText === "Department") {
+              catBox = departmentArray;
+              detailObj = "ward";
+            } else if (categoryText === "Tools / Criterias / Methods") {
+              catBox = toolsArray;
+              detailObj = "criteriaMethod";
+            } else if (categoryText === "Design of The Study") {
+              catBox = designArray;
+              detailObj = "studyDesign";
+            } else if (categoryText === "Country") {
+              catBox = countryArray;
+              detailObj = "country";
+            } else {
+              graphOn = 0;
+              $('#spinner').css("display", "none");
+              $('#waiting').text('Please select a category above');
+              $("#waiting").css({"background-color": "lightskyblue", "font-size": "larger", "padding": "5px", "border-radius": "10%", "border": "5px solid lightskyblue"});
+            }
+            
+            if (graphOn === 0) {
+            } else {
+              // Empty two objects to be ready for the search
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: selectedYears,
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              objectToFill = {};
+              // Fire the search
+              for (let key in catBox) {
+                searchObj[detailObj] = [`${catBox[key]}`];
+                // LET THE CODE DO THE MAGIC
+                let result = rowData.filter(({filters}) => {
+                  let isOK = true, k;
+                  for(k in searchObj){
+                    isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                  }
+                  return isOK;
+                });
+
+                // Fill the object with the names = result numbers
+                objectToFill[`${catBox[key]}`] = `${result.length}`;
+
+              }
+              // sort the whole array by the values (top --> down)
+              let sortedResults = Object.entries(objectToFill)
+                .sort(([,a],[,b]) => b-a)
+                .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+
+              // Get the names and values from the object as arrays
+              // Then take the top-5    
+              let topGraphName = Object.keys(sortedResults);
+              topGraphName = topGraphName.slice(0, 5);
+              let topGraphValues = Object.values(sortedResults);
+              topGraphValues = topGraphValues.slice(0, 5);
+
+              // Fire the chart now... adding "window" provided to destroy it on next searches
+              Chart.register(ChartDataLabels);
+              window.trendsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: [`${topGraphName[0]}`, `${topGraphName[1]}`, `${topGraphName[2]}`, `${topGraphName[3]}`, `${topGraphName[4]}`],
+                  datasets: [{
+                  label: 'Number of Results',
+                  data: [`${topGraphValues[0]}`, `${topGraphValues[1]}`, `${topGraphValues[2]}`, `${topGraphValues[3]}`, `${topGraphValues[4]}`],
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.4)',
+                    'rgba(54, 162, 235, 0.4)',
+                    'rgba(246, 238, 30, 0.5)',
+                    'rgba(75, 192, 192, 0.4)',
+                    'rgba(153, 102, 255, 0.4)'
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                  ],
+                  borderWidth: 1
+                  }]
+                },
+                plugins: [ChartDataLabels],
+                options: {
+                  layout: {
+                    padding: 20,
+                  },
+                  plugins: {
+                    datalabels: {
+                      color: 'royalblue',
+                      anchor: 'end',
+                      align: 'end',
+                      offset: 5,
+                      backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                      ],
+                      borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                      ],
+                      borderWidth: 1,
+                      borderRadius: 5,
+                      font: {
+                        weight: 'bold'
+                      },
+                      padding: 5,
+                      formatter: function(value, context) {
+                        return context.chart.data.datasets[0].data[context.dataIndex] ;
+                      }
+                    },
+                  },
+                  scales: {
+                    y: {
+                      beginAtZero: true
+                    }
+                  }
+                }
+              });
+            }
+            // Chart comes back and spinner goes away
+            $('#myChart').css("display", "block");
+            $('#spinner').css("display", "none");
+
+          } else if (methodText === "Specific Search") {
+            // Check if there is a chip selected, if so go on
+            let chipsLength = M.Chips.getInstance($('#specificChips')).chipsData.length;
+
+            if (chipsLength === 1) {
+              // Get the selected chip from specificChips section
+              selectedChip = M.Chips.getInstance($('#specificChips')).chipsData[0].tag;
+              // LET'S FIRE FOR EVERY SINGLE YEAR
+              // searchObj, 2019 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2019'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip}`];
+              // results01 comes in
+              // LET THE CODE DO THE MAGIC
+              result01 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2020 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2020'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip}`];
+              // results02 comes in
+              // LET THE CODE DO THE MAGIC
+              result02 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2021 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2021'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip}`];
+              // results03 comes in
+              // LET THE CODE DO THE MAGIC
+              result03 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2022 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2022'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip}`];
+              // results04 comes in
+              // LET THE CODE DO THE MAGIC
+              result04 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // Fire the chart now... adding "window" provided to destroy it on next searches
+              Chart.register(ChartDataLabels);
+              window.trendsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                  labels: [`2019`, `2020`, `2021`, `2022`],
+                  datasets: [{
+                  label: `Number of Results for ${selectedChip}`,
+                  data: [result01.length, result02.length, result03.length, result04.length],
+                  fill: false,
+                  borderColor: 'rgb(75, 192, 192)',
+                  tension: 0.5
+                  }]
+                },
+                options: {                  
+                  layout: {
+                    padding: 20,
+                  },
+                  plugins: {
+                    datalabels: {
+                      color: 'royalblue',
+                      anchor: 'end',
+                      align: 'end',
+                      offset: 5,
+                      backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                      ],
+                      borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                      ],
+                      borderWidth: 1,
+                      borderRadius: 5,
+                      font: {
+                        weight: 'bold'
+                      },
+                      padding: 5,
+                      formatter: function(value, context) {
+                        return context.chart.data.datasets[0].data[context.dataIndex] ;
+                      }
+                    },
+                  },
+                  scales: {
+                    y: {
+                      beginAtZero: true
+                    }
+                  }
+                }
+              });
+            } else if (chipsLength === 2) {
+              // Get the selected chips from specificChips section
+              selectedChip = M.Chips.getInstance($('#specificChips')).chipsData[0].tag;
+              selectedChip02 = M.Chips.getInstance($('#specificChips')).chipsData[1].tag;
+
+              // LET'S FIRE FOR EVERY SINGLE YEAR FOR CHIP_01
+              // searchObj, 2019 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2019'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip}`];
+              // results01 comes in
+              // LET THE CODE DO THE MAGIC
+              result01 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2020 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2020'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip}`];
+              // results02 comes in
+              // LET THE CODE DO THE MAGIC
+              result02 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2021 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2021'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip}`];
+              // results03 comes in
+              // LET THE CODE DO THE MAGIC
+              result03 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2022 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2022'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip}`];
+              // results04 comes in
+              // LET THE CODE DO THE MAGIC
+              result04 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+
+              // LET'S FIRE FOR EVERY SINGLE YEAR FOR CHIP_02
+              // searchObj, 2019 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2019'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip02}`];
+              // results21 comes in
+              // LET THE CODE DO THE MAGIC
+              result21 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2020 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2020'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip02}`];
+              // results22 comes in
+              // LET THE CODE DO THE MAGIC
+              result22 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2021 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2021'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip02}`];
+              // results23 comes in
+              // LET THE CODE DO THE MAGIC
+              result23 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2022 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2022'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip02}`];
+              // results24 comes in
+              // LET THE CODE DO THE MAGIC
+              result24 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // Fire the chart now... adding "window" provided to destroy it on next searches
+              Chart.register(ChartDataLabels);
+              window.trendsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                  labels: [`2019`, `2020`, `2021`, `2022`],
+                  datasets: [
+                  {
+                    label: `${selectedChip}`,
+                    data: [result01.length, result02.length, result03.length, result04.length],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.5
+                  },
+                  {
+                    label: `${selectedChip02}`,
+                    data: [result21.length, result22.length, result23.length, result24.length],
+                    fill: false,
+                    borderColor: 'rgba(200, 0, 0, 1)',
+                    tension: 0.5
+                  }]
+                },
+                options: {                  
+                  layout: {
+                    padding: 20,
+                  },
+                  plugins: {
+                    datalabels: {
+                      color: 'royalblue',
+                      anchor: 'end',
+                      align: 'end',
+                      offset: 5,
+                      backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                      ],
+                      borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                      ],
+                      borderWidth: 1,
+                      borderRadius: 5,
+                      font: {
+                        weight: 'bold'
+                      },
+                      padding: 5,
+                      formatter: function(value, context) {
+                        context.chart.data.datasets[0].data[context.dataIndex] ;
+                        context.chart.data.datasets[1].data[context.dataIndex];
+                      }
+                    },
+                  },
+                  scales: {
+                    y: {
+                      beginAtZero: true
+                    }
+                  }
+                }
+              });
+              
+            } else if (chipsLength === 3) {
+              // Get the selected chips from specificChips section
+              selectedChip = M.Chips.getInstance($('#specificChips')).chipsData[0].tag;
+              selectedChip02 = M.Chips.getInstance($('#specificChips')).chipsData[1].tag;
+              selectedChip03 = M.Chips.getInstance($('#specificChips')).chipsData[2].tag;
+
+              // LET'S FIRE FOR EVERY SINGLE YEAR FOR CHIP_01
+              // searchObj, 2019 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2019'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip}`];
+              // results01 comes in
+              // LET THE CODE DO THE MAGIC
+              result01 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2020 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2020'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip}`];
+              // results02 comes in
+              // LET THE CODE DO THE MAGIC
+              result02 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2021 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2021'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip}`];
+              // results03 comes in
+              // LET THE CODE DO THE MAGIC
+              result03 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2022 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2022'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip}`];
+              // results04 comes in
+              // LET THE CODE DO THE MAGIC
+              result04 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+
+              // LET'S FIRE FOR EVERY SINGLE YEAR FOR CHIP_02
+              // searchObj, 2019 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2019'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip02}`];
+              // results21 comes in
+              // LET THE CODE DO THE MAGIC
+              result21 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2020 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2020'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip02}`];
+              // results22 comes in
+              // LET THE CODE DO THE MAGIC
+              result22 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2021 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2021'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip02}`];
+              // results23 comes in
+              // LET THE CODE DO THE MAGIC
+              result23 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2022 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2022'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip02}`];
+              // results24 comes in
+              // LET THE CODE DO THE MAGIC
+              result24 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+
+              // LET'S FIRE FOR EVERY SINGLE YEAR FOR CHIP_03
+              // searchObj, 2019 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2019'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip03}`];
+              // results31 comes in
+              // LET THE CODE DO THE MAGIC
+              result31 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2020 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2020'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip03}`];
+              // results32 comes in
+              // LET THE CODE DO THE MAGIC
+              result32 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2021 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2021'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip03}`];
+              // results33 comes in
+              // LET THE CODE DO THE MAGIC
+              result33 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+              // searchObj, 2022 and changed the related sections
+              searchObj = {
+                actSubs: [],
+                indication: [],
+                statedClass: [],
+                typeOfMedical: [],
+                studyDesign: [],
+                setting: [],
+                ward: [],
+                numPatients: [],
+                numPrescriptions: [],
+                studyLength: [],
+                criteriaMethod: [],
+                country: [],
+                year: ['2022'],
+                pediatrics: [],
+                geriatrics: [],
+                neonatology: [],
+                oncology: [],
+                pharmacogenetics: [],
+                pharmacoeconomy: [],
+                radiopharmaceuticals: [],
+                compounding: [],
+                medicalDevices: [],
+                personalized: [],
+                nutrition: [],
+                highRisk: [],
+                endOfLife: [],
+                selfMedication: [],
+                preopMedication: [],
+                outpatient: [],
+                enzymeSubstrate: [],
+                geneTherapy: [],
+                homeCare: [],
+                antibioticProphylaxis: [],
+                painManagement: [],
+                offLabel: [],
+                flatDoses: [],
+                switching: [],
+                deprescribing: [],
+                prepareIV: [],
+                costAnalysis: [],
+                riskSafety: [],
+                vigilance: [],
+                stability: [],
+                drugMonitoring: [],
+                safetyProfile: [],
+                intervention: [],
+                patientIntervention: [],
+                nursesReccomend: [],
+                telepharmacy: [],
+                interview: [],
+                selection: [],
+                stock: [],
+                automated: [],
+                coldChain: [],
+                softwareAided: [],
+                mobileVR: [],
+                Printing3D: [],
+                socialMedia: [],
+                shortages: [],
+                adverseEvents: [],
+                adherence: [],
+                resistance: [],
+                renal: [],
+                errors: [],
+                administrative: [],
+                stewardship: [],
+                policiesAudits: [],
+                multidisciplinary: [],
+                institutional: [],
+                recalls: [],
+                education: [],
+                clinicalTrials: [],
+                youngPharma: [],
+                nextStep: [],
+                compliance: [],
+                orphan: [],
+                delivery: [],
+                falsified: [],
+                incompatibilities: [],
+                habits: [],
+                drugInteractions: [],
+                history: [],
+                ePrescribing: [],
+                efficacyAnalysis: []
+              };
+              searchObj[`${objSelector}`] = [`${selectedChip03}`];
+              // results34 comes in
+              // LET THE CODE DO THE MAGIC
+              result34 = rowData.filter(({filters}) => {
+                let isOK = true, k;
+                for(k in searchObj){
+                  isOK = isOK && (!searchObj[k].length || searchObj[k].some(val => filters[k].includes(val)));
+                }
+                return isOK;
+              });
+
+              // Fire the chart now... adding "window" provided to destroy it on next searches
+              Chart.register(ChartDataLabels);
+              window.trendsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                  labels: [`2019`, `2020`, `2021`, `2022`],
+                  datasets: [
+                  {
+                    label: `${selectedChip}`,
+                    data: [result01.length, result02.length, result03.length, result04.length],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.5
+                  },
+                  {
+                    label: `${selectedChip02}`,
+                    data: [result21.length, result22.length, result23.length, result24.length],
+                    fill: false,
+                    borderColor: 'rgba(200, 0, 0, 1)',
+                    tension: 0.5
+                  },
+                  {
+                    label: `${selectedChip03}`,
+                    data: [result31.length, result32.length, result33.length, result34.length],
+                    fill: false,
+                    borderColor: 'rgba(26, 46, 255, 0.9)',
+                    tension: 0.5
+                  }
+                  ]
+                },
+                options: {                  
+                  layout: {
+                    padding: 20,
+                  },
+                  plugins: {
+                    datalabels: {
+                      color: 'royalblue',
+                      anchor: 'end',
+                      align: 'end',
+                      offset: 5,
+                      backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                      ],
+                      borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                      ],
+                      borderWidth: 1,
+                      borderRadius: 5,
+                      font: {
+                        weight: 'bold'
+                      },
+                      padding: 5,
+                      formatter: function(value, context) {
+                        context.chart.data.datasets[0].data[context.dataIndex];
+                        context.chart.data.datasets[1].data[context.dataIndex];
+                        context.chart.data.datasets[2].data[context.dataIndex];
+                      }
+                    },
+                  },
+                  scales: {
+                    y: {
+                      beginAtZero: true
+                    }
+                  }
+                }
+              });
+              
+            } else {
+              /*
+              // Destroy later
+              graphOn = 0;
+              */
+              $('#spinner').css("display", "none");
+              $('#waiting').text('Please select a category and an item above');
+              $("#waiting").css({"background-color": "lightskyblue", "font-size": "larger", "padding": "5px", "border-radius": "10%", "border": "5px solid lightskyblue"});
+            }
+            /*
+            // Destroy later
+            if (graphOn === 0) {
+            } else {
+              
+            }
+            */
+            // Chart comes back and spinner goes away
+            $('#myChart').css("display", "block");
+            $('#spinner').css("display", "none");
+
+          } else {
+            $('#spinner').css("display", "none");
+            $('#waiting').text('Please select a trends method above');
+            $("#waiting").css({"background-color": "lightskyblue", "font-size": "larger", "padding": "5px", "border-radius": "10%", "border": "5px solid lightskyblue"});
+          }
+          
+        }, 1000);
+      });
+>>>>>>> 1b35242c2b235c5a8b25d142cc08b6d2ece8faaa

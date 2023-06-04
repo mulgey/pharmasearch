@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 doctype html
 html(lang='en')
     head
@@ -234,4 +235,242 @@ html(lang='en')
         };
         let listObj = new List('users', options);
         }, 1500);
+=======
+doctype html
+html(lang='en')
+    head
+      title PharmaSearch || Live Search
+      meta(name='Description', content='Users may perform a live search for the studies across the pharma world by typing anything related to the name of the study.')
+      include includes/head.pug
+    body
+      include includes/header.pug
+      main
+        .row
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;").hide-on-small-only
+            script(type='text/javascript').
+              var bannersnack_embed = {"hash":"b7hnejnub","width":300,"height":1050,"t":1592480941,"userId":41627626,"responsive":true,"type":"html5"};
+            script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
+          .col.s12.m4.l8(style="margin-top: 2rem;")
+            .row#users
+              // class="search" automagically makes an input a search field.
+              input.search.col.m12.s10.offset-s1(style="margin-bottom: 2rem;" placeholder='Search')
+              // class="sort" automagically makes an element a sort buttons. The date-sort value decides what to sort by.
+              div
+                a.waves-effect.waves-light.btn-small.sort.col.s10.m2.offset-m1.offset-s1(style="margin-top: 2rem; background-color: steelblue;", data-sort='name')
+                  | Sort by Name
+                // class="sort" automagically makes an element a sort buttons. The date-sort value decides what to sort by.
+                a.waves-effect.waves-light.btn-small.sort.col.s10.m2.offset-m2.offset-s1(style="margin-top: 2rem; background-color: steelblue;", data-sort='country')
+                  | Sort by Country
+                // class="sort" automagically makes an element a sort buttons. The date-sort value decides what to sort by.
+                a.waves-effect.waves-light.btn-small.sort.col.s10.m2.offset-m2.offset-s1(style="margin-top: 2rem; background-color: steelblue;", data-sort='year')
+                  | Sort by Year
+              // Child elements of container with class="list" becomes list items
+              ul#root.list.col.s12(style="margin-bottom: 4rem;")
+              ul.pagination.col.s12
+                #spinner.col.s5.offset-s5(style="display: none;")
+                  .spinner-dual
+                    .spinner-dual
+          .col.s12.m4.l2(style="padding: 3rem; margin-top: -1rem;").hide-on-small-only
+            script(type='text/javascript').
+              var bannersnack_embed = {"hash":"bxhm4i3nd","width":300,"height":1050,"t":1592485287,"userId":41627626,"responsive":true,"type":"html5"};
+            script(type='text/javascript', src='//cdn.bannersnack.com/iframe/embed.js')
+      include includes/footer.pug
+    // Compiled and minified JavaScript
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js', integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=', crossorigin='anonymous')
+    script(src='js/jquery.paginate.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/typed.js@2.0.11')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+    // MY SCRIPTS START
+    script.
+      // MATERIALIZE STUFF
+      M.AutoInit();
+      // We don't need plain search and night mode here
+      $('#switch').hide();
+      document.addEventListener('DOMContentLoaded', function(){
+        var options = {
+          strings: ['PharmaSear^500.ch'],
+          typeSpeed: 100
+        };
+        var typed = new Typed('#logoType', options); 
+      });
+      // COOKIE ENGINE START
+      function createCookie(name,value,days) {
+      if (days) {
+      var date = new Date();
+      date.setTime(date.getTime()+(days*24*60*60*1000));
+      var expires = "; expires="+date.toGMTString();
+      }
+      else var expires = "";
+      document.cookie = name+"="+value+expires+"; path=/";
+      }
+      function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+      }
+      function eraseCookie(name) {
+      createCookie(name,"",-1);
+      }
+      // COOKIE ENGINE END
+
+      // READ COOKIE FOR NIGHT MODE
+      let checkNight = readCookie('nightMode');
+      if (checkNight == null) {
+      } else {
+        $("main").css("background-color", "darkgray");
+        $("header").css("background-color", "darkgray");
+        $("footer").css("background-color", "gray");
+        $(".nav-wrapper").css("background", "");
+        $(".nav-wrapper").css("background-color", "darkslateblue");
+      }
+      // GET JSON DATA
+      var dataReq = new XMLHttpRequest();
+      var url = "protected/data/data.json";
+      dataReq.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      console.log('Data loaded with success!');
+      }
+      };
+      dataReq.open("GET", url, true);
+      dataReq.send();
+      // ONCE THE CURSOR MOVED
+      $( "body" ).one('mouseover', function() {
+        $('#spinner').css("display", "block");
+        // FOOT SLIDER DATA
+        setTimeout(function() { 
+        let slideData = JSON.parse(dataReq.responseText);
+        document.getElementById("slider").innerHTML = `${slideData.length} studies in our database are ready for you to perform your search now!`;
+        // LOAD THE DATA TO THE myData VARIABLE
+        let myData = JSON.parse(dataReq.responseText);
+        // SET EMPTY SEARCH OBJECT FOR THE FULL LIST
+        searchObj = {
+          actSubs: [],
+          indication: [],
+          statedClass: [],
+          studyDesign: [],
+          setting: [],
+          ward: [],
+          numPatients: [],
+          numPrescriptions: [],
+          studyLength: [],
+          criteriaMethod: [],
+          country: [],
+          year: [],
+          pediatrics: [],
+          geriatrics: [],
+          neonatology: [],
+          oncology: [],
+          pharmacogenetics: [],
+          pharmacoeconomy: [],
+          radiopharmaceuticals: [],
+          compounding: [],
+          medicalDevices: [],
+          personalized: [],
+          nutrition: [],
+          highRisk: [],
+          endOfLife: [],
+          selfMedication: [],
+          preopMedication: [],
+          outpatient: [],
+          enzymeSubstrate: [],
+          geneTherapy: [],
+          homeCare: [],
+          antibioticProphylaxis: [],
+          painManagement: [],
+          offLabel: [],
+          flatDoses: [],
+          switching: [],
+          deprescribing: [],
+          prepareIV: [],
+          costAnalysis: [],
+          riskSafety: [],
+          vigilance: [],
+          stability: [],
+          drugMonitoring: [],
+          safetyProfile: [],
+          intervention: [],
+          patientIntervention: [],
+          nursesReccomend: [],
+          questPatient: [],
+          questProfessional: [],
+          selection: [],
+          stock: [],
+          autoDispensing: [],
+          coldChain: [],
+          softwareAided: [],
+          mobileVR: [],
+          Printing3D: [],
+          socialMedia: [],
+          shortages: [],
+          adverseEvents: [],
+          adherence: [],
+          resistance: [],
+          renal: [],
+          errors: [],
+          administrative: [],
+          stewardship: [],
+          policiesAudits: [],
+          multidisciplinary: [],
+          institutional: [],
+          recalls: [],
+          education: [],
+          clinicalTrials: [],
+          youngPharma: [],
+          nextStep: []
+        };
+        // LET THE CODE DO THE MAGIC
+        const filterEngine = Object.values(searchObj).flat();
+
+        let result = myData.filter(({filters}) => {
+          const objFilters = Object.values(filters).flat();
+          return filterEngine.every(val => objFilters.includes(val));
+        });
+
+        // WE WANT RESULTS COME AS "A TO Z"
+        function sort(valuePath, array) {
+          let path = valuePath.split('.');
+          let value = getType(array[0],path);
+          
+          if (value == 'string') {
+            return array.sort((a, b) => (getValue(a,path).toUpperCase() > getValue(b,path).toUpperCase()) - (getValue(a,path).toUpperCase() < getValue(b,path).toUpperCase()))
+          } else {
+            return array.sort((a, b) => getValue(b,path) -  getValue(a,path));
+          }
+        
+          function getValue(obj, path) {
+            path.forEach(path => obj = obj[path])
+            return obj;
+          }
+        
+          function getType(obj, path) {
+            path.forEach(path => obj = obj[path])
+            return typeof obj;
+          }
+        }
+        result = sort('title', result);
+        console.log(result);
+
+        // PREPARE THE LIST, APPEND TO RESULTLIST SECTION
+        result.forEach(function(item) {
+        var li = document.createElement("li");
+        var text = `<h5 style="margin-top: 3rem;"><a class="name" style="color: midnightblue;" href="${item.url}" target="_blank">${item.title}</a></h4><p class="institution">${item.institution}</p><p class="country">${item.filters.country}</p><p class="year">${item.filters.year}</p><p style="margin-top: 2rem; border-bottom: 3px groove rgba(28,110,164,0.68);"></p>`;
+        li.innerHTML = text;
+        document.getElementById("root").appendChild(li);
+        $('#spinner').css("display", "none");
+        });
+        // LISTJS
+        let options = {
+          valueNames: [ 'name', 'year', 'country' ],
+          page: 50,
+          pagination: true
+        };
+        let listObj = new List('users', options);
+        }, 1500);
+>>>>>>> 1b35242c2b235c5a8b25d142cc08b6d2ece8faaa
       });
